@@ -16,45 +16,54 @@ class PostExcerpt extends React.Component {
             />
           </a>
         </Link>
-        <Link href={"/posts/" + post.slug}>
-          <a className="title">
-            <h2 className="">{post.title}</h2>
-          </a>
-        </Link>
-        <PostHeader tags={post.tags} date={post.date} />
-        <p className="excerpt">{post.excerpt}</p>
-        <Link href={"/posts/" + post.slug}>
-          <a className="keep-reading">Seguir Leyendo</a>
-        </Link>
+        <div className="excerpt-body">
+          <Link href={"/posts/" + post.slug}>
+            <a className="title">
+              <h2 className="">{post.title}</h2>
+            </a>
+          </Link>
+          <PostHeader tags={post.tags} date={post.date} />
+          <p className="excerpt">{post.excerpt}</p>
+          <Link href={"/posts/" + post.slug}>
+            <a className="keep-reading">Seguir Leyendo</a>
+          </Link>
+        </div>
+
         <style jsx>
           {`
             article {
+              display: flex;
               font-family: "Open Sans", sans-serif;
               color: #333333;
               font-size: 1rem;
               margin: 1rem 1rem;
               border-bottom: 1px solid #eef2f8;
             }
-            article a {
+            .excerpt-body a {
               text-decoration: none;
               color: #333333;
             }
-            article > .title {
+            .excerpt-body > .title {
               margin: 1rem 0;
             }
-            article > .keep-reading {
+            .excerpt-body > .keep-reading {
               cursor: pointer;
               color: #349ef3;
               margin: 1rem 0 0.5rem 0;
               display: block;
             }
-            article > .excerpt {
-              font-size: 1rem;
+            .excerpt-body > .excerpt {
+              font-size: 1.2rem;
               line-height: 24px;
               text-align: justify;
               text-rendering: optimizelegibility;
               font-family: Merriweather, serif;
               color: #5d686f;
+            }
+            .post-thumbnail {
+              display: block;
+              padding-top: 1rem;
+              padding-right: 1rem;
             }
             @media screen and (max-width: 728px) {
               .post-thumbnail {

@@ -3,62 +3,93 @@ import React from "react";
 class Nav extends React.Component {
   constructor(props) {
     super(props);
-    this.openMenu = this.openMenu.bind(this);
+    this.toggleMenu = this.toggleMenu.bind(this);
+    this.menuOpened = false;
   }
-  openMenu() {
+  toggleMenu() {
     const links = document.querySelector(".links");
-    links.style["display"] = "flex";
-    setTimeout(() => {
-      links.style["width"] = "60%";
-    }, 100);
-  }
-  closeMenu() {
-    const links = document.querySelector(".links");
-    const container = document.querySelector(".container");
-    links.style["display"] = "none";
-    setTimeout(() => {
+    const content = document.querySelector(".content");
+    const topBar = document.querySelector(".top-bar");
+    if (!this.menuOpened) {
+      links.style["display"] = "flex";
+      setTimeout(() => {
+        links.style["width"] = "250px";
+        content.style["transform"] = "translate3d(250px, 0, 0)";
+        topBar.style["transform"] = "translate3d(250px, 0, 0)";
+      }, 100);
+      this.menuOpened = true;
+    } else {
       links.style["width"] = "0";
-    }, 100);
+      content.style["transform"] = "translate3d(0, 0, 0)";
+      topBar.style["transform"] = "translate3d(0, 0, 0)";
+      setTimeout(() => {
+        links.style["display"] = "none";
+      }, 100);
+      this.menuOpened = false;
+    }
   }
   render() {
     return (
       <nav>
         <div className="top-bar">
-          <i onClick={this.openMenu} className="icon ion-md-menu"></i>
+          <i onClick={this.toggleMenu} className="icon ion-md-menu"></i>
           <h1>Sebastian Gomez</h1>
           <img src="foto_personal.jpg" width="32px" height="32px" />
         </div>
         <ul className="links">
-          <div onClick={this.closeMenu}>Close</div>
+          <div className="menu-header">
+            <img src="foto_personal.jpg" />
+            <h2>Sebastian Gomez</h2>
+          </div>
           <li>
-            <i className="icon ion-md-home"></i> Inicio
+            <a>
+              <i className="icon ion-md-home"></i> <span>Inicio</span>
+            </a>
           </li>
           <li>
-            <i className="icon ion-md-bookmark"></i> Categorías
+            <a>
+              <i className="icon ion-md-bookmark"></i> <span>Categorías</span>
+            </a>
           </li>
           <li>
-            <i className="icon ion-md-clipboard"></i> Docencia
+            <a>
+              <i className="icon ion-md-clipboard"></i> <span>Docencia</span>
+            </a>
           </li>
           <li>
-            <i className="icon ion-md-contact"></i> Sobre Mí
+            <a>
+              <i className="icon ion-md-contact"></i> <span>Sobre Mí</span>
+            </a>
           </li>
           <li>
-            <i className="icon ion-md-search"></i> Buscar
+            <a>
+              <i className="icon ion-md-search"></i> <span>Buscar</span>
+            </a>
           </li>
           <li>
-            <i className="icon ion-md-mic"></i> Charlas
+            <a>
+              <i className="icon ion-md-mic"></i> <span>Charlas</span>
+            </a>
           </li>
           <li>
-            <i className="icon ion-logo-rss"></i> Rss
+            <a>
+              <i className="icon ion-logo-rss"></i> <span>Rss</span>
+            </a>
           </li>
           <li>
-            <i className="icon ion-logo-twitter"></i> Twitter
+            <a>
+              <i className="icon ion-logo-twitter"></i> <span>Twitter</span>
+            </a>
           </li>
           <li>
-            <i className="icon ion-logo-facebook"></i> Facebook
+            <a>
+              <i className="icon ion-logo-facebook"></i> <span>Facebook</span>
+            </a>
           </li>
           <li>
-            <i className="icon ion-logo-linkedin"></i> LinkedIn
+            <a>
+              <i className="icon ion-logo-linkedin"></i> <span>LinkedIn</span>
+            </a>
           </li>
         </ul>
         <style jsx>{`
@@ -69,7 +100,7 @@ class Nav extends React.Component {
             position: fixed;
             display: flex;
             align-items: center;
-            justify-content: space-around;
+            justify-content: space-between;
             border-bottom: 1px solid #eef2f8;
             color: #88909a;
             background-color: white;
@@ -90,11 +121,10 @@ class Nav extends React.Component {
               #2cb5e8 75%
             ); /* Black*/
             overflow-x: hidden; /* Disable horizontal scroll */
-            padding-top: 60px; /* Place content 60px from the top */
             transition: 0.3s; /* 0.5 second transition effect to slide in the sidenav */
-          }
-          .links:hover {
-            font-size: 22px;
+            justify-content: space-around;
+            flex-direction: column;
+            color: #eeeeee;
           }
           .links a {
             padding: 8px 8px 8px 32px;
@@ -104,14 +134,33 @@ class Nav extends React.Component {
             display: block;
             transition: 0.3s;
           }
+          .links h2 {
+            font-size: 1.2em;
+          }
+          .links .menu-header {
+            text-align: center;
+          }
+          .links img {
+            max-width: 100px;
+          }
+          .links li {
+            list-style: none;
+            padding-left: 1em;
+          }
           img {
             border-radius: 50%;
+            margin-right: 1em;
+          }
+          .links > li > a {
+            color: white;
+            font-size: 1rem;
           }
           .top-bar > .icon {
             font-size: 1.5em;
             color: #5d686f;
+            padding-left: 1em;
           }
-          @media screen and (min-width: 728px) {
+          @media screen and (min-width: 767px) {
             .top-bar {
               display: none;
             }
@@ -119,7 +168,7 @@ class Nav extends React.Component {
               display: flex;
             }
           }
-          @media screen and (max-width: 728px) {
+          @media screen and (max-width: 767px) {
             nav {
               margin-top: 4rem;
             }
@@ -128,6 +177,35 @@ class Nav extends React.Component {
             }
             .links {
               display: none;
+            }
+          }
+          @media screen and (min-width: 768px) and (max-width: 1024px) {
+            nav {
+              margin-top: 4rem;
+            }
+            .links {
+              display: block;
+              width: 75px;
+            }
+            img {
+              width: 40px;
+              margin: 1em 1em;
+            }
+            h2 {
+              display: none;
+            }
+            span {
+              display: none;
+            }
+            .links > li > a {
+              text-align: center;
+              color: white;
+              padding: 0 0 1rem 0;
+              font-size: 1.5rem;
+            }
+            .links li {
+              padding-left: 0;
+              padding-bottom: 1rem;
             }
           }
         `}</style>

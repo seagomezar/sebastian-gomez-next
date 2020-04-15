@@ -19,7 +19,7 @@ const Profile = () => (
     </p>
     <style jsx>
       {`
-        @media screen and (max-width: 728px) {
+        @media screen and (max-width: 1024px) {
           .profile {
             display: none;
           }
