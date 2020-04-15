@@ -1,4 +1,5 @@
 import React from "react";
+import Profile from "../components/Profile";
 
 class Nav extends React.Component {
   constructor(props) {
@@ -10,18 +11,21 @@ class Nav extends React.Component {
     const links = document.querySelector(".links");
     const content = document.querySelector(".content");
     const topBar = document.querySelector(".top-bar");
+    const footer = document.querySelector("footer");
     if (!this.menuOpened) {
       links.style["display"] = "flex";
       setTimeout(() => {
         links.style["width"] = "250px";
         content.style["transform"] = "translate3d(250px, 0, 0)";
         topBar.style["transform"] = "translate3d(250px, 0, 0)";
+        footer.style["transform"] = "translate3d(250px, 0, 0)";
       }, 100);
       this.menuOpened = true;
     } else {
       links.style["width"] = "0";
       content.style["transform"] = "translate3d(0, 0, 0)";
       topBar.style["transform"] = "translate3d(0, 0, 0)";
+      footer.style["transform"] = "translate3d(0, 0, 0)";
       setTimeout(() => {
         links.style["display"] = "none";
       }, 100);
@@ -41,6 +45,8 @@ class Nav extends React.Component {
             <img src="foto_personal.jpg" />
             <h2>Sebastian Gomez</h2>
           </div>
+
+          <Profile />
           <li>
             <a>
               <i className="icon ion-md-home"></i> <span>Inicio</span>
@@ -122,9 +128,11 @@ class Nav extends React.Component {
             ); /* Black*/
             overflow-x: hidden; /* Disable horizontal scroll */
             transition: 0.3s; /* 0.5 second transition effect to slide in the sidenav */
-            justify-content: space-around;
+            justify-content: space-between;
+            flex-wrap: wrap;
             flex-direction: column;
             color: #eeeeee;
+            display: flex;
           }
           .links a {
             padding: 8px 8px 8px 32px;
@@ -184,7 +192,7 @@ class Nav extends React.Component {
               margin-top: 4rem;
             }
             .links {
-              display: block;
+              display: flex;
               width: 75px;
             }
             img {
@@ -206,6 +214,31 @@ class Nav extends React.Component {
             .links li {
               padding-left: 0;
               padding-bottom: 1rem;
+            }
+          }
+          @media screen and (min-width: 1025px) and (max-width: 1280px) {
+            .links {
+              display: flex;
+              width: 250px;
+              padding-top: 1rem;
+            }
+            .links h2 {
+              font-size: 1.2em;
+              margin: 1rem 0;
+            }
+            .links li {
+              padding-left: 0;
+              padding-bottom: 1rem;
+            }
+          }
+          @media screen and (min-width: 1281px) {
+            .links {
+              display: flex;
+              width: 500px;
+              padding-top: 1rem;
+            }
+            .links li a {
+              font-size: 1.2rem;
             }
           }
         `}</style>

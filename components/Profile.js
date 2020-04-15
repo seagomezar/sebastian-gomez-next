@@ -3,13 +3,7 @@ import Menu from "./Nav";
 
 const Profile = () => (
   <article className="profile">
-    <img
-      src="/foto_personal.jpg"
-      className=""
-      alt="Sebastian Gomez"
-      width="100px"
-    />
-    <p className="text-justify">
+    <p>
       Mi nombre es Sebastián Gómez, soy Google Developer Expert en Tecnologías
       Web, estudié ingeniería de sistemas e Informática y una maestría en
       Ingeniería de Sistemas de la Universidad Nacional de Colombia. Actualmente
@@ -19,7 +13,12 @@ const Profile = () => (
     </p>
     <style jsx>
       {`
-        @media screen and (max-width: 1024px) {
+        p {
+          margin: 1rem 3rem;
+          text-align: justify;
+          font-size: 1.1rem;
+        }
+        @media screen and (max-width: 1280px) {
           .profile {
             display: none;
           }

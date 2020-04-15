@@ -3,7 +3,7 @@ import HeadSite from "../components/HeadSite";
 import Nav from "../components/Nav";
 import PostList from "../components/PostList";
 import PostNavigation from "../components/PostNavigation";
-import Profile from "../components/Profile";
+
 import Footer from "../components/Footer";
 
 export default class Index extends React.Component {
@@ -13,7 +13,6 @@ export default class Index extends React.Component {
         <HeadSite></HeadSite>
         <section className="container">
           <header>
-            <Profile />
             <Nav />
           </header>
           <section className="content">
@@ -30,6 +29,16 @@ export default class Index extends React.Component {
             @media screen and (min-width: 768px) and (max-width: 1024px) {
               .content {
                 margin-left: 75px;
+              }
+            }
+            @media screen and (min-width: 1025px) and (max-width: 1280px) {
+              .content {
+                margin-left: 250px;
+              }
+            }
+            @media screen and (min-width: 1281px) {
+              .content {
+                margin-left: 500px;
               }
             }
           `}
