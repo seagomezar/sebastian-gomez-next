@@ -5,11 +5,15 @@ const HeadSite = () => (
   <Head>
     <title>Lee Sobre Tecnologías Web - Sebastian Gomez</title>
     <link rel="icon" href="/favicon.ico" />
+    <link href="/static/css/ionicons.min.css" rel="stylesheet" />
     <link
-      href="/static/css/ionicons.min.css"
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
       rel="stylesheet"
-    />
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"></link>
+    ></link>
+    <link
+      href="https://fonts.googleapis.com/css?family=Merriweather&display=swap"
+      rel="stylesheet"
+    ></link>
     <link href="/static/css/styles.css" rel="stylesheet" />
   </Head>
 );

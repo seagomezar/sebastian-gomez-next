@@ -1,5 +1,6 @@
 import PostHeader from "../../components/PostHeader";
 import HeadSite from "../../components/HeadSite";
+import Discuss from "../../components/Discuss";
 
 <HeadSite></HeadSite>
 
@@ -98,7 +99,7 @@ transition-timing-function: linear; // Este es el valor por defecto, no hace fal
 transition-timing-function: ease-in; // Significa que al comienzo sea rápido el cambio y que después se ralentice.
 transition-timing-function: ease-out; // Significa que al comienzo sea lento el cambio y que después se acelere.
 transition-timing-function: ease-in-out; // Significa que al comienzo y al final sea rápido el cambio pero en la mitad sea lento
-transition-timing-function: cubic-bezier(0.21,0.3,0.1,0.23); // De acuerdo a los valores se acelera o desacelera en los distintos momentos en que ocurre la transición.
+transition-timing-function: cubic-bezier(0.21,0.3,0.1,0.23); // De acuerdo a los valores se acelera o desacelera.
 ```
 
 Pero esta no es la única manera de añadir esta propiedad a las transiciones. También es posible hacerlo directamente en la propiedad transition:
@@ -162,3 +163,4 @@ Finalmente algunas consideraciones respecto a las transiciones:
 - Las transiciones son granulares porque te permiten animar una o dos o x propiedades.
 
 Eso es todo, espero que este post te sea de utilidad y lo puedas aplicar a algún proyecto que tengas en mente y que simplemente te haya ayudado a entender la naturaleza de las transiciones en CSS. Déjame un comentario si lograste implementarlo, si quieres añadir alguna otra funcionalidad o si tienes alguna duda no dudes en dejarme un comentario en la parte de abajo, recuerda que si te gustó también puedes compartir usando los links a las redes sociales en la parte de abajo.
+<Discuss slug="todo-sobre-transiciones-en-css"/>

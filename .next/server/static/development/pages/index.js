@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -183,7 +183,15 @@ const HeadSite = () => __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, {
   rel: "stylesheet",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 12
+    lineNumber: 9
+  },
+  __self: undefined
+}), __jsx("link", {
+  href: "https://fonts.googleapis.com/css?family=Merriweather&display=swap",
+  rel: "stylesheet",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 13
   },
   __self: undefined
 }), __jsx("link", {
@@ -191,7 +199,7 @@ const HeadSite = () => __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, {
   rel: "stylesheet",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 13
+    lineNumber: 17
   },
   __self: undefined
 }));
@@ -3148,7 +3156,7 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/

@@ -1,8 +1,35 @@
+import React from "react";
+import PostNav from "./PostNav";
 
-export default function Layout(props) {
-  return (
-    <div>
-      {props.children}
-    </div>
-  );
+class Layout extends React.Component {
+  render() {
+    const props = this.props;
+    return (
+      <React.Fragment>
+        <PostNav />
+        <article className="post">
+          {props.children}
+          <style jsx>{`
+            .post {
+              max-width: 1024px;
+              margin: 4rem auto 1rem auto;
+              text-align: justify;
+              text-rendering: optimizelegibility;
+              letter-spacing: -0.3px;
+              font-family: "Merriweather", serif;
+              color: #5d686f;
+              font-weight: 400;
+              font-size: 20px;
+              line-height: 30px;
+              padding: 1rem 1rem;
+              transition: 0.3s all;
+            }
+          `}</style>
+        </article>
+        <footer></footer>
+      </React.Fragment>
+    );
+  }
 }
+
+export default Layout;
