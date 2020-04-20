@@ -22,7 +22,7 @@ class PostExcerpt extends React.Component {
               <h2 className="">{post.title}</h2>
             </a>
           </Link>
-          <PostHeader tags={post.tags} date={post.date} />
+          <PostHeader tags={post.tags} date={post.date} slug={post.slug} />
           <p className="excerpt">{post.excerpt}</p>
           <Link href={"/posts/" + post.slug}>
             <a className="keep-reading">Seguir Leyendo</a>
@@ -53,7 +53,7 @@ class PostExcerpt extends React.Component {
               display: block;
             }
             .excerpt-body > .excerpt {
-              font-size: 1.2rem;
+              font-size: 1rem;
               line-height: 24px;
               text-align: justify;
               text-rendering: optimizelegibility;

@@ -43,6 +43,11 @@ export default class Index extends React.Component {
             }
           `}
         </style>
+        <script
+          id="dsq-count-scr"
+          src="//sebastian-gomez.disqus.com/count.js"
+          async
+        ></script>
       </React.Fragment>
     );
   }

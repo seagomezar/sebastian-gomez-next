@@ -1,9 +1,10 @@
 import React from "react";
 import Tag from "./Tag";
+import Link from "next/link";
 
 class PostHeader extends React.Component {
   render() {
-    const { date, tags } = this.props;
+    const { date, tags, slug } = this.props;
     return (
       <small className="">
         <span>
@@ -13,8 +14,12 @@ class PostHeader extends React.Component {
             day: "numeric",
             year: "numeric",
           }).format(new Date(date))}{" "}
-          -<strong> Autor: </strong> Sebastian Gomez
+          -<strong> Autor: </strong> Sebastian Gomez -{" "}
+          <Link href={"/posts/" + slug + "#disqus_thread"}>
+            <a>Únete a la discusión</a>
+          </Link>
         </span>
+
         <span></span>
         <span>
           {tags.map((tag, index) => (
@@ -22,6 +27,10 @@ class PostHeader extends React.Component {
           ))}
         </span>
         <style jsx>{`
+          a {
+            color: #9eabb3;
+            text-decoration: none;
+          }
           small {
             color: #9eabb3;
           }

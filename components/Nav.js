@@ -135,7 +135,7 @@ class Nav extends React.Component {
             display: flex;
           }
           .links a {
-            padding: 8px 8px 8px 32px;
+            padding: 0 8px 0 32px;
             text-decoration: none;
             font-size: 25px;
             color: #818181;
@@ -209,7 +209,7 @@ class Nav extends React.Component {
               text-align: center;
               color: white;
               padding: 0 0 1rem 0;
-              font-size: 1.5rem;
+              font-size: 1.2rem;
             }
             .links li {
               padding-left: 0;
@@ -235,10 +235,10 @@ class Nav extends React.Component {
             .links {
               display: flex;
               width: 500px;
-              padding-top: 1rem;
+              padding: 1rem 0;
             }
             .links li a {
-              font-size: 1.2rem;
+              font-size: 1rem;
             }
           }
         `}</style>
