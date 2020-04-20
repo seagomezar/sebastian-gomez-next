@@ -140,7 +140,7 @@ class PostNav extends React.Component {
             transition: 0.3s;
           }
           .links h2 {
-            font-size: 2em;
+            font-size: 1.5em;
           }
           .links .menu-header {
             text-align: center;
@@ -158,7 +158,7 @@ class PostNav extends React.Component {
           }
           .links > li > a {
             color: white;
-            font-size: 25px;
+            font-size: 1rem;
           }
           .top-bar > .icon {
             font-size: 1.5em;
