@@ -9,15 +9,15 @@ import posts from "./posts.json"; // WHERE YOUR POSTS ARE
 export default class Index extends React.Component {
   static getInitialProps(ctx) {
     const currentPage = ctx.query.page || 1;
-    const POSTS_BY_PAGE = 1; // CHANGE TO SET THE PAGES PER POST
-    const data = posts.data.posts.slice(
+    const POSTS_BY_PAGE = 5; // CHANGE TO SET THE PAGES PER POST
+    const filteredPosts = posts.data.posts.slice(
       (currentPage - 1) * POSTS_BY_PAGE,
-      currentPage * POSTS_BY_PAGE + (POSTS_BY_PAGE - 1)
+      currentPage * POSTS_BY_PAGE
     );
     return {
       currentPage: currentPage,
       totalPages: Math.round(posts.data.posts.length / POSTS_BY_PAGE),
-      posts: data,
+      posts: filteredPosts,
     };
   }
   render() {
