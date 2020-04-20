@@ -3,11 +3,25 @@ import HeadSite from "../components/HeadSite";
 import Nav from "../components/Nav";
 import PostList from "../components/PostList";
 import PostNavigation from "../components/PostNavigation";
-
 import Footer from "../components/Footer";
+import posts from "./posts.json"; // WHERE YOUR POSTS ARE
 
 export default class Index extends React.Component {
+  static getInitialProps(ctx) {
+    const currentPage = ctx.query.page || 1;
+    const POSTS_BY_PAGE = 1; // CHANGE TO SET THE PAGES PER POST
+    const data = posts.data.posts.slice(
+      (currentPage - 1) * POSTS_BY_PAGE,
+      currentPage * POSTS_BY_PAGE + (POSTS_BY_PAGE - 1)
+    );
+    return {
+      currentPage: currentPage,
+      totalPages: Math.round(posts.data.posts.length / POSTS_BY_PAGE),
+      posts: data,
+    };
+  }
   render() {
+    const { currentPage, totalPages, posts } = this.props;
     return (
       <React.Fragment>
         <HeadSite></HeadSite>
@@ -16,8 +30,9 @@ export default class Index extends React.Component {
             <Nav />
           </header>
           <section className="content">
-            <PostList page={1} />
-            <PostNavigation currentPage={1} totalPages={3} />
+            <PostList page={currentPage} posts={posts} />
+
+            <PostNavigation currentPage={currentPage} totalPages={totalPages} />
           </section>
           <Footer />
         </section>

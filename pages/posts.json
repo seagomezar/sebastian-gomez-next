@@ -1,0 +1,36 @@
+{
+  "data": {
+    "posts": [
+      {
+        "id": 1,
+        "tags": ["Animaciones", "CSS", "HTML", "Desarrollo Web"],
+        "thumbnailImage": "/foto_personal.jpg",
+        "categories": ["CSS"],
+        "date": "2018-01-24 12:13:17",
+        "title": "Todo sobre animaciones en css",
+        "slug": "todo-sobre-transiciones-en-css",
+        "excerpt": "Las transiciones hacen parte del conjunto de herramientas que poseemos como desarrolladores FrontEnd para mejorar la experiencia del usuario dentro de nuestra aplicación Web. Son útiles porque nos permiten animar el cambio de valores en las distintas propiedades de un elemento lo que puede hacerlo más llamativo al usuario e invitarlo a interactuar con él. En este post trataré de cubrir el extenso tema de transiciones con diversos ejemplos adaptados desde la especificación."
+      },
+      {
+        "id": 2,
+        "tags": ["Animaciones", "CSS", "HTML", "Desarrollo Web"],
+        "thumbnailImage": "/foto_personal.jpg",
+        "categories": ["CSS"],
+        "date": "2018-01-24 12:13:17",
+        "title": "Todo sobre animaciones en css",
+        "slug": "todo-sobre-transiciones-en-css",
+        "excerpt": "Las transiciones hacen parte del conjunto de herramientas que poseemos como desarrolladores FrontEnd para mejorar la experiencia del usuario dentro de nuestra aplicación Web. Son útiles porque nos permiten animar el cambio de valores en las distintas propiedades de un elemento lo que puede hacerlo más llamativo al usuario e invitarlo a interactuar con él. En este post trataré de cubrir el extenso tema de transiciones con diversos ejemplos adaptados desde la especificación."
+      },
+      {
+        "id": 2,
+        "tags": ["Animaciones", "CSS", "HTML", "Desarrollo Web"],
+        "thumbnailImage": "/foto_personal.jpg",
+        "categories": ["CSS"],
+        "date": "2018-01-24 12:13:17",
+        "title": "Todo sobre animaciones en css",
+        "slug": "todo-sobre-transiciones-en-css",
+        "excerpt": "Las transiciones hacen parte del conjunto de herramientas que poseemos como desarrolladores FrontEnd para mejorar la experiencia del usuario dentro de nuestra aplicación Web. Son útiles porque nos permiten animar el cambio de valores en las distintas propiedades de un elemento lo que puede hacerlo más llamativo al usuario e invitarlo a interactuar con él. En este post trataré de cubrir el extenso tema de transiciones con diversos ejemplos adaptados desde la especificación."
+      }
+    ]
+  }
+}

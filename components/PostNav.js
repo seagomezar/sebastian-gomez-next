@@ -144,6 +144,7 @@ class PostNav extends React.Component {
           }
           .links .menu-header {
             text-align: center;
+            margin-top: 1rem;
           }
           .links img {
             max-width: 100px;

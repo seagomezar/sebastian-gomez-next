@@ -6,12 +6,28 @@ class PostNavigation extends React.Component {
     const { currentPage = 0, totalPages } = this.props;
     return (
       <div className="post-navigation">
+        {currentPage > 1 ? (
+          <div>
+            <Link href={"/?page=" + Number(parseInt(currentPage) - 1)}>
+              <a className="newer-posts">Artículos Recientes</a>
+            </Link>
+          </div>
+        ) : (
+          ""
+        )}
+        {currentPage < totalPages ? (
+          <div>
+            <Link href={"/?page=" + Number(parseInt(currentPage) + 1)}>
+              <a className="older-posts">Artículos Anteriores</a>
+            </Link>
+          </div>
+        ) : (
+          ""
+        )}
+
         <div className="">
-          <Link href={"/page/" + parseInt(currentPage + 1)}>
-            <a className="">Artículos Anteriores</a>
-          </Link>
+          página {currentPage} de {totalPages}
         </div>
-        <div className="">página 1 de {totalPages}</div>
         <style jsx>
           {`
             .post-navigation {
@@ -31,9 +47,13 @@ class PostNavigation extends React.Component {
               color: #5d686f;
               padding: 1rem;
             }
-            a::after {
+            .older-posts::after {
               content: ">";
               margin-left: 1rem;
+            }
+            .newer-posts::before {
+              content: "<";
+              margin-right: 1rem;
             }
           `}
         </style>
