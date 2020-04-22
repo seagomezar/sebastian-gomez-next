@@ -5,8 +5,16 @@ import PostList from "../components/PostList";
 import PostNavigation from "../components/PostNavigation";
 import Footer from "../components/Footer";
 import posts from "./posts.json"; // WHERE YOUR POSTS ARE
+import { initGA, logPageView } from "../utils/analytics";
 
 export default class Index extends React.Component {
+  componentDidMount() {
+    if (!window.GA_INITIALIZED) {
+      initGA();
+      window.GA_INITIALIZED = true;
+    }
+    logPageView();
+  }
   static getInitialProps(ctx) {
     const currentPage = ctx.query.page || 1;
     const POSTS_BY_PAGE = 5; // CHANGE TO SET THE PAGES PER POST

@@ -1,9 +1,11 @@
 import React from "react";
 import Head from "next/head";
+import OpenGraphTags from "./OpenGraphTags";
 
-const HeadSite = () => (
+const HeadSite = (props) => (
   <Head>
     <title>Lee Sobre Tecnologías Web - Sebastian Gomez</title>
+    <OpenGraphTags {...props} />
     <link rel="icon" href="/favicon.ico" />
     <link href="/static/css/ionicons.min.css" rel="stylesheet" />
     <link

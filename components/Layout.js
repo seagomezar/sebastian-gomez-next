@@ -1,12 +1,20 @@
 import React from "react";
-import PostNav from "./PostNav";
+import Nav from "./Nav";
+import { initGA, logPageView } from "../utils/analytics";
 
 class Layout extends React.Component {
+  componentDidMount() {
+    if (!window.GA_INITIALIZED) {
+      initGA();
+      window.GA_INITIALIZED = true;
+    }
+    logPageView();
+  }
   render() {
     const props = this.props;
     return (
       <React.Fragment>
-        <PostNav />
+        <Nav onlyTopBar={true} />
         <article className="post">
           {props.children}
           <style jsx>{`
