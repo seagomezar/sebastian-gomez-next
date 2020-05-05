@@ -39,7 +39,7 @@ class Tag extends React.Component {
               background-color: red;
             }
             .badge-warning {
-              background-color: yellow;
+              background-color: #E5BE01;
             }
             .badge-info {
               background-color: gray;
