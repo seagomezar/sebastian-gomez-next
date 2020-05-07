@@ -2,18 +2,21 @@ import PostHeader from "../../components/PostHeader";
 import HeadSite from "../../components/HeadSite";
 import Discuss from "../../components/Discuss";
 
-<HeadSite 
-    category="css"
-    date="2020-05-05 11:59:00"
-    title="Todo sobre transiciones en CSS"
-    slug="todo-sobre-transiciones-en-css"
-    thumbnailImage="https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/01/css3.png"
-    excerpt="En este post trataré de cubrir el extenso tema de transiciones con diversos ejemplos adaptados desde la especificación"
+<HeadSite
+  category="css"
+  date="2020-05-05 11:59:00"
+  title="Todo sobre transiciones en CSS"
+  slug="todo-sobre-transiciones-en-css"
+  thumbnailImage="/css3.jpg"
+  excerpt="En este post trataré de cubrir el extenso tema de transiciones con diversos ejemplos adaptados desde la especificación"
 ></HeadSite>
 
 # Todo sobre transiciones en CSS
 
-<PostHeader tags={['Animaciones', 'HTML', 'CSS', 'Desarrollo Web']} date="2020-05-05 11:59:00" />
+<PostHeader
+  tags={["Animaciones", "HTML", "CSS", "Desarrollo Web"]}
+  date="2020-05-05 11:59:00"
+/>
 
 Las transiciones hacen parte del conjunto de herramientas que poseemos como desarrolladores FrontEnd para mejorar la experiencia del usuario dentro de nuestra aplicación Web. Son útiles porque nos permiten animar el cambio de valores en las distintas propiedades de un elemento lo que puede hacerlo más llamativo al usuario e invitarlo a interactuar con él. En este post trataré de cubrir el extenso tema de transiciones con diversos ejemplos adaptados desde la especificación.
 
@@ -29,18 +32,20 @@ Y unos estilos asociados a dicho cuadrado:
 
 ```css
 .square {
-width: 50px;
-height: 50px;
-margin-bottom: 5px;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 5px;
 }
-.red { background: red; }
+.red {
+  background: red;
+}
 ```
 
 Y tenemos una clase adicional que se la asignaremos al cuadrado en un momento x en el tiempo:
 
 ```css
 .black {
-background: black;
+  background: black;
 }
 ```
 
@@ -48,8 +53,8 @@ Sin embargo queremos que esto se haga de una manera suave, controlada y agradabl
 
 ```css
 .black {
-background: black;
-transition: background 2s 0.25s;
+  background: black;
+  transition: background 2s 0.25s;
 }
 ```
 
@@ -58,10 +63,10 @@ También existe otra sintaxis alternativa para esto que requiere unas cuantas l�
 
 ```css
 .black {
-background: black;
-transition-property: background;
-transition-duration: 2s;
-transition-delay: 0.25s;
+  background: black;
+  transition-property: background;
+  transition-duration: 2s;
+  transition-delay: 0.25s;
 }
 ```
 
@@ -78,9 +83,9 @@ Si queremos hacer transiciones sobre más de una propiedad, podemos usar all par
 
 ```css
 .black {
-background: black;
-color: white;
-transition: all 2s 0.25s;
+  background: black;
+  color: white;
+  transition: all 2s 0.25s;
 }
 ```
 
@@ -90,10 +95,9 @@ A veces no deseamos que se hagan transiciones sobre todas las propiedades de la 
 
 ```css
 .black {
-background: black;
-color: white;
-transition: background 2s 0.25s,
-color 1.5 3s;
+  background: black;
+  color: white;
+  transition: background 2s 0.25s, color 1.5 3s;
 }
 ```
 
@@ -106,15 +110,20 @@ transition-timing-function: linear; // Este es el valor por defecto, no hace fal
 transition-timing-function: ease-in; // Significa que al comienzo sea rápido el cambio y que después se ralentice.
 transition-timing-function: ease-out; // Significa que al comienzo sea lento el cambio y que después se acelere.
 transition-timing-function: ease-in-out; // Significa que al comienzo y al final sea rápido el cambio pero en la mitad sea lento
-transition-timing-function: cubic-bezier(0.21,0.3,0.1,0.23); // De acuerdo a los valores se acelera o desacelera.
+transition-timing-function: cubic-bezier(
+  0.21,
+  0.3,
+  0.1,
+  0.23
+); // De acuerdo a los valores se acelera o desacelera.
 ```
 
 Pero esta no es la única manera de añadir esta propiedad a las transiciones. También es posible hacerlo directamente en la propiedad transition:
 
 ```css
 .move {
-transform: translateX(500px);
-transition: transform 2s 0.25s ease-in-out;
+  transform: translateX(500px);
+  transition: transform 2s 0.25s ease-in-out;
 }
 ```
 
@@ -122,10 +131,9 @@ Incluso en cada transición sobre las propiedades:
 
 ```css
 .move-background {
-transform: translateX(500px);
-background: red;
-transition: transform 2s 0.25s ease-in-out,
-background 1s 0.10 cubic-bezier(0.21,0.3,0.1,0.23);
+  transform: translateX(500px);
+  background: red;
+  transition: transform 2s 0.25s ease-in-out, background 1s 0.1 cubic-bezier(0.21, 0.3, 0.1, 0.23);
 }
 ```
 
@@ -133,7 +141,7 @@ Miremos en detalle un poco más como funciona la propiedad transition-timing-fun
 
 Las curvas de bezier son un sistema matemático que desarrollo pierre bezier para el trazado de dibujos de aeronaves y automóviles que se describe como una ecuación que toma cuatro valores para describir la curva:
 
-[![](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/01/23242B8E-A920-4955-84E1-C7D2563CD969.png)](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/01/23242B8E-A920-4955-84E1-C7D2563CD969.png) Con una ecuación matemática de la siguiente forma: [![](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/01/Screen-Shot-2018-01-09-at-4.13.37-PM-1024x53.png)](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/01/Screen-Shot-2018-01-09-at-4.13.37-PM.png)
+[![](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/01/23242B8E-A920-4955-84E1-C7D2563CD969.png)](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/01/23242B8E-A920-4955-84E1-C7D2563CD969.png "Gráfico de la curva de Bezier") Con una ecuación matemática de la siguiente forma: [![](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/01/Screen-Shot-2018-01-09-at-4.13.37-PM-1024x53.png)](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/01/Screen-Shot-2018-01-09-at-4.13.37-PM.png "Ecuación de la curva de Bezier")
 
 Pues bien estos cuatro valores (P0 a P3) son los que describen la transición del movimiento entre el punto inicial y el punto final y con estos se pueden definir completamente diversos tipos de transiciones:
 
@@ -152,7 +160,7 @@ https://codepen.io/seagomezar/pen/wPbYqe
 
 Las herramientas para desarrolladores de los navegadores como chrome y firefox nos permiten ralentizar o acelerar las transformaciones para un mejor proceso de debug en ellas, para ello puedes abrir la pestaña animaciones:
 
-[![](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/01/13B715EC-945A-47A7-A6E8-F6A79F24AE3D-1024x642.png)](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/01/13B715EC-945A-47A7-A6E8-F6A79F24AE3D.png)
+[![](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/01/13B715EC-945A-47A7-A6E8-F6A79F24AE3D-1024x642.png)](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/01/13B715EC-945A-47A7-A6E8-F6A79F24AE3D.png "Pestaña animaciones Google Chrome")
 
 Puedes también usar Javascript para conocer el estado de una transición mediante los siguientes listeners:
 
@@ -170,4 +178,5 @@ Finalmente algunas consideraciones respecto a las transiciones:
 - Las transiciones son granulares porque te permiten animar una o dos o x propiedades.
 
 Eso es todo, espero que este post te sea de utilidad y lo puedas aplicar a algún proyecto que tengas en mente y que simplemente te haya ayudado a entender la naturaleza de las transiciones en CSS. Déjame un comentario si lograste implementarlo, si quieres añadir alguna otra funcionalidad o si tienes alguna duda no dudes en dejarme un comentario en la parte de abajo, recuerda que si te gustó también puedes compartir usando los links a las redes sociales en la parte de abajo.
-<Discuss slug="todo-sobre-transiciones-en-css"/>
+
+<Discuss slug="todo-sobre-transiciones-en-css" />

@@ -8,7 +8,6 @@ class Links extends React.Component {
     this.baseStyles = `
           .menu-header > img {
             border-radius: 50%;
-            margin-right: 1em;
           }
           .links {
             height: 100%; /* 100% Full-height */
@@ -39,7 +38,7 @@ class Links extends React.Component {
             display: block;
             transition: 0.3s;
           }
-          .links h2 {
+          .links h3 {
             font-size: 1.2em;
           }
           .links .menu-header {
@@ -69,7 +68,7 @@ class Links extends React.Component {
             }
           }
           @media screen and (min-width: 768px) and (max-width: 1024px) {
-            h2 {
+            h3 {
               display: none;
             }
             span {
@@ -100,7 +99,7 @@ class Links extends React.Component {
               width: 250px;
               padding-top: 1rem;
             }
-            .links h2 {
+            .links h3 {
               font-size: 1.2em;
               margin: 1rem 0;
             }
@@ -124,52 +123,52 @@ class Links extends React.Component {
     return (
       <ul className="links">
         <div className="menu-header">
-          <img src="/foto_personal.jpg" />
-          <h2>Sebastian Gomez</h2>
+          <img src="/foto_personal.jpg" alt="Sebastian Gomez" />
+          <h3>Sebastian Gomez</h3>
         </div>
 
         <Profile {...this.props} />
         <li>
           <Link href={"/"}>
             <a>
-              <i className="icon ion-md-home"></i> <span>Inicio</span>
+              <i className="icon"></i> 🏠<span> Inicio</span>
             </a>
           </Link>
         </li>
         <li>
           <Link href={"/docencia"}>
             <a>
-              <i className="icon ion-md-clipboard"></i> <span>Docencia</span>
+              <i className="icon"></i> 👨‍🏫<span> Docencia</span>
             </a>
           </Link>
         </li>
         <li>
-          <Link href={"/about"}>
+          <Link href={"/sobre-mi"}>
             <a>
-              <i className="icon ion-md-contact"></i> <span>Sobre Mí</span>
+              <i className="icon"></i> 📝<span> Sobre Mí</span>
             </a>
           </Link>
         </li>
         <li>
-          <Link href={"/speaking"}>
+          <Link href={"/conferencias"}>
             <a>
-              <i className="icon ion-md-mic"></i> <span>Charlas</span>
+              <i className="icon"></i> 🎤<span>Charlas</span>
             </a>
           </Link>
         </li>
         <li>
           <a>
-            <i className="icon ion-logo-twitter"></i> <span>Twitter</span>
+            <i className="icon"></i> 🔵<span>Twitter</span>
           </a>
         </li>
         <li>
           <a>
-            <i className="icon ion-logo-facebook"></i> <span>Facebook</span>
+            <i className="icon"></i> 👍<span>Facebook</span>
           </a>
         </li>
         <li>
           <a>
-            <i className="icon ion-logo-linkedin"></i> <span>LinkedIn</span>
+            <i className="icon"></i> 💼<span>LinkedIn</span>
           </a>
         </li>
         {this.props.onlyTopBar ? (

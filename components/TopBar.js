@@ -33,6 +33,7 @@ class TopBar extends React.Component {
         font-size: 1.5em;
         color: #5d686f;
         padding-left: 1em;
+        cursor: pointer;
       }
     `;
     this.mediaqueries = `@media screen and (min-width: 767px) {
@@ -75,14 +76,21 @@ class TopBar extends React.Component {
   render() {
     return (
       <div className="top-bar">
-        <i onClick={this.toggleMenu} className="icon ion-md-menu"></i>
+        <i onClick={this.toggleMenu} className="icon">
+          ☰
+        </i>
         <Link href={"/"}>
           <a>
             <h1>Sebastian Gomez</h1>
           </a>
         </Link>
 
-        <img src="/foto_personal.jpg" width="32px" height="32px" />
+        <img
+          src="/foto_personal.jpg"
+          width="32px"
+          height="32px"
+          alt="Sebastian Gomez"
+        />
         {this.props.onlyTopBar ? (
           <style jsx>{this.baseStyles}</style>
         ) : (

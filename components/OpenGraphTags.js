@@ -6,6 +6,10 @@ class OpenGraphTags extends React.Component {
     return (
       <React.Fragment>
         <meta
+          name="description"
+          content={this.props.excerpt || siteDescription}
+        />
+        <meta
           property="og:title"
           content={this.props.title || "Lee sobre tecnologías Web"}
         />

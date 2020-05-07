@@ -4,7 +4,7 @@
       {
         "id": 1,
         "tags": ["Animaciones", "CSS", "HTML", "Desarrollo Web"],
-        "thumbnailImage": "https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/01/css3.png",
+        "thumbnailImage": "/css3.jpg",
         "categories": ["CSS"],
         "date": "2018-01-24 12:13:17",
         "title": "Todo sobre transiciones en css",
@@ -14,7 +14,7 @@
       {
         "id": 2,
         "tags": ["Javascript", "Desarrollo Web"],
-        "thumbnailImage": "https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/02/javascript-736400_960_720.png?resize=150%2C150&ssl=1",
+        "thumbnailImage": "https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/02/javascript-736400_960_720.png?resize=150%2C150&ssl=1?resize=150%2C150&ssl=1",
         "categories": ["Javascript"],
         "date": "2018-02-21 10:03:59",
         "title": "Entendiendo El Patron Observador en Javascript",
@@ -34,7 +34,7 @@
       {
         "id": 4,
         "tags": ["Javascript", "Desarrollo Web"],
-        "thumbnailImage": "https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/02/javascript-736400_960_720.png",
+        "thumbnailImage": "https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/02/javascript-736400_960_720.png?resize=150%2C150&ssl=1",
         "categories": ["Javascript"],
         "date": "2018-01-24 12:13:17",
         "title": "Entendiendo el Patrón Iterador en Javascript",
@@ -44,7 +44,7 @@
       {
         "id": 5,
         "tags": ["Animaciones", "CSS", "HTML", "Desarrollo Web"],
-        "thumbnailImage": "https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/01/css3.png",
+        "thumbnailImage": "/css3.jpg",
         "categories": ["CSS"],
         "date": "2018-01-24 12:13:17",
         "title": "Todo sobre animaciones en css",
@@ -67,8 +67,8 @@
         "thumbnailImage": "https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/03/984368.png",
         "categories": ["Javascript"],
         "date": "2018-01-24 12:13:17",
-        "title":"Implementando of como operador en Observables",
-        "slug":"implementando-of-como-operador-en-observables",
+        "title": "Implementando of como operador en Observables",
+        "slug": "implementando-of-como-operador-en-observables",
         "excerpt": "En este post vamos a aumentar el número de operadores que podemos implementar y usar dentro de un Observable creando el operador 'of' que básicamente será un operador de generación de observables de manera que podamos convertir datos en observables."
       },
       {
@@ -77,72 +77,78 @@
         "thumbnailImage": "https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/03/984368.png",
         "categories": ["Javascript"],
         "date": "2018-01-24 12:13:17",
-        "title":"Implementando map como operador en Observables",
-        "slug":"implementando-map-como-operador-en-observables",
+        "title": "Implementando map como operador en Observables",
+        "slug": "implementando-map-como-operador-en-observables",
         "excerpt": "En este post vamos a valernos de esta definición para aumentar el número de operadores que podemos implementar y usar dentro de un Observable."
-      },{
+      },
+      {
         "id": 9,
         "tags": ["Javascript", "Programación Reactiva", "Desarrollo Web"],
         "thumbnailImage": "https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/03/984368.png",
         "categories": ["Javascript"],
         "date": "2018-01-24 12:13:17",
-        "title":"Implementando filter como operador en Observables",
-        "slug":"implementando-filter-como-operador-en-observables",
+        "title": "Implementando filter como operador en Observables",
+        "slug": "implementando-filter-como-operador-en-observables",
         "excerpt": "En este post vamos a aumentar el número de operadores que podemos implementar y usar dentro de un Observable añadiendo el operador map.        "
-      },{
+      },
+      {
         "id": 10,
         "tags": ["Javascript", "Programación Reactiva", "Desarrollo Web"],
         "thumbnailImage": "https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/03/984368.png",
         "categories": ["Javascript"],
         "date": "2018-01-24 12:13:17",
-        "title":"Implementando concat para concatenar observables",
-        "slug":"implementando-concat-para-concatenar-observables",
-"excerpt": "En este post vamos a implementar una función que nos permita transformar distintos observables en uno solo concatenándolos."
-      },{
+        "title": "Implementando concat para concatenar observables",
+        "slug": "implementando-concat-para-concatenar-observables",
+        "excerpt": "En este post vamos a implementar una función que nos permita transformar distintos observables en uno solo concatenándolos."
+      },
+      {
         "id": 11,
         "tags": ["Javascript", "Programación Reactiva", "Desarrollo Web"],
         "thumbnailImage": "https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/03/984368.png",
         "categories": ["Javascript"],
         "date": "2018-01-24 12:13:17",
-        "title":"Implementando Observables a partir de Eventos en JS",
-        "slug":"implementando-observables-a-partir-de-eventos-en-js",
-"excerpt": "En éste post vamos a tratar de implementar la definición más pura de observable y la función generadora de observables más común como ya lo tiene implementado RX.js con el fin de entender a profundidad el concepto."
-      },{
+        "title": "Implementando Observables a partir de Eventos en JS",
+        "slug": "implementando-observables-a-partir-de-eventos-en-js",
+        "excerpt": "En éste post vamos a tratar de implementar la definición más pura de observable y la función generadora de observables más común como ya lo tiene implementado RX.js con el fin de entender a profundidad el concepto."
+      },
+      {
         "id": 12,
         "tags": ["NodeJS", "Desarrollo Web"],
         "thumbnailImage": "https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/cloud-vision.jpg",
         "categories": ["Javascript"],
         "date": "2018-01-24 12:13:17",
-        "title":"Implementando Google Cloud Vision en NodeJS",
-        "slug":"implementando-google-cloud-vision-en-nodejs",
-"excerpt": "Siguiendo con la temática de la Cloud Visión de Google en este post vamos a implementarla en NodeJS para detectar características sobre imágenes. "
-      }
-      ,{
+        "title": "Implementando Google Cloud Vision en NodeJS",
+        "slug": "implementando-google-cloud-vision-en-nodejs",
+        "excerpt": "Siguiendo con la temática de la Cloud Visión de Google en este post vamos a implementarla en NodeJS para detectar características sobre imágenes. "
+      },
+      {
         "id": 13,
         "tags": ["NodeJS", "Desarrollo Web"],
         "thumbnailImage": "https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/cloud-vision.jpg",
         "categories": ["Javascript"],
         "date": "2018-01-24 12:13:17",
-        "title":"Introducción a Google Vision API",
-        "slug":"introduccion-a-google-vision-api",
-"excerpt": "Siempre me ha fascinado la inteligencia artificial. De hecho en el pasado he dictado algunos cursos en algunas universidades en Medellín sobre inteligencia artificial y la temática es tan larga y extensa que a veces los primeros acercamientos de una persona a este tema resultan escabrosas y es probable que se rindan antes de tratar de hacer algo tangible usando inteligencia artificial. Por esto he querido crear esta historia ademas porque servirá de memoria para una presentación que haré en el Google DevFest de Medellín."
-      },{
+        "title": "Introducción a Google Vision API",
+        "slug": "introduccion-a-google-vision-api",
+        "excerpt": "Siempre me ha fascinado la inteligencia artificial. De hecho en el pasado he dictado algunos cursos en algunas universidades en Medellín sobre inteligencia artificial y la temática es tan larga y extensa que a veces los primeros acercamientos de una persona a este tema resultan escabrosas y es probable que se rindan antes de tratar de hacer algo tangible usando inteligencia artificial. Por esto he querido crear esta historia ademas porque servirá de memoria para una presentación que haré en el Google DevFest de Medellín."
+      },
+      {
         "id": 14,
         "tags": ["Javascript", "Typescript", "Angular", "Desarrollo Web"],
         "thumbnailImage": "https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2015/11/a1.png",
         "categories": ["Javascript"],
         "date": "2018-01-24 12:13:17",
-        "title":"Fundamentos de Typescript",
-        "slug":"fundamentos-de-typescript",
+        "title": "Fundamentos de Typescript",
+        "slug": "fundamentos-de-typescript",
         "excerpt": "Si has empezado a trabajar con Angular te darás cuenta que de la mayoría de la documentación esta hecha en Typescript. Esto se debe básicamente el equipo de Angular decidio crear Angular sobre TypesScript, TypeScript es una colaboración oficial entre Google y Microsoft con el fin de orientar completamente Javascript a Objetos. "
-      },{
+      },
+      {
         "id": 15,
         "tags": ["Javascript", "HTML", "CSS", "Desarrollo Web"],
-        "thumbnailImage": "https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/01/css3.png",
+        "thumbnailImage": "/css3.jpg",
         "categories": ["Desarrollo Web"],
         "date": "2018-01-24 12:13:17",
-        "title":"Como crear espectaculares presentaciones usando HTML y CSS",
-        "slug":"como-crear-espectaculares-presentaciones-usando-html-y-css",
+        "title": "Como crear espectaculares presentaciones usando HTML y CSS",
+        "slug": "como-crear-espectaculares-presentaciones-usando-html-y-css",
         "excerpt": "Muchas veces en cursos o conferencias que presenciamos nos hemos encontrado con una novedosa manera de ver  el contenido o la información que nos es presentada. Esta forma es mediante el navegador web que ofrece grandes ventajas respecto a los métodos tradicionales de creación de diapositivas como Powerpoint o Prezi."
       }
     ]

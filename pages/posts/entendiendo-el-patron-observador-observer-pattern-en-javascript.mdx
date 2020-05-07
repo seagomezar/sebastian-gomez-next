@@ -2,21 +2,24 @@ import PostHeader from "../../components/PostHeader";
 import HeadSite from "../../components/HeadSite";
 import Discuss from "../../components/Discuss";
 
-<HeadSite 
-    category="Javascript"
-    date="2020-05-05 11:59:00"
-    title="Entendiendo el Patron Observador (Observer Pattern) en Javascript"
-    slug="entendiendo-el-patron-observador-observer-pattern-en-javascript"
-    thumbnailImage="https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/02/javascript-736400_960_720.png"
-    excerpt="En este post aprenderemos como implementar el patrón observer en Javascript y en que situaciones lo podemos usar."
+<HeadSite
+  category="Javascript"
+  date="2020-05-05 11:59:00"
+  title="Entendiendo el Patron Observador (Observer Pattern) en Javascript"
+  slug="entendiendo-el-patron-observador-observer-pattern-en-javascript"
+  thumbnailImage="https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/02/javascript-736400_960_720.png?resize=150%2C150&ssl=1"
+  excerpt="En este post aprenderemos como implementar el patrón observer en Javascript y en que situaciones lo podemos usar."
 ></HeadSite>
 
 # Entendiendo el patrón observador (Observer Pattern) en Javascript
 
-<PostHeader tags={['Javascript', 'Desarrollo Web']} date="2020-05-05 11:59:00" />
-
+<PostHeader
+  tags={["Javascript", "Desarrollo Web"]}
+  date="2020-05-05 11:59:00"
+/>
 
 En este post aprenderemos como implementar el patrón observer en Javascript y en que situaciones lo podemos usar.
+
 <!-- excerpt -->
 
 El patrón observador es uno de los patrones de diseño de software más usado en Javascript. De el se extienden importantes aplicaciones que pueden ayudar a definir mejores arquitecturas en aplicaciones web, por lo que su uso y estudio es altamente recomendado. En este post aprenderemos como implementarlo en Javascript y en que situaciones lo podemos usar.
@@ -27,52 +30,53 @@ En segundo lugar el patrón observador también puedes encontrarlo como el patr�
 
 Veamos entonces un pequeño diagrama con las responsabilidades de los involucrados en este patrón. En primer lugar el publicador debe notificar a los subscriptores o observadores que algo cambió, y en segundo lugar los subscriptores deben poder subscribirse o de suscribirse del publicador en cualquier momento:
 
-[![](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/02/A004581F-4C80-4ADA-A5A5-A298253AF072.png)](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/02/A004581F-4C80-4ADA-A5A5-A298253AF072.png)
+[![](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/02/A004581F-4C80-4ADA-A5A5-A298253AF072.png)](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/02/A004581F-4C80-4ADA-A5A5-A298253AF072.png "Diagrama Patrón Observador")
 
 ¿Cómo podemos entonces implementarlo en Javascript?, empecemos implementando una clase llamada Publicador que contenga los métodos subscribe(), unsubscribe(), y notify().
 
 ```js
-    class Publicador {
-  
-        constructor() {
-          this.subscriptors = \[\];
-        }
-    
-        subscribe(subscriptor) {
-          this.subscriptors.push(subscriptor);
-        }
-      
-        unsubscribe(subscriptor) {
-          this.subscriptors = this.subscriptors.filter( item => item !== subscriptor );
-        }
-      
-        notify(event) {
-          this.subscriptors.forEach( item => {
-            item.call(this, event); 
-          });
-        }  
-    }
-  ```
+class Publicador {
+  constructor() {
+    this.subscriptors = \[\];
+  }
+
+  subscribe(subscriptor) {
+    this.subscriptors.push(subscriptor);
+  }
+
+  unsubscribe(subscriptor) {
+    this.subscriptors = this.subscriptors.filter(
+      (item) => item !== subscriptor
+    );
+  }
+
+  notify(event) {
+    this.subscriptors.forEach((item) => {
+      item.call(this, event);
+    });
+  }
+}
+```
 
 Como verás hemos manejado la lista de subscriptores con un array de Javascript como propiedad de la clase así es posible fácilmente subscribir y des-subscribir subscriptores. También la función notify itera sobre cada uno de los subscriptores y se encarga de invocarlos con el evento.
 
 Ahora imaginemos que usaremos esta definición de Publicador para un periódico que regularmente publica nuevas ediciones.
 
 ```js
-    const periodico = new Publicador();
-  ```
+const periodico = new Publicador();
+```
 
 Bien, pensemos un poco más acerca de los clientes. Estos van a necesitar saber cuando llegue una nueva versión del periódico. Inicialmente pensemos en que los clientes son funciones:
 
 ```js
-    function Observer(edicion) {
-      console.log("LLegó una nueva edición con el nombre de: " + edicion);
-    }
+function Observer(edicion) {
+  console.log("LLegó una nueva edición con el nombre de: " + edicion);
+}
 
-    periodico.subscribe(Observer);
-    periodico.subscribe(Observer); 
-    periodico.notify("Nueva edicion");
-  ```
+periodico.subscribe(Observer);
+periodico.subscribe(Observer);
+periodico.notify("Nueva edicion");
+```
 
 Con esta definición anterior al ejecutarlo obtenemos algo así:
 
@@ -87,147 +91,153 @@ Si queremos ser conscientes de que cliente recibió que edición del periódico 
       notify(event) {
         let index = 0;
         this.subscriptors.forEach( item => {
-          item.call(this, index, event); 
+          item.call(this, index, event);
           index++;
         });
-      }  
+      }
       ...
     }
     ...
     function Observer(index, edicion) {
-      console.log("Al Observador #" + 
-                  index + " le llegó una nueva edición con el nombre de: " + 
+      console.log("Al Observador #" +
+                  index + " le llegó una nueva edición con el nombre de: " +
                   edicion);
     }
-  ```
+```
 
 De esta manera tenemos como output algo mucho mas entendible:
 
 ```js
-    "Al Observador #0 le llegó una nueva edición con el nombre de: Nueva edicion"  
-    "Al Observador #1 le llegó una nueva edición con el nombre de: Nueva edicion"
-  ```
+"Al Observador #0 le llegó una nueva edición con el nombre de: Nueva edicion";
+"Al Observador #1 le llegó una nueva edición con el nombre de: Nueva edicion";
+```
 
 Sin embargo como un mejor acercamiento podríamos definir una clase para los clientes que nos permita crear instancias de ella y tener un control mas granular. También debemos definir un método únicamente diseñado para escuchar por nuevas decisiones del periódico.
 
 ```js
-    class Observador {
-      constructor(id) {
-        this.id = id;
-        console.log("Se ha creado el subscriptor #: " + id);
-      }
-      buzon(edicion) {
-        console.log("Subscriptor # " + this.id + " recibió una nueva edición: " + edicion);
-      }
-    }
+class Observador {
+  constructor(id) {
+    this.id = id;
+    console.log("Se ha creado el subscriptor #: " + id);
+  }
+  buzon(edicion) {
+    console.log(
+      "Subscriptor # " + this.id + " recibió una nueva edición: " + edicion
+    );
+  }
+}
 
-    const subscriptor1 = new Subscriptor(1);
-    const subscriptor2 = new Subscriptor(2);
-    const subscriptor3 = new Subscriptor(3);
-  ```
+const subscriptor1 = new Subscriptor(1);
+const subscriptor2 = new Subscriptor(2);
+const subscriptor3 = new Subscriptor(3);
+```
 
 De esta forma podemos tener más control sobre los subscriptores y podemos subscribirlos y des-subscribirlos de mejor manera. A continuación verás como publicar multiples ediciones de un perioido así como la habilidad suscribir y des-suscribir clientes:
 
 ```js
-    periodico.subscribe(subscriptor1);
-    periodico.subscribe(subscriptor2);
-    periodico.notify("Nueva edicion");
-    periodico.subscribe(subscriptor3); 
-    periodico.notify("Segunda edicion"); 
-    periodico.unsubscribe(subscriptor1); 
-    periodico.notify("Tercera edicion"); 
-    periodico.subscribe(subscriptor2);
-    periodico.notify("Nueva edicion");
-    periodico.subscribe(subscriptor3); 
-    periodico.notify("Segunda edicion"); 
-    periodico.unsubscribe(subscriptor1); 
-    periodico.notify("Tercera edicion");
-  ```
+periodico.subscribe(subscriptor1);
+periodico.subscribe(subscriptor2);
+periodico.notify("Nueva edicion");
+periodico.subscribe(subscriptor3);
+periodico.notify("Segunda edicion");
+periodico.unsubscribe(subscriptor1);
+periodico.notify("Tercera edicion");
+periodico.subscribe(subscriptor2);
+periodico.notify("Nueva edicion");
+periodico.subscribe(subscriptor3);
+periodico.notify("Segunda edicion");
+periodico.unsubscribe(subscriptor1);
+periodico.notify("Tercera edicion");
+```
 
 Y obtenemos la siguiente salida:
 
 ```js
-    "--- Primera edición ---"
+"--- Primera edición ---";
 
-    "Subscriptor # 1 recibió una nueva edición: Nueva edicion"
+"Subscriptor # 1 recibió una nueva edición: Nueva edicion";
 
-    "Subscriptor # 2 recibió una nueva edición: Nueva edicion"
+"Subscriptor # 2 recibió una nueva edición: Nueva edicion";
 
-    "--- Segunda edición ---"
+"--- Segunda edición ---";
 
-    "Subscriptor # 1 recibió una nueva edición: Segunda edicion"
+"Subscriptor # 1 recibió una nueva edición: Segunda edicion";
 
-    "Subscriptor # 2 recibió una nueva edición: Segunda edicion"
+"Subscriptor # 2 recibió una nueva edición: Segunda edicion";
 
-    "Subscriptor # 3 recibió una nueva edición: Segunda edicion"
+"Subscriptor # 3 recibió una nueva edición: Segunda edicion";
 
-    "--- Tercera edición ---"
+"--- Tercera edición ---";
 
-    "Subscriptor # 2 recibió una nueva edición: Tercera edicion"
+"Subscriptor # 2 recibió una nueva edición: Tercera edicion";
 
-    "Subscriptor # 3 recibió una nueva edición: Tercera edicion"
-  ```
+"Subscriptor # 3 recibió una nueva edición: Tercera edicion";
+```
 
 De esta manera queda totalmente completo el patrón observer. Como vez es muy fácil implementar el patrón observer y su utilidad es casi inmediata. A continuación podrás observar todo el código completo de este ejemplo:
 
 ```js
-    class Publicador {
-      constructor() {
-        this.subscriptors = \[\];
-      }
-  
-      subscribe(subscriptor) {
-        this.subscriptors.push(subscriptor);
-      }
-    
-      unsubscribe(subscriptor) {
-        this.subscriptors = this.subscriptors.filter( item => item !== subscriptor );
-      }
-    
-      notify(event) {
-        this.subscriptors.forEach( item => {
-          item.buzon.call(item, event);
-        });
-      }  
+class Publicador {
+  constructor() {
+    this.subscriptors = \[\];
   }
 
-  class Subscriptor {
-    constructor(id) {
-      this.id = id;
-      console.log("Se ha creado el subscriptor #: " + id);
-    }
-    buzon(edicion) {
-      console.log("Subscriptor # " + this.id + " recibió una nueva edición: " + edicion);
-    }
+  subscribe(subscriptor) {
+    this.subscriptors.push(subscriptor);
   }
 
-  const periodico = new Publicador();
+  unsubscribe(subscriptor) {
+    this.subscriptors = this.subscriptors.filter(
+      (item) => item !== subscriptor
+    );
+  }
 
-  const subscriptor1 = new Subscriptor(1);
-  const subscriptor2 = new Subscriptor(2);
-  const subscriptor3 = new Subscriptor(3);
+  notify(event) {
+    this.subscriptors.forEach((item) => {
+      item.buzon.call(item, event);
+    });
+  }
+}
 
-  console.log("--- Primera edición ---");
+class Subscriptor {
+  constructor(id) {
+    this.id = id;
+    console.log("Se ha creado el subscriptor #: " + id);
+  }
+  buzon(edicion) {
+    console.log(
+      "Subscriptor # " + this.id + " recibió una nueva edición: " + edicion
+    );
+  }
+}
 
-  periodico.subscribe(subscriptor1);
+const periodico = new Publicador();
 
-  periodico.subscribe(subscriptor2);
+const subscriptor1 = new Subscriptor(1);
+const subscriptor2 = new Subscriptor(2);
+const subscriptor3 = new Subscriptor(3);
 
-  periodico.notify("Nueva edicion");
+console.log("--- Primera edición ---");
 
-  console.log("--- Segunda edición ---");
+periodico.subscribe(subscriptor1);
 
-  periodico.subscribe(subscriptor3); 
+periodico.subscribe(subscriptor2);
 
-  periodico.notify("Segunda edicion"); 
+periodico.notify("Nueva edicion");
 
-  console.log("--- Tercera edición ---");
+console.log("--- Segunda edición ---");
 
-  periodico.unsubscribe(subscriptor1); 
+periodico.subscribe(subscriptor3);
 
-  periodico.notify("Tercera edicion");
-  ```
+periodico.notify("Segunda edicion");
+
+console.log("--- Tercera edición ---");
+
+periodico.unsubscribe(subscriptor1);
+
+periodico.notify("Tercera edicion");
+```
 
 Eso es todo, espero que este post te sea de utilidad y lo puedas aplicar a algún proyecto que tengas en mente y que simplemente te haya ayudado a entender la naturaleza del patrón observer. déjame un comentario si lograste implementarlo, si quieres añadir alguna otra funcionalidad o si tienes alguna duda no dudes en dejarme un comentario en la parte de abajo, recuerda que si te gustó también puedes compartir usando los links a las redes sociales en la parte de abajo.
 
-<Discuss slug="entendiendo-el-patron-observador-observer-pattern-en-javascript"/>
+<Discuss slug="entendiendo-el-patron-observador-observer-pattern-en-javascript" />

@@ -2,89 +2,92 @@ import PostHeader from "../../components/PostHeader";
 import HeadSite from "../../components/HeadSite";
 import Discuss from "../../components/Discuss";
 
-<HeadSite 
-    category="javascript"
-    date="2020-05-05 11:59:00"
-    title="Implementando Google Cloud Vision en NodeJS"
-    slug="implementando-google-cloud-vision-en-nodejs"
-    thumbnailImage="https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/cloud-vision.jpg"
-    excerpt="Siguiendo con la temática de la Cloud Visión de Google en este post vamos a implementarla en NodeJS para detectar características sobre imágenes. "
+<HeadSite
+  category="javascript"
+  date="2020-05-05 11:59:00"
+  title="Implementando Google Cloud Vision en NodeJS"
+  slug="implementando-google-cloud-vision-en-nodejs"
+  thumbnailImage="https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/cloud-vision.jpg"
+  excerpt="Siguiendo con la temática de la Cloud Visión de Google en este post vamos a implementarla en NodeJS para detectar características sobre imágenes. "
 ></HeadSite>
 
 # Implementando Google Cloud Vision en NodeJS
-<PostHeader tags={['NodeJS', 'Desarrollo Web']} date="2020-05-05 11:59:00" />
 
-Siguiendo con la temática de la Cloud Visión de Google en este post vamos a implementarla en NodeJS para detectar características sobre imágenes. 
+<PostHeader tags={["NodeJS", "Desarrollo Web"]} date="2020-05-05 11:59:00" />
+
+Siguiendo con la temática de la Cloud Visión de Google en este post vamos a implementarla en NodeJS para detectar características sobre imágenes.
+
 <!-- excerpt -->
+
 Lo primero que necesitamos entender es que la SDK de la Vision Cloud de Google debería operar sobre un servidor, es allí donde surge la necesidad de usar NodeJS sin embargo si tienes alguna experiencia con NodeJS sabrás que en la mayoría de los casos se requiere de una librería para procesar las peticiones HTTP Post, Get y Put. En este post usaremos ExpressJS ya que es la librería mas conocida para esta tarea. Si tienes dudas sobre las generalidades de la Cloud Vision de Google o la capa gratuita en este [post ](https://www.sebastian-gomez.com/introduccion-a-google-vision-api/)puedes revisarlas.
 
 En primer lugar vamos a revisar las característica que nos ofrece la API de visión de Google para implementar con NodeJs:
 
-*   Detección de rostros
-*   Atributos de las imágenes.
-*   Anotación de etiquetas.
-*   Detección de contenido para adultos.
-*   Detección de logos.
-*   Encuadre de los elementos de la imagen.
-*   Reconocimiento óptico de caracteres.
+- Detección de rostros
+- Atributos de las imágenes.
+- Anotación de etiquetas.
+- Detección de contenido para adultos.
+- Detección de logos.
+- Encuadre de los elementos de la imagen.
+- Reconocimiento óptico de caracteres.
 
 La arquitectura propuesta para realizar la implementación de Cloud Visión de Google es esta:
 
-[![](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/560CD915-5BD9-4DD9-A6BD-2C81C69DF003-1024x508.png)](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/560CD915-5BD9-4DD9-A6BD-2C81C69DF003.png)
+[![](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/560CD915-5BD9-4DD9-A6BD-2C81C69DF003-1024x508.png)](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/560CD915-5BD9-4DD9-A6BD-2C81C69DF003.png "Arquitectura Google Could Vision")
 
 Revisemos las responsabilidades que tendría cada uno de los componentes de la arquitectura anterior:
 
 Client Browser:
 
-*   Presentar información.
-*   Tomar fotografías o videos.
-*   Preprocesar imágenes.
-*   Enviar las imágenes al servidor.
+- Presentar información.
+- Tomar fotografías o videos.
+- Preprocesar imágenes.
+- Enviar las imágenes al servidor.
 
 ExpressJS:
 
-*   Filtrar las peticiones del cliente.
-*   Recibir las imágenes y almacenarlas en el servidor.
-*   Enviar las respuestas al cliente.
+- Filtrar las peticiones del cliente.
+- Recibir las imágenes y almacenarlas en el servidor.
+- Enviar las respuestas al cliente.
 
-Google Vision SDK *:
+Google Vision SDK \*:
 
-*   Procesar las imágenes.
-*   Operaciones matemáticas.
-    *   Detección de píxeles.
-    *   Filtros.
-    *   Transformaciones.
-*   Codificación de las imágenes.
-*   Preparación de las peticiones.
+- Procesar las imágenes.
+- Operaciones matemáticas.
+  - Detección de píxeles.
+  - Filtros.
+  - Transformaciones.
+- Codificación de las imágenes.
+- Preparación de las peticiones.
 
 Google Vision API:
 
-*   Comparar las imágenes contra el conjunto de imágenes.
-*   Aplicar rutinas de machine learning con las imágenes como entrada.
-*   Conectarse con otras tecnologías como Tensor Flow.
-*   Analizar los resultados y aumentar la base de conocimiento.
+- Comparar las imágenes contra el conjunto de imágenes.
+- Aplicar rutinas de machine learning con las imágenes como entrada.
+- Conectarse con otras tecnologías como Tensor Flow.
+- Analizar los resultados y aumentar la base de conocimiento.
 
-(*) Un SDK (Software Development Kit), o kit de desarrollo de software, es un conjunto de herramientas que ayudan a la programación de aplicaciones para un entorno tecnológico particular.
+(\*) Un SDK (Software Development Kit), o kit de desarrollo de software, es un conjunto de herramientas que ayudan a la programación de aplicaciones para un entorno tecnológico particular.
 
 Antes de empezar necesitamos obtener una clave y las credenciales del proyecto para hacer uso de la API y la SDK, esto lo podemos conseguir directamente en la consola: [https://cloud.google.com/](https://cloud.google.com/)siguiendo estos simples pasos.
 
-*   Crear el proyecto: [https://console.cloud.google.com/projectcreate](https://console.cloud.google.com/projectcreate)
-*   Acceder al proyecto.
-*   Seleccionar cuentas de servicio.
-*   Crear una cuenta de servicio → completar la información.
-*   Seleccionamos suministrar una nueva clave privada en formato JSON.
-*   Guardamos el archivo JSON que se genera.
+- Crear el proyecto: [https://console.cloud.google.com/projectcreate](https://console.cloud.google.com/projectcreate)
+- Acceder al proyecto.
+- Seleccionar cuentas de servicio.
+- Crear una cuenta de servicio → completar la información.
+- Seleccionamos suministrar una nueva clave privada en formato JSON.
+- Guardamos el archivo JSON que se genera.
 
 Manos a la obra con la implementación: en primer lugar creemos un proyecto en Node desde cero usando la línea de comandos.
 
-*   Crear un directorio: mkdir mi-directorio
-*   Inicializar git: git init
-*   Inicializar node: npm init
-*   Instalar las dependencias:
-    *   npm install @google-cloud/vision --save
-    *   npm install express --save
-    *   npm install multer --save
-*   Configurar nuestro comando npm start en el package.json para que inicie nuestro server:
+- Crear un directorio: mkdir mi-directorio
+- Inicializar git: git init
+- Inicializar node: npm init
+- Instalar las dependencias:
+  - npm install @google-cloud/vision --save
+  - npm install express --save
+  - npm install multer --save
+- Configurar nuestro comando npm start en el package.json para que inicie nuestro server:
 
 ```js
     ...
@@ -93,11 +96,11 @@ Manos a la obra con la implementación: en primer lugar creemos un proyecto en N
         "start":"node server.js"
     },
     ...
-  ```
+```
 
 Esto nos creará la estructura base del proyecto y deberás añadir ademas algunos archivos. A continuación te muestro exactamente como debería lucir tu carpeta del proyecto y la explicación de cada item:
 
-[![](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/71465872-9C25-4862-9540-4661925AA96E-1024x485.png)](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/71465872-9C25-4862-9540-4661925AA96E.png)
+[![](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/71465872-9C25-4862-9540-4661925AA96E-1024x485.png)](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/71465872-9C25-4862-9540-4661925AA96E.png "Estructura de carpetas proyecto Vision API")
 
 Como notarás los únicos archivos sobre los cuales escribiremos código son server.js, index.html y app.js. Empecemos entonces con una funcionalidad básica: ¿Como tomar fotos con javascript?
 
@@ -108,28 +111,27 @@ Como verás simplemente creando un stream y accediendo a los elementos del DOM e
 Ahora veremos como subir la imagen que tomamos a nuestro servidor: En primer lugar desde nuestra aplicación una vez que tomamos la imagen y la pintamos dentro de la etiqueta SRC necesitamos hacer una petición HTTP al servidor indicándole que allí va la imagen. Para esto abre tu archivo app.js y añade la función upload:
 
 ```js
-    function upload() {
-        const http = new XMLHttpRequest();
-        const url = "upload";
-        snap().then((blob) => {
-            http.open("POST", url, true);
-            http.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-            http.onreadystatechange = (data) => {
-                //Call a function when the state changes.
-                if (http.readyState == 4 && http.status == 200) {
-                    console.log(http.response);
-                }
-            }
-            const formData = new FormData();
-            formData.append("uploads", blob);
-            http.send(formData);
-        });
-    }
-  ```
+function upload() {
+  const http = new XMLHttpRequest();
+  const url = "upload";
+  snap().then((blob) => {
+    http.open("POST", url, true);
+    http.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+    http.onreadystatechange = (data) => {
+      //Call a function when the state changes.
+      if (http.readyState == 4 && http.status == 200) {
+        console.log(http.response);
+      }
+    };
+    const formData = new FormData();
+    formData.append("uploads", blob);
+    http.send(formData);
+  });
+}
+```
 
 Como verás en esta función invocamos a la función snap() que definimos para capturar imágenes desde nuestra cámara en el browser para enviar el contenido de la imagen mediante una XMLHttpRequest.  Luego necesitamos crear nuestro servidor para que sea capaz de recibir y procesar dicha imagen, es en este punto entonces donde necesitamos crear y configurar un servidor básico con express que soporte la opción de subir la imagen. Por tanto tu archivo server.js debe lucir de ésta manera:
 
- 
 ```js
     const express = require('express');
     const app = express();
@@ -162,7 +164,7 @@ Como verás en esta función invocamos a la función snap() que definimos para c
         console.log("Image path: " + req.file.path);
         res.send("Ok");
     });
-  ```
+```
 
 En la primera parte de este archivo verás la funcionalidad básica que tiene un servidor de NodeJs usando express y sus respectivas configuraciones, sin profundizar mucho en esto nuestra función de interés es la función upload la cual procesará la imagen y la guardará en la carpeta uploads. Verás que  esta función también pondrá cada imagen en la carpeta de uploads con un numero consecutivo relacionado con el momento actual, esto lo hacemos para evitar duplicidades en las imágenes.
 
@@ -193,7 +195,7 @@ Hasta este momento solo hemos creado funciones utilitarias en el server.js para 
             res.send("BAD");
         });
     });
-  ```
+```
 
 Primero vamos a añadir las líneas que inicializan nuestra configuración de la Cloud Vision de Google. Luego creamos con express un endpoint que se encarga de recibir una imagen y obtener todos los labels o etiquetas que se pueden obtener de dicha imagen. Y los retornaremos como respuesta de la petición para presentarlos en el front-end.
 
@@ -212,35 +214,35 @@ Finalmente podemos usar otra característica que nos permite hallar los rostros 
                 res.send("BAD");
             });
     });
-  ```
+```
 
 Una vez que tenemos nuestro archivo de servidor server.js completo, debemos modificar un poco nuestro index.html y app.js para mostrar nuestros hallazgos:
 
 ```html
-    <!—index.html—>
-    <button class="shutter" onclick="upload()">
-        Tomar y subir una foto
-    </button>
-    <button class="shutter" onclick="sendToLabelDetection()">
-        Analizar imagen
-    </button>
-    <button class="shutter" onclick="sendToFaceDetection()">
-        Detectar rostros y características
-    </button>
+<!—index.html—>
+<button class="shutter" onclick="upload()">
+  Tomar y subir una foto
+</button>
+<button class="shutter" onclick="sendToLabelDetection()">
+  Analizar imagen
+</button>
+<button class="shutter" onclick="sendToFaceDetection()">
+  Detectar rostros y características
+</button>
 
-    <div>
-        <h2>Características de la imagen</h2>
-        <div id="labels"></div>
-    </div>
-  ```
+<div>
+  <h2>Características de la imagen</h2>
+  <div id="labels"></div>
+</div>
+```
 
 Poniendo todo lo anterior junto podrás ver las características(labels) de la imagen en una manera similar a esta en la detección de características:
 
-[![](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/589231F9-3898-4D24-982A-9C14165372AF.png)](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/589231F9-3898-4D24-982A-9C14165372AF.png)
+[![](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/589231F9-3898-4D24-982A-9C14165372AF.png)](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/589231F9-3898-4D24-982A-9C14165372AF.png "Detección de características")
 
 Sin embargo para la detección y extracción de rostros he implementado solo el login por consola donde podrás ver un elemento de un array por rostro detectado y dentro de cada rostro detectado las “landmarks” que delimitan exactamente cada uno de los elementos del rostro:
 
-[![](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/08180391-A2C7-4B81-9598-EC743DF0E449-1024x424.png)](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/08180391-A2C7-4B81-9598-EC743DF0E449.png) [![](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/F4C92A6E-35F4-4F07-90A5-3EE820D2160A-1024x291.png)](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/F4C92A6E-35F4-4F07-90A5-3EE820D2160A.png)
+[![](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/08180391-A2C7-4B81-9598-EC743DF0E449-1024x424.png)](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/08180391-A2C7-4B81-9598-EC743DF0E449.png "Detección de características con landmarks") [![](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/F4C92A6E-35F4-4F07-90A5-3EE820D2160A-1024x291.png)](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/F4C92A6E-35F4-4F07-90A5-3EE820D2160A.png "Detección de características con landmarks")
 
 Puedes jugar con estas funciones para crear combinaciones de características únicas para tu aplicación o producto. En este repositorio podrás jugar con este código  y usarlo para la implementación de tus propias funcionalidades, también encontrarás algunas otras funciones como por ejemplo detectar personas felices, o tristes e una foto:
 
@@ -250,7 +252,6 @@ Para consultar más información sobre las operaciones de la SDK y la API de clo
 
 [https://github.com/googleapis/nodejs-vision/tree/master/samples](https://github.com/googleapis/nodejs-vision/tree/master/samples)
 
-
 Eso es todo, espero que este post te sea de utilidad y lo puedas aplicar a algún proyecto que tengas en mente, déjame un comentario si lograste implementarlo, si quieres añadir alguna otra funcionalidad o si tienes alguna duda no dudes en dejarme un comentario en la parte de abajo, recuerda que si te gustó también puedes compartir usando los links a las redes sociales en la parte de abajo.
 
-<Discuss slug="implementando-google-cloud-vision-en-nodejs"/>
+<Discuss slug="implementando-google-cloud-vision-en-nodejs" />
