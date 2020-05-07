@@ -61,6 +61,14 @@ class OpenGraphTags extends React.Component {
                 "@type": "Person",
                 "name": "Sebastian Gomez"
             },
+            "publisher": {
+                "@type": "Organization",
+                "name": "Sebastian Gomez",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "/foto-personal.jpg"
+                }
+            },
             "description": "${this.props.excerpt || siteDescription}" 
           }`,
           }}
