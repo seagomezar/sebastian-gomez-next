@@ -137,19 +137,25 @@ class Links extends React.Component {
           </Link>
         </li>
         <li>
-          <a>
-            <i className="icon ion-md-clipboard"></i> <span>Docencia</span>
-          </a>
+          <Link href={"/docencia"}>
+            <a>
+              <i className="icon ion-md-clipboard"></i> <span>Docencia</span>
+            </a>
+          </Link>
         </li>
         <li>
-          <a>
-            <i className="icon ion-md-contact"></i> <span>Sobre Mí</span>
-          </a>
+          <Link href={"/about"}>
+            <a>
+              <i className="icon ion-md-contact"></i> <span>Sobre Mí</span>
+            </a>
+          </Link>
         </li>
         <li>
-          <a>
-            <i className="icon ion-md-mic"></i> <span>Charlas</span>
-          </a>
+          <Link href={"/speaking"}>
+            <a>
+              <i className="icon ion-md-mic"></i> <span>Charlas</span>
+            </a>
+          </Link>
         </li>
         <li>
           <a>
