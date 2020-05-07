@@ -51,7 +51,7 @@ class OpenGraphTags extends React.Component {
             "@type": "WebPage",
             "@id": "https://google.com/article"
             },
-            "headline": ${this.props.title || "Lee sobre tecnologías Web"},
+            "headline": "${this.props.title || "Lee sobre tecnologías Web"}",
             "image": [
                 "${this.props.thumbnailImage || "/foto-personal.jpg"}"
             ],
@@ -60,14 +60,6 @@ class OpenGraphTags extends React.Component {
             "author": {
                 "@type": "Person",
                 "name": "Sebastian Gomez"
-            },
-            "publisher": {
-                "@type": "Person",
-                "name": "Sebastian Gomez",
-                "logo": {
-                    "@type": "ImageObject",
-                    "url": "/foto-personal.jpg"
-                }
             },
             "description": "${this.props.excerpt || siteDescription}" 
           }`,
