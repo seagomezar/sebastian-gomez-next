@@ -53,10 +53,10 @@ class OpenGraphTags extends React.Component {
             },
             "headline": ${this.props.title || "Lee sobre tecnologías Web"},
             "image": [
-                ${this.props.thumbnailImage || "/foto-personal.jpg"}
+                "${this.props.thumbnailImage || "/foto-personal.jpg"}"
             ],
-            "datePublished": ${this.props.date},
-            "dateModified": ${this.props.date},
+            "datePublished": "${this.props.date || new Date("05-05-2020")}",
+            "dateModified": "${this.props.date || new Date("05-05-2020")}",
             "author": {
                 "@type": "Person",
                 "name": "Sebastian Gomez"
@@ -69,7 +69,8 @@ class OpenGraphTags extends React.Component {
                     "url": "/foto-personal.jpg"
                 }
             },
-            "description": ${this.props.excerpt || siteDescription}`,
+            "description": "${this.props.excerpt || siteDescription}" 
+          }`,
           }}
         ></script>
       </React.Fragment>
