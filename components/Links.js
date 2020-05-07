@@ -157,19 +157,25 @@ class Links extends React.Component {
           </Link>
         </li>
         <li>
-          <a>
-            <i className="icon"></i> 🔵<span>Twitter</span>
-          </a>
+          <Link href={"https://twitter.com/sebasgojs"}>
+            <a>
+              <i className="icon"></i> 🔵<span>Twitter</span>
+            </a>
+          </Link>
         </li>
         <li>
-          <a>
-            <i className="icon"></i> 👍<span>Facebook</span>
-          </a>
+          <Link href={"https://www.facebook.com/sebasgojs"}>
+            <a>
+              <i className="icon"></i> 👍<span>Facebook</span>
+            </a>
+          </Link>
         </li>
         <li>
-          <a>
-            <i className="icon"></i> 💼<span>LinkedIn</span>
-          </a>
+          <Link href={"https://www.linkedin.com/in/sebastian-gomez-frontend/"}>
+            <a>
+              <i className="icon"></i> 💼<span>LinkedIn</span>
+            </a>
+          </Link>
         </li>
         {this.props.onlyTopBar ? (
           <style jsx>{this.baseStyles}</style>
