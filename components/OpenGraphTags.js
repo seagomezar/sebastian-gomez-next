@@ -53,7 +53,10 @@ class OpenGraphTags extends React.Component {
             },
             "headline": "${this.props.title || "Lee sobre tecnologías Web"}",
             "image": [
-                "${this.props.thumbnailImage || "/foto-personal.jpg"}"
+                "${
+                  this.props.thumbnailImage ||
+                  "https://sebastian-gomez.com/foto_personal.jpg"
+                }"
             ],
             "datePublished": "${this.props.date || new Date("05-05-2020")}",
             "dateModified": "${this.props.date || new Date("05-05-2020")}",
