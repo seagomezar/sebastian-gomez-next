@@ -9,12 +9,7 @@ class PostHeader extends React.Component {
       <small className="">
         <span>
           <strong>Fecha: </strong>
-          {new Intl.DateTimeFormat("es-CO", {
-            month: "long",
-            day: "numeric",
-            year: "numeric",
-          }).format(new Date(date))}{" "}
-          -<strong> Autor: </strong> Sebastian Gomez -{" "}
+          {date} -<strong> Autor: </strong> Sebastian Gomez -{" "}
           <Link href={"/posts/" + slug + "#disqus_thread"}>
             <a>Únete a la discusión</a>
           </Link>

@@ -1,22 +1,20 @@
 import PostHeader from "../../components/PostHeader";
 import HeadSite from "../../components/HeadSite";
 import Discuss from "../../components/Discuss";
-<HeadSite 
-    category="Angular"
-    date="2020-05-05 11:59:00"
-    title="Tres maneras de inyectar servicios en unit tests con Angular"
-    slug="tres-maneras-de-inyectar-servicios-en-unit-tests-con-angular"
-    thumbnailImage="https://angular.io/assets/images/logos/angular/angular.svg"
-    excerpt="Cuando escribimos tests unitarios para nuestros servicios en Angular tenemos varias opciones para inyectar el servicio en cada uno de nuestros 'it' bloques, en este post exploraremos cuales son algunas las ventajas y desventajas de cada una de las maneras."
-></HeadSite>
+<HeadSite
+  category="Angular"
+  date="2020-05-05"
+  title="Tres maneras de inyectar servicios en unit tests con Angular"
+  slug="tres-maneras-de-inyectar-servicios-en-unit-tests-con-angular"
+  thumbnailImage="https://angular.io/assets/images/logos/angular/angular.svg"
+  excerpt="Cuando escribimos tests unitarios para nuestros servicios en Angular tenemos varias opciones para inyectar el servicio en cada uno de nuestros 'it' bloques, en este post exploraremos cuales son algunas las ventajas y desventajas de cada una de las maneras."
+></HeadSite>;
 
 # Tres maneras de inyectar servicios en unit tests con Angular
 
-<PostHeader tags={['Angular', 'Desarrollo Web']} date="2020-05-05 11:59:00" />
+<PostHeader tags={["Angular", "Desarrollo Web"]} date="2020-05-05" />
 
 Cuando escribimos tests unitarios para nuestros servicios en Angular tenemos varias opciones para inyectar el servicio en cada uno de nuestros "it" bloques, en este post exploraremos cuales son algunas las ventajas y desventajas de cada una de las maneras.
-
-
 
 Revisemos un servicio súper simple que deseamos probar, este servicio solo tendrá una propiedad y un método para probar.
 
@@ -60,42 +58,42 @@ Por defecto nuestro archivo de pruebas asociado nos propone inyectar el servicio
     /*...*/
 ```
 
-Sin embargo. Te darás cuenta que esta manera requiere repetir la misma línea todo el tiempo. Una ventaja de este enfoque es que estas empezando con un servicio nuevo y limpio en cada bloque it. Entonces naturalmente podemos valernos de Angular TestBed para evitar repetir esta línea. Algo así: 
+Sin embargo. Te darás cuenta que esta manera requiere repetir la misma línea todo el tiempo. Una ventaja de este enfoque es que estas empezando con un servicio nuevo y limpio en cada bloque it. Entonces naturalmente podemos valernos de Angular TestBed para evitar repetir esta línea. Algo así:
 
 ```js
-    beforeEach(() => {
-        TestBed.configureTestingModule({
-            providers: [NamesService] // Service to test
-        });
-        // It is another approach to put available the service during the tests.
-        service = TestBed.get(NamesService); 
-    });
-    /** ... */
-    it('should be created', ()=> {
-        // Service is perfectly available
-    });
+beforeEach(() => {
+  TestBed.configureTestingModule({
+    providers: [NamesService], // Service to test
+  });
+  // It is another approach to put available the service during the tests.
+  service = TestBed.get(NamesService);
+});
+/** ... */
+it("should be created", () => {
+  // Service is perfectly available
+});
 ```
 
 TestBed.get() es una función que nos permite crear una instancia del servicio que estamos usando. Al crear el servicio dentro del beforeEach estamos garantizando que cada bloque it tenga una versión nueva del servicio evitando empezar con un servicio corrupto por test anteriores. Sin embargo podrías encontrarte con situaciones que requieran que una misma instancia del servicio y para eso la primera forma `inject([NamesService], (service: NamesService) => {` se queda corta. Para tener exactamente la misma instancia del servicio a través los bloque it tendriamos que usar el segundo enfoque `service = TestBed.get(NamesService);` dentro del bloque beforeEach. Veamos un ejemplo de su utilidad con una simple propiedad.
 
 ```js
-    beforeAll(()=> {
-        service = TestBed.get(NamesService); 
-    });
+beforeAll(() => {
+  service = TestBed.get(NamesService);
+});
 
-    it('should be myVar set to 13', () => {
-        service.setMyVar(13);
-        expect(service.myVar).toBe(13);
-    });
+it("should be myVar set to 13", () => {
+  service.setMyVar(13);
+  expect(service.myVar).toBe(13);
+});
 
-    it('should be myVar still set to 13 and then set to 12', () => {
-        expect(service.myVar).toBe(13);
-        service.setMyVar(12);
-        expect(service.myVar).toBe(12);
-    });
+it("should be myVar still set to 13 and then set to 12", () => {
+  expect(service.myVar).toBe(13);
+  service.setMyVar(12);
+  expect(service.myVar).toBe(12);
+});
 ```
 
-Así tu puedes persistir el estado del servicio a través de los diferentes its y podría sobre todo ser muy útil en pruebas unitarias relacionadas con procesos de CRUD para evitar repetir código y tener la trazabilidad de todo el test. 
+Así tu puedes persistir el estado del servicio a través de los diferentes its y podría sobre todo ser muy útil en pruebas unitarias relacionadas con procesos de CRUD para evitar repetir código y tener la trazabilidad de todo el test.
 
 Así repasando las tres estrategias para inyectar servicios en nuestros test tenemos:
 
@@ -104,4 +102,5 @@ Así repasando las tres estrategias para inyectar servicios en nuestros test ten
 - `beforeAll(()=>service = TestBed.get(NamesService);}`
 
 Eso es todo, espero que este post te sea de utilidad, Si tienes alguna duda no dudes en dejarme un comentario en la parte de abajo, recuerda que si te gustó también puedes compartir usando los links a las redes sociales en la parte de abajo.
-<Discuss slug="tres-maneras-de-inyectar-servicios-en-unit-tests-con-angular"/>
+
+<Discuss slug="tres-maneras-de-inyectar-servicios-en-unit-tests-con-angular" />

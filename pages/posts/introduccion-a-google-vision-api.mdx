@@ -2,18 +2,18 @@ import PostHeader from "../../components/PostHeader";
 import HeadSite from "../../components/HeadSite";
 import Discuss from "../../components/Discuss";
 
-<HeadSite 
-    category="Javascript"
-    date="2020-05-05 11:59:00"
-    title="Introducción a Google Vision API"
-    slug="introduccion-a-google-vision-api"
-    thumbnailImage="https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/cloud-vision.jpg"
-    excerpt="Siempre me ha fascinado la inteligencia artificial. De hecho en el pasado he dictado algunos cursos en algunas universidades en Medellín sobre inteligencia artificial y la temática es tan larga y extensa que a veces los primeros acercamientos de una persona a este tema resultan escabrosas y es probable que se rindan antes de tratar de hacer algo tangible usando inteligencia artificial. Por esto he querido crear esta historia ademas porque servirá de memoria para una presentación que haré en el Google DevFest de Medellín."
+<HeadSite
+  category="Javascript"
+  date="2020-05-05"
+  title="Introducción a Google Vision API"
+  slug="introduccion-a-google-vision-api"
+  thumbnailImage="https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/cloud-vision.jpg"
+  excerpt="Siempre me ha fascinado la inteligencia artificial. De hecho en el pasado he dictado algunos cursos en algunas universidades en Medellín sobre inteligencia artificial y la temática es tan larga y extensa que a veces los primeros acercamientos de una persona a este tema resultan escabrosas y es probable que se rindan antes de tratar de hacer algo tangible usando inteligencia artificial. Por esto he querido crear esta historia ademas porque servirá de memoria para una presentación que haré en el Google DevFest de Medellín."
 ></HeadSite>
 
 # Introducción a Google Vision API
 
-<PostHeader tags={['NodeJS', 'Desarrollo Web']} date="2020-05-05 11:59:00" />
+<PostHeader tags={["NodeJS", "Desarrollo Web"]} date="2020-05-05" />
 
 Siempre me ha fascinado la inteligencia artificial. De hecho en el pasado he dictado algunos cursos en algunas universidades en Medellín sobre inteligencia artificial y la temática es tan larga y extensa que a veces los primeros acercamientos de una persona a este tema resultan escabrosas y es probable que se rindan antes de tratar de hacer algo tangible usando inteligencia artificial. Por esto he querido crear esta historia ademas porque servirá de memoria para una presentación que haré en el Google DevFest de Medellín.
 
@@ -23,10 +23,10 @@ Empecemos por lo básico, quiero mostrarles una de las APIs de la toda la suite 
 
 Si bien el proceso de clasificación no es un proceso “inteligente”, estrictamente hablando si es un insumo necesario para el aprendizaje de máquina (Machine Learning). También es el insumo para extraer patrones sobre las imágenes y poderlos comparar para generar conocimiento he incluso para generar conocimiento sobre lo aprendido (Deep Machine Learning), todos estos procesos hacen parte de la Google Vision API con agravante adicional, la potencia de computo de los servidores de Google (tal vez los más poderosos del mundo) han venido trabajando desde hace algún tiempo detectando patrones sobre las imágenes, procesando millones de imágenes cada día y aprendiendo de lo que nosotros como humanos creemos que hay en una imagen.
 
-Finalmente, te estarás preguntando… bueno si … se ve bien pero debe costar un ojo de la cara, la respuesta es no, afortunadamente para nosotros los desarrolladores, Google Vision API tiene una capa gratuita de hasta 1000 peticiones por mes, y luego $1.50 dólares aproximadamente por cada bloque de 1000 peticiones. Aquí puedes consultar más sobre los precios. Así que no hay porque al menos no probar esta API.
+Finalmente, te estarás preguntando… bueno si … se ve bien pero debe costar un ojo de la cara, la respuesta es no, afortunadamente para nosotros los desarrolladores, Google Vision API tiene una capa gratuita de hasta 1000 peticiones por mes, y luego \$1.50 dólares aproximadamente por cada bloque de 1000 peticiones. Aquí puedes consultar más sobre los precios. Así que no hay porque al menos no probar esta API.
 
 De igual manera debes saber que no es la única API de visión artificial y procesamiento de imágenes que podrás encontrar, de hecho hay alternativas interesantes como Microsoft Azure y OCR.Space que podrás comparar y usar. Estas alternativas son incluso más baratas pero dependerá de tus necesidades específicas cual y cuando usar cada una de ellas. Aquí te dejo una comparación de precios.
 
 ![](https://cdn-images-1.medium.com/max/1600/1*oVPEOdCfb3Dq6d4FXHrPCw.png) Comparación de precios Google Cloud, MS Azure y OCR, tomado de: https://ocr.space/compare-ocr-software. Eso es todo por esta historia, en el siguiente Post voy a tratar de explicar cómo conectar y usar esta API con NodeJs.
 
-<Discuss slug="introduccion-a-google-vision-api"/>
+<Discuss slug="introduccion-a-google-vision-api" />
