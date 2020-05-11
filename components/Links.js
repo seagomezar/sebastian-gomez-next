@@ -158,14 +158,14 @@ class Links extends React.Component {
         </li>
         <li>
           <Link href={"https://twitter.com/sebasgojs"} prefetch={false}>
-            <a target={"_blank"}>
+            <a target={"_blank"} rel="noopener">
               <i className="icon"></i> 🔵<span>Twitter</span>
             </a>
           </Link>
         </li>
         <li>
           <Link href={"https://www.facebook.com/sebasgojs"} prefetch={false}>
-            <a target={"_blank"}>
+            <a target={"_blank"} rel="noopener">
               <i className="icon"></i> 👍<span>Facebook</span>
             </a>
           </Link>
@@ -175,7 +175,7 @@ class Links extends React.Component {
             href={"https://www.linkedin.com/in/sebastian-gomez-frontend/"}
             prefetch={false}
           >
-            <a target={"_blank"}>
+            <a target={"_blank"} rel="noopener">
               <i className="icon"></i> 💼<span>LinkedIn</span>
             </a>
           </Link>
