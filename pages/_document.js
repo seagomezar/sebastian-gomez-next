@@ -15,10 +15,6 @@ class MyDocument extends Document {
             name="viewport"
             content="width=device-width, initial-scale=1.0"
           />
-          <link
-            href="https://fonts.googleapis.com/css?family=Merriweather&display=swap"
-            rel="stylesheet"
-          ></link>
           <link rel="icon" href="/FaviconSG.png" />
           <link href="/static/css/styles.css" rel="stylesheet" />
         </Head>
