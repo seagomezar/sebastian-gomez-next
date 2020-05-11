@@ -22,7 +22,7 @@ const mdComponents = {
   pre: (props) => <div {...props} />,
   code: CodeBlock,
   li: (props) => <li style={{ marginLeft: "2rem" }} {...props} />,
-  img: (props) => <img style={{ width: "100%" }} {...props} />,
+  img: (props) => <img style={{ width: "100%" }} loading="lazy" {...props} />,
   a: (props) => (
     <a
       style={{ textDecoration: "none", color: "rgb(52, 158, 243)" }}
