@@ -157,22 +157,25 @@ class Links extends React.Component {
           </Link>
         </li>
         <li>
-          <Link href={"https://twitter.com/sebasgojs"}>
-            <a>
+          <Link href={"https://twitter.com/sebasgojs"} prefetch={false}>
+            <a target={"_blank"}>
               <i className="icon"></i> 🔵<span>Twitter</span>
             </a>
           </Link>
         </li>
         <li>
-          <Link href={"https://www.facebook.com/sebasgojs"}>
-            <a>
+          <Link href={"https://www.facebook.com/sebasgojs"} prefetch={false}>
+            <a target={"_blank"}>
               <i className="icon"></i> 👍<span>Facebook</span>
             </a>
           </Link>
         </li>
         <li>
-          <Link href={"https://www.linkedin.com/in/sebastian-gomez-frontend/"}>
-            <a>
+          <Link
+            href={"https://www.linkedin.com/in/sebastian-gomez-frontend/"}
+            prefetch={false}
+          >
+            <a target={"_blank"}>
               <i className="icon"></i> 💼<span>LinkedIn</span>
             </a>
           </Link>

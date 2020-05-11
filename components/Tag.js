@@ -8,7 +8,10 @@ const TagsColorDictionary = {
   Angular: "danger",
   React: "success",
   "Desarrollo Web": "info",
+  NodeJS: "node",
   Other: "dark",
+  Typescript: "typescript",
+  "Programación Reactiva": "reactive",
 };
 
 class Tag extends React.Component {
@@ -49,6 +52,15 @@ class Tag extends React.Component {
           }
           .badge-success {
             background-color: green;
+          }
+          .badge-node {
+            background-color: #11d92f;
+          }
+          .badge-typescript {
+            background-color: #4f8cf6;
+          }
+          .badge-reactive {
+            background-color: #e10c8c;
           }
         `}</style>
       </a>

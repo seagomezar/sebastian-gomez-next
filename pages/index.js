@@ -24,7 +24,10 @@ export default class Index extends React.Component {
     );
     return {
       currentPage: currentPage,
-      totalPages: Math.round(posts.data.posts.length / POSTS_BY_PAGE),
+      totalPages:
+        posts.data.posts.length % POSTS_BY_PAGE === 0
+          ? Math.round(posts.data.posts.length / POSTS_BY_PAGE)
+          : Math.round(posts.data.posts.length / POSTS_BY_PAGE) + 1,
       posts: filteredPosts,
     };
   }
