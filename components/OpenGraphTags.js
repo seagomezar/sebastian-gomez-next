@@ -21,7 +21,10 @@ class OpenGraphTags extends React.Component {
         />
         <meta
           property="og:image"
-          content={this.props.thumbnailImage || "/foto-personal.jpg"}
+          content={
+            this.props.thumbnailImage ||
+            "https://sebastian-gomez.com/foto_personal.jpg"
+          }
         />
         <meta
           property="og:url"
