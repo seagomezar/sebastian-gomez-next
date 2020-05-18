@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://sebastian-gomez.com/</loc>
+  <lastmod>2020-05-18T17:05:28+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://sebastian-gomez.com/docencia</loc>
+  <lastmod>2020-05-18T17:05:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sebastian-gomez.com/sobre-mi</loc>
+  <lastmod>2020-05-18T17:05:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sebastian-gomez.com/conferencias</loc>
+  <lastmod>2020-05-18T17:05:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sebastian-gomez.com/posts/aprendiendo-bulljs</loc>
+  <lastmod>2020-05-18T17:05:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sebastian-gomez.com/posts/todo-sobre-transiciones-en-css</loc>
+  <lastmod>2020-05-18T17:05:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sebastian-gomez.com/posts/entendiendo-el-patron-observador-observer-pattern-en-javascript</loc>
+  <lastmod>2020-05-18T17:05:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sebastian-gomez.com/posts/escribiendo-tests-para-funciones-y-propiedades-privadas-en-angular</loc>
+  <lastmod>2020-05-18T17:05:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sebastian-gomez.com/posts/entendiendo-el-patron-iterador-iterator-pattern-en-javascript</loc>
+  <lastmod>2020-05-18T17:05:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sebastian-gomez.com/?page=2</loc>
+  <lastmod>2020-05-18T17:05:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sebastian-gomez.com/docencia/big-data</loc>
+  <lastmod>2020-05-18T17:05:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://sebastian-gomez.com/posts/todo-sobre-animaciones-en-css</loc>
+  <lastmod>2020-05-18T17:05:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://sebastian-gomez.com/posts/tres-maneras-de-inyectar-servicios-en-unit-tests-con-angular</loc>
+  <lastmod>2020-05-18T17:05:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://sebastian-gomez.com/posts/implementando-of-como-operador-en-observables</loc>
+  <lastmod>2020-05-18T17:05:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://sebastian-gomez.com/posts/implementando-map-como-operador-en-observables</loc>
+  <lastmod>2020-05-18T17:05:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://sebastian-gomez.com/posts/implementando-filter-como-operador-en-observables</loc>
+  <lastmod>2020-05-18T17:05:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://sebastian-gomez.com/?page=1</loc>
+  <lastmod>2020-05-18T17:05:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://sebastian-gomez.com/?page=3</loc>
+  <lastmod>2020-05-18T17:05:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://sebastian-gomez.com/posts/implementando-concat-para-concatenar-observables</loc>
+  <lastmod>2020-05-18T17:05:28+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://sebastian-gomez.com/posts/implementando-observables-a-partir-de-eventos-en-js</loc>
+  <lastmod>2020-05-18T17:05:28+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://sebastian-gomez.com/posts/implementando-google-cloud-vision-en-nodejs</loc>
+  <lastmod>2020-05-18T17:05:28+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://sebastian-gomez.com/posts/introduccion-a-google-vision-api</loc>
+  <lastmod>2020-05-18T17:05:28+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://sebastian-gomez.com/posts/fundamentos-de-typescript</loc>
+  <lastmod>2020-05-18T17:05:28+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://sebastian-gomez.com/?page=4</loc>
+  <lastmod>2020-05-18T17:05:28+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://sebastian-gomez.com/posts/como-crear-espectaculares-presentaciones-usando-html-y-css</loc>
+  <lastmod>2020-05-18T17:05:28+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+
+
+</urlset>
