@@ -22,8 +22,9 @@ class OpenGraphTags extends React.Component {
         <meta
           property="og:image"
           content={
-            this.props.thumbnailImage ||
-            "https://sebastian-gomez.com/foto_personal.jpg"
+            this.props.thumbnailImage
+              ? "https://sebastian-gomez.com" + this.props.thumbnailImage
+              : "https://sebastian-gomez.com/foto_personal.jpg"
           }
         />
         <meta
@@ -57,8 +58,9 @@ class OpenGraphTags extends React.Component {
             "headline": "${this.props.title || "Lee sobre tecnologías Web"}",
             "image": [
                 "${
-                  this.props.thumbnailImage ||
-                  "https://sebastian-gomez.com/foto_personal.jpg"
+                  this.props.thumbnailImage
+                    ? "https://sebastian-gomez.com" + this.props.thumbnailImage
+                    : "https://sebastian-gomez.com/foto_personal.jpg"
                 }"
             ],
             "datePublished": "${this.props.date || new Date("05-05-2020")}",
@@ -72,7 +74,7 @@ class OpenGraphTags extends React.Component {
                 "name": "Sebastian Gomez",
                 "logo": {
                     "@type": "ImageObject",
-                    "url": "/foto-personal.jpg"
+                    "url": "https://sebastian-gomez.com/foto-personal.jpg"
                 }
             },
             "description": "${this.props.excerpt || siteDescription}" 
