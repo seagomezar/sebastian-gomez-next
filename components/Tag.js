@@ -5,6 +5,8 @@ const TagsColorDictionary = {
   CSS: "primary",
   HTML: "secondary",
   Javascript: "warning",
+  Firebase: "warning",
+  "Google Maps": "darkgreen",
   Angular: "danger",
   React: "success",
   "Desarrollo Web": "info",
@@ -37,6 +39,9 @@ class Tag extends React.Component {
           }
           .badge-secondary {
             background-color: green;
+          }
+          .badge-darkgreen {
+            background-color: #3cba54;
           }
           .badge-danger {
             background-color: red;
