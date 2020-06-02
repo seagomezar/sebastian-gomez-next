@@ -10,6 +10,8 @@ const TagsColorDictionary = {
   Angular: "danger",
   React: "success",
   "Desarrollo Web": "info",
+  "Google Datastudio": "primary",
+  "Big Query": "danger",
   NodeJS: "node",
   Other: "dark",
   Typescript: "typescript",

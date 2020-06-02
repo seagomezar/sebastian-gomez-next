@@ -1,0 +1,343 @@
+import HeadSite from "../../../components/HeadSite";
+import PostHeader from "../../../components/PostHeader";
+import Discuss from "../../../components/Discuss";
+
+<HeadSite
+  category="Big Data"
+  date="2020-06-01"
+  title="Análisis de la criminalidad cerca a los sitios turísticos en Medellín"
+  slug="analisis-de-la-criminalidad-cerca-a-los-sitios-turisticos-en-medellin"
+  thumbnailImage="/bigdata.jpg"
+  excerpt="Mucho se ha hablado de la inseguridad de una ciudad, y más aún cuando la ciudad 
+  contiene muchos atractivos turísticos, ¿Podríamos decir entonces que la mayor cantidad de 
+  actos delictivos ocurren cerca o lejos de las atracciones turísticas de una ciudad? 
+  En el presenta artículo pretende analizar el comportamiento de la criminalidad cerca a los 
+  atractivos turísticos de la ciudad de Medellín mediante técnicas de análisis de datos."
+></HeadSite>
+
+# Análisis de la criminalidad cerca a los sitios turísticos en Medellín
+
+<PostHeader
+  slug="analisis-de-la-criminalidad-cerca-a-los-sitios-turisticos-en-medellin"
+  tags={["Big Data", "Big Query", "Google Datastudio"]}
+  date="2020-06-01"
+/>
+
+Mucho se ha hablado de la inseguridad de una ciudad, y más aún cuando la ciudad
+contiene muchos atractivos turísticos, ¿Podríamos decir entonces que la mayor cantidad de
+actos delictivos ocurren cerca o lejos de las atracciones turísticas de una ciudad?
+En el presenta artículo pretende analizar el comportamiento de la criminalidad cerca a los
+atractivos turísticos de la ciudad de Medellín mediante técnicas de análisis de datos.
+
+## Introducción
+
+La criminalidad es inherente a la conducta del ser humano y esto ha existido a lo largo de la historia de
+la humanidad, los países en la actualidad luchan día a día contra este fenómeno el cual se clasifica en
+muchos tipos y modalidades, Colombia no es la excepción, dado que posee una tasa de criminalidad
+particularmente alta la cual podemos asociar a su historia contemporánea [1].
+
+Esta problemática se ha visto reflejada en todo el territorio, destacando sus ciudades principales como
+Bogotá, Cali, Barranquilla y Medellín, esta última será el objeto de nuestro estudio. Medellín durante su
+historia reciente alcanzó a tener tasas de 400 homicidios por cada 100.000 habitantes e inclusive
+aportando entre los años (1990-1993) 6.809 homicidios en un solo año. Pero la ciudad se ha
+recuperado en los últimos años bajando significativamente estas tasas de homicidios de 34 en
+el 2007, 52 en el 2012, 38 en 2013, y menos de 20 por 100.000 habitantes en el 2015. La ciudad ha
+logrado romper el estigma ante el mundo alcanzado importantes avances en desarrollo, seguridad e
+infraestructura que le valieron para ser galardonada en el 2013 con el premio de la ciudad más
+innovadora [2].
+
+Este importante galardón ha generado alto impacto en el mundo implicando un auge en el turismo, es por
+esta razón que en las calles de esta ciudad es habitual ver personas de diferente nacionalidad intrigados en
+conocer la historia de este lugar.
+
+Es por esta razón que en el presente artículo se abordara la siguiente hipótesis: “La mayor cantidad
+de actos delictivos ocurren cerca a los lugares turísticos” (cuando se habla de cercanía se establece
+una distancia entre 0 y 2 km de la ubicación del lugar turístico), y se demostrará mediante estudio de los
+datos recopilados si esta hipótesis se cumple o no, para posteriormente dar las conclusiones sobre la
+criminalidad en la ciudad y como se ve reflejada en los lugares más importantes que a su vez representan
+alta afluencia de público tanto extranjero como local.
+
+## Definiciones
+
+**Homicidio:** De acuerdo con la oficina de las naciones unidas contra la droga y el delito UNODC,
+"El homicidio intencional es el delito por antonomasia. Sus incuestionables consecuencias
+físicas, manifiestas en un cuerpo muerto, también lo convierten en el más categórico y calculable" [3].
+**Hurto:**“La acción de sustraer una cosa mueble de ajena pertenencia con ánimo de lucro" [4].
+**Lugar turístico**: "Se entiende como turismo al conjunto de actividades que realizan las personas
+durante sus viajes y estancias en lugares distintos al de su entorno habitual, por un período de tiempo
+consecutivo inferior a un año, con fines de ocio, por negocios y por otros motivos turísticos, siempre y
+cuando no sea desarrollar una actividad remunerada en el lugar visitado" [5].
+
+## Desarrollo del Tema
+
+### Seleccion de bases de datos
+
+El primer paso que se llevó a cabo fue buscar las bases de datos que fueran útiles para construir la
+bodega de datos, que permitiera analizar la información y tomar posteriores decisiones para
+comprobar o rechazar la hipótesis, por lo cual en la página de Open data Medellin [7] se tomó el
+[conjunto de datos en el cual relacionan los sitios turísticos de la ciudad clasificados por imperdibles y
+no imperdibles](https://geomedellin-m-medellin.opendata.arcgis.com/datasets/5b03f78b073348ecb4667afb32cf2ed8_6/data), informando su respectiva ubicación (en latitud y longitud) y el nombre de la comuna.
+Para evaluar la hipótesis, tomamos los atractivos turísticos imperdibles.
+
+Por otro lado, se buscó otra base de datos que nos permitiera visualizar los diferentes delitos ocurridos
+en la ciudad de Medellin, en la página Medata.gov.co se encontró el [histórico de hurtos y homicidios](http://medata.gov.co/search/field_topic/seguridad-5/type/dataset?sort_by=changed&q=search/field_topic/seguridad-5/type/dataset&page=0%2C1),
+dado que son los delitos más comunes y relacionados a nuestra hipótesis, al unir
+las dos bases de datos quedaron muchos registros (más de 90 mil) pero muchas celdas sin datos, por lo
+cual se eliminó todos los datos sin información, lo que provocó eliminar campos de información de la
+víctima como ocupación, testigo, discapacidad, grado de escolaridad, entre otros. Se dejó solo los casos de
+enero a octubre de 2019, dado que no había datos del final del año, pero igualmente quedaron 33.900
+registros con los cuales se podrían sacar buenas conclusiones.
+
+La base de datos resultante de delitos en Medellín también contaba con los campos de latitud y
+longitud, pero a diferencia de la de sitios turísticos tenía agrupados los datos por barrio y no por
+comuna, por lo cual se buscó en que barrio estaba situado el lugar turístico y asi tener el campo común
+“barrio” y hallar de forma más precisa la distancia entre el delito ocurrido y la ubicación del lugar
+turístico, para evaluar si los delitos si ocurrían cerca o lejos del lugar turístico.
+
+### Unión de las bases de datos
+
+Para unir las dos bases de datos se realizó un proceso manual dado que se intentó por Python y por Big
+Query y no fue posible, porque se necesitaba tener un nuevo archivo donde por cada delito ocurrido
+informara si en el barrio de su ubicación se encontraba un lugar turístico, o sino escribir la palabra “no aplica” y para poder realizar las demás
+operaciones, en Big Query la base de datos debía estar “normalizada”, es decir, solo un delito y sitio
+turístico por barrio, pero realmente nuestra fuente de información contaba con varios registros por barrio,
+por lo cual se realizó un “buscar v” entre el campo “Barrios”.
+
+Para hallar la distancia entre los dos puntos, utilizamos Python con la fórmula de Haversine, esta es una ecuación utilizada para el cálculo
+de las distancias entre 2 punto geográficos a partir de sus longitudes y latitudes, este método ha sido utilizado debido a que
+brinda distancias más exactas y en su utilización se tiene en cuenta el ángulo entre la recta de cierta
+ubicación y el plano ecuatorial [8].
+
+[![](/big-data/criminalidad-medellin/ecuacion-distancia.png)](/big-data/criminalidad-medellin/ecuacion-distancia.png "Función de distancia")
+
+Donde r es el radio de la tierra siendo igual a 6373 Km
+Long1= longitud del punto Nro 1 establecido
+Long2= longitud del punto Nro 2 establecido
+Lat1= latitud del punto Nro 1 establecido
+Lat21= latitud del punto Nro 2 establecido
+El código en Python para hallar las distancias fue el siguiente:
+
+```python
+import csv
+from math import sin, coss, sqrt, atan2, radians, acos
+
+with open("criminalidad_medellin.csv") as fichero_csv:
+  lector = csv.reader(fichero_csv)
+  next(lector, None)
+  for linea in lector
+  R = 6373.0
+  lat1 = radians(float(latitudDelito))
+  lon1 = radians(float(longitudHomicidio))
+  lat2 = radians(float(latutidPuntoTuristico))
+  lon2 = radians(float(longitudPuntoTuristico))
+
+  dlon = lon2 - lon1
+  dlat = lat2 - lat1
+
+  a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
+  c = 2 * atan2(sqrt(a), sqrt(1-a))
+
+  distance = (R*c)/1000
+
+  print (":.2f".format(distance))
+```
+
+Con lo anterior, se hizo el análisis para entender cual fue la distancia al atractivo turistico en la cual se cometió el delito relacionando:
+
+Tipo | Distancia | Barrio
+Hurto | 1.06 | Calazans
+Homicidio | 2.06 | Manrique
+
+### Modelamiento de la bodega de datos
+
+Como primer paso se realizaron diferentes diagramas para modelar la bodega de datos como el Cubo y el Esquema de Estrella
+
+[![](/big-data/criminalidad-medellin/cubo-criminalidad-medellin.png)](/big-data/criminalidad-medellin/cubo-criminalidad-medellin.png "Cubo Criminalidad Medellín")
+
+NOTA: el cubo se realizó con las dimensiones de tiempo, lugar turístico y tipo de arma utilizada en el delito, para representar el total de delitos que
+ocurrieron cerca al Museo de Arte Moderno, Plaza Botero y UD. Atanasio en los primeros tres trimestres del año 2019 y donde se utilizó el arma de fuego,
+escopolamina o ningún arma para atacar a la víctima.
+
+[![](/big-data/criminalidad-medellin/estrella-criminalidad-medellin.png)](/big-data/criminalidad-medellin/estrella-criminalidad-medellin.png "Estrella Criminalidad Medellín")
+
+Con el objetivo de refutar o afirmar la hipótesis de estudio se formularon preguntas que nos encaminaran no solo hacia la solución de la hipótesis
+sino a una contextualización de la actualidad de esta problemática como se observará a continuación:
+
+En la ciudad durante el año 2019 se presentaron 33.900 delitos donde el 99% de los casos fueron hurtos a personas con 33.572 casos:
+
+[![](/big-data/criminalidad-medellin/resumen-criminalidad-medellin.png)](/big-data/criminalidad-medellin/resumen-criminalidad-medellin.png "Resumen Criminalidad Medellín")
+
+De acuerdo al hallazgo anterior, se indagó acerca de cuál fue la modalidad de delito que más se presentó destacándose 3 modalidades en particular:
+el atraco con 16.500 casos y una diferencia mínima entre el segundo y tercero lugar como lo es el descuido y cosquilleo,
+las otras modalidades no llegan hacer tan significativas como las primeras tres, como se ilustrará a continuación:
+
+[![](/big-data/criminalidad-medellin/modalidad-criminalidad-medellin.png)](/big-data/criminalidad-medellin/modalidad-criminalidad-medellin.png "Modalidad Criminalidad Medellín")
+
+Conociendo las modalidades más empleadas en la ciudad se procedió a determinar cuál es la jornada en
+donde más casos se presentan, con el fin de contextualizar en qué momento se corre un mayor
+riesgo de ser víctima de alguno de estos delitos. A pesar de que existe una leve diferencia podemos
+considerar que la ciudad es más peligrosa en la noche como se ilustrará a continuación:
+
+[![](/big-data/criminalidad-medellin/jornada-criminalidad-medellin.png)](/big-data/criminalidad-medellin/jornada-criminalidad-medellin.png "Jornada Criminalidad Medellín")
+
+Teniendo en cuenta que en la ciudad se tiene mayor riesgo de ser víctima de un delito en las horas de la
+noche, se consultó cual fue el instrumento más utilizado según el tipo de delito por parte de los
+victimarios, sorprende y a la vez cuestiona este hallazgo debido a que la mayoría de los hurtos son
+realizados sin emplear algún tipo de arma con 17.063 casos, mientras que en los homicidios en su mayoría
+si se utilizan armas con 250 casos.
+
+[![](/big-data/criminalidad-medellin/arma-usada-criminalidad-medellin.png)](/big-data/criminalidad-medellin/arma-usada-criminalidad-medellin.png "Arma Usada Criminalidad Medellín")
+
+Medellín es una ciudad que cuenta con diferentes medios de transporte en donde destaca su sistema
+masivo conformado por el metro, es por esta razón que se consultó en que medio se movilizaban las
+victimas al momento de sufrir este tipo de delitos. Encontrando que más de 25 mil casos se presentaron
+en la vía pública mientras las personas se desplazaban por su cuenta, lo que indaga acerca de la
+seguridad que presta la fuerza pública en las calles y aceras de la ciudad como se ilustra a continuación:
+
+[![](/big-data/criminalidad-medellin/medio-transporte-criminalidad-medellin.png)](/big-data/criminalidad-medellin/medio-transporte-criminalidad-medellin.png "Medio Transporte Criminalidad Medellín")
+
+Teniendo una percepción general acerca del comportamiento de los delitos en la ciudad de
+Medellín, procedemos a indagar sobre los delitos en los lugares en donde se encuentran los sitios
+turísticos, para permitir al lector dimensionar como es el comportamiento de la criminalidad en estos
+sectores. En los resultados a esta pregunta encontramos que se presentaron un total de 7.604 en
+donde el barrio con mayor cantidad de delitos es la Candelaria con 3.648 casos, seguido por El Poblado
+con 755 y luego por san Benito con 633 casos, evidenciamos una diferencia significativa en la
+Candelaria con respecto a los demás concentrando el 48% de todos los delitos, y su más inmediato
+perseguidor es El Poblado con el 9.9%. Cabe mencionar que la candelaria es un sector ubicado en
+el centro de la ciudad lugar en el cual lastimosamente se evidencia mucha marginalidad y habitantes de la
+calle que hacen que esta zona sea potencialmente peligrosa en cualquier momento del día. A
+continuación, se muestra la proporción de los delitos en cada barrio de la ciudad:
+
+[![](/big-data/criminalidad-medellin/barrios-con-atractivos-criminalidad-medellin.png)](/big-data/criminalidad-medellin/barrios-con-atractivos-criminalidad-medellin.png "Barrios con Atractivos Criminalidad Medellín")
+
+Con la información anterior se indagó acerca de las modalidades que más se presentan cerca a los lugares
+turísticas recordándole al lector que cerca hace alusión entre 0 y 2 km de distancia, esto debido a que
+el visitante en su desplazamiento entre su residencia y lugar turístico o viceversa puede ser víctima de este
+flagelo. Los datos validan que la modalidad más utilizada fue el atraco con 3.010 sin embargo se
+presenta una diferencia más enmarcada con respecto al segundo y tercer item como lo fueron el cosquilleo
+con 2.192 y tercero el descuido con 2.192, el segundo ítem presenta cierta coherencia debido a que en esos
+lugares la aglomeración de personas puede permitir que los delincuentes la aprovechen para cometerla. A
+continuación, se verá de manera más detallada los casos por cada modalidad:
+
+[![](/big-data/criminalidad-medellin/modalidad-delito-criminalidad-medellin.png)](/big-data/criminalidad-medellin/modalidad-delito-criminalidad-medellin.png "Modalidad Delito Criminalidad Medellín")
+
+Conociendo la distribución de los casos en los sitios que son cercanos a los lugares turísticos, además de
+las modalidades utilizadas, es necesario conocer cuál es el género que más se ve afectado por este tipo de
+incidente, se encontró que las mujeres continúan sufriendo un poco más este tipo de situación con
+3.723 casos equivalente al 50.4% de los casos mientras que los hombres con 3.670 casos
+representando el 49.6% , no es una diferencia muy significativa es decir que los delincuentes se
+aprovechan del menor descuido para realizarlo sin discriminar entre el género. A continuación, se
+muestran los resultados descritos:
+
+[![](/big-data/criminalidad-medellin/genero-delito-criminalidad-medellin.png)](/big-data/criminalidad-medellin/genero-delito-criminalidad-medellin.png "Género Delito Criminalidad Medellín")
+
+Este tipo de lugares turísticos prestan atención los 7 días de la semana a menos que se presente algún tipo
+de excepción la cual es mínima, es por esta razón que se indago acerca del comportamiento de los
+delitos en función del día de la semana, los resultados nos muestran que la mayoría de casos se presentan
+entre los días viernes (1.323 casos) y sábados (1.476 casos), causa curiosidad debido a que los viernes es
+un día laboral sin embargo es el inicio del fin de semana así que las personas aprovechan para salir en
+las noches, el día que menos casos ocurrieron fue el domingo con 658, es curioso debido a que este día la
+mayoría de gente descansa y podrían aprovechar para ir a alguno de estos lugares. A continuación, se
+ilustran los resultados mencionados anteriormente:
+
+[![](/big-data/criminalidad-medellin/dia-delito-criminalidad-medellin.png)](/big-data/criminalidad-medellin/dia-delito-criminalidad-medellin.png "Día Delito Criminalidad Medellín")
+
+Asi mismo, se revisó la cantidad de delitos que ocurrieron en barrios donde no hay lugares turisticos
+con respecto a los barrios donde si hay, dando como resultado que 26.296 casos (representando un 77%)
+de delitos ocurrieron en barrios donde no hay sitios turísticos a comparación de 7.604 casos que
+ocurrieron en barrios con lugares turisticos en Medellin.
+
+[![](/big-data/criminalidad-medellin/casos-barrios-turisticos-criminalidad-medellin.png)](/big-data/criminalidad-medellin/casos-barrios-turisticos-criminalidad-medellin.png "Casos Barrios Turísticos Criminalidad Medellín")
+
+Por último, se realizó el analisis de la distancia entre la ubicación de los lugares turísticos y la ocurrencia
+de los delitos, primero se examinaron los delitos ocurridos a una distancia de 3 a 8 kilómetros, los
+cuales fueron en total 211 casos, y luego los delitos ocurridos entre 0 y 2 kilómetros (cerca al lugar
+turístico) dando como resultado para esta última categoría un total de 7.393 casos.
+
+Para presentar de forma gráfica el análisis y resultados de la hipótesis se creó el siguiente
+informe:
+
+[https://datastudio.google.com/open/14ajxChrrF_A5BmM4_3dc-new4HdXqUko](https://datastudio.google.com/open/14ajxChrrF_A5BmM4_3dc-new4HdXqUko)
+
+## Conclusiones
+
+Se evidencia mediante la presente practica la importancia de los datos que se generan a cada
+instante en cualquier ámbito de la vida cotidiana, es por esta razón que tanto las organizaciones,
+gobiernos y sociedad en general deben aprovecharlos y así generar bodegas de datos. Este procedimiento a
+pesar de que puede ser costoso, demorado y requerir diferentes procedimientos de consulta y limpieza de
+datos se podría convertir en una poderosa herramienta vital, para comprender la dinámica y los
+cambios del entorno para lograr llegar a la toma de decisiones eficientes para el bienestar de la sociedad en general.
+
+Se demostró que los hurtos es la problemática más significativa superando ampliamente a los
+homicidios, algo impensado debido al estigma que posee Colombia en el ámbito internacional como un
+país con muchos homicidios y por supuesto no siendo ajeno sus ciudades capitales. Se encontró que
+en el año 2019 el 99% de los casos correspondían a hurtos, los cuales eran realizados en su mayoría
+mediante atraco, cosquilleo y descuido, sin utilización de arma.
+
+Luego de realizar los análisis se encontró que de los 33.900 casos de delitos que se presentaron durante el
+año 2019 solo 7.604 ocurrieron en los barrios en donde se encuentran los sitios turísticos que se
+consideran como “imperdibles”, representando el 22%, lo que permite concluir que la mayor cantidad
+de actos delictivos no ocurrieron cerca a los lugares turísticos, sin embargo, luego de realizar una
+clasificación entre la cercanía a estos lugares, se halló que la mayoría de casos ocurrieron a una distancia
+entre 0-2 km (lo que denominamos “cerca” en el presente artículo) con 7.393 casos contra 211 que se
+presentaron a una distancia entre 3-8 km.
+
+Se encontró que los barrios donde hay sitios turísticos la mayoría de los delitos ocurrieron a corta
+distancia, y se demuestra que la razón es que la mayor cantidad de estos atractivos se encuentran
+cerca al centro de la ciudad “Comuna 10 la Candelaria”, un lugar potencialmente peligroso en la
+ciudad por la alta incidencia de habitantes de calle.
+
+## Agradecimientos
+
+Este artículo se hizo junto con los estudiantes:
+
+- [Edward Alexander Pérez Betancur](eaperezb@unal.edu.co)
+- [Sara Yelen Valencia Vélez](syvalenciav@unal.edu.co)
+
+Estudiantes de la maestría y especialización en analítica predictiva de la Universidad Nacional sede Medellín
+en el curso de Sistemas de Bases de Datos Masivos 2020 - I
+
+## Referencias
+
+- [1] A. Montenegro and C. Posada. “Criminalidad en
+  Colombia”. Borradores de Economía; No. 4, 1994.
+  [Online]. Available:
+  https://www.repository.fedesarrollo.org.co/handle/11
+  445/2197
+
+- [2] L. Dávila. “Violencia urbana, conflicto y crimen
+  en Medellín: una revisión de las publicaciones
+  académicas al respecto”. Revista Criminalidad, vol.
+  58, no 2, p. 107-121, 2016.
+
+- [3] Instituto Nacional de Estadística e Informática
+  (INEI). Importancia de la medición de los homicidios
+  dolosos. Perú [Online]. Available:
+  https://www.inei.gob.pe/media/MenuRecursivo/publi
+  caciones_digitales/Est/Lib1532/cap11.pdf
+
+- [4] E. Gonzalez. “El delito de hurto y su evolución
+  histórica”. Caribeña de Ciencias Sociales, 2019.
+  [Online]. Available: https://www.hacienda.go.cr/Sidovih/uploads//Archiv
+  os/Articulo/hurto-evolucion-historica.pdf
+
+- [5] INDEC. “Turismo, conceptos y definiciones”,
+  2020 [Online]. Available:
+  https://sitioanterior.indec.gob.ar/ftp/cuadros/economi
+  a/turismo_cyd.pdf
+
+- [6] Medata. Alcaldía de Medellin, 2020. [Online].
+  Available: http://medata.gov.co/search/field_topic/seguridad-
+  5/type/dataset?sort_by=changed&q=search/field_topic/seguridad-5/type/dataset&page=0%2C1
+
+- [7] OpenData. Alcaldía de Medellín, 2020. [Online].
+  Available: https://geomedellin-m-medellin.opendata.arcgis.com/datasets/5b03f78b073348ecb4667afb32cf2ed8_6/data
+
+- [8] E. Perez, “Diseño y Desarrollo de una Aplicación para la Planeación de Rutas con Condiciones de Flota Capacitada y Ventanas de Tiempo por Medio de
+  Algoritmos Heurísticos y Metaheurísticos”, 2018.
+  [Online]. Available: http://repository.udistrital.edu.co/bitstream/11349/63
+  53/1/SuarezPachecoJuanDavid2017.pdf
+
+Eso es todo, espero que este post te sea de utilidad, Si tienes alguna duda no dudes en dejarme un comentario en la parte de abajo, recuerda que si te gustó también puedes compartir usando los links a las redes sociales en la parte de abajo.
+
+<Discuss slug="analisis-de-la-criminalidad-cerca-a-los-sitios-turisticos-en-medellin" />
