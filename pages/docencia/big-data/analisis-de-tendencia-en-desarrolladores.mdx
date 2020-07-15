@@ -1,0 +1,312 @@
+import HeadSite from "../../../components/HeadSite";
+import PostHeader from "../../../components/PostHeader";
+import Discuss from "../../../components/Discuss";
+
+<HeadSite
+  category="Big Data"
+  date="2020-06-01"
+  title="Análisis de tenencias en desarrolladores de software"
+  slug="analisis-de-tendencias-en-desarrolladores"
+  thumbnailImage="/bigdata.jpg"
+  excerpt=" Este documento pretende describir y detallar un análisis de tendencias en el sector laboral tecnológico en el que principalmente se busca analizar factores como cambios históricos y proyecciones de compensaciones para los trabajadores de este sector.  De igual manera también se pretende analizar los datos históricos y realizar proyecciones sobre la oferta y demanda que están teniendo los lenguajes de programación existentes desde el 2011 y hasta el 2019."
+></HeadSite>
+
+# Análisis de tenencias en desarrolladores de software
+
+<PostHeader
+  slug="analisis-de-tendencias-en-desarrolladores"
+  tags={["Big Data", "Big Query", "Google Datastudio", "Python"]}
+  date="2020-06-01"
+/>
+
+ Este documento pretende describir y detallar un análisis de tendencias en el sector laboral tecnológico en el que principalmente se busca analizar factores como cambios históricos y proyecciones de compensaciones para los trabajadores de este sector.  De igual manera también se pretende analizar los datos históricos y realizar proyecciones sobre la oferta y demanda que están teniendo los lenguajes de programación existentes desde el 2011 y hasta el 2019.
+
+## Introducción
+
+Este análisis se llevó a cabo teniendo como insumos datos provenientes de StackOverflow, una de las comunidades más importantes en temas de tecnología. Como herramientas para manipular los datos y posteriormente analizarlos se usaron herramientas como la nube de Google donde se usaron Big Query como tratamiento de datos a través de sentencias SQL y Google DataStudio para graficar y analizar los datos. También se utilizó excel como programa intermedio para hacer pequeñas transformaciones a los datos.
+El análisis de tendencias consistió de ocho (8) etapas de las cuáles la transformación de los datos abarcó aproximadamente el 70-80% del tiempo total. Estas etapas se describirán con mayor detalle en las siguientes secciones de este artículo.
+
+## Etapas del análisis
+
+### Extracción de los datos
+
+Todos los datos requeridos para llevar a cabo este análisis se obtuvieron de la página web oficial de StackOverflow desde donde se descargaron nueve (9) archivos en formato separado por comas (csv) donde cada uno de estos archivos hace referencia a una encuesta anual comprendida entre el año 2011 y 2019.
+
+### Limpieza de los datos
+
+Generalmente, los tipos de datos que se encuentran en bases de datos provenientes de encuestas no son datos que se encuentren totalmente estructurados, íntegros ni con calidad de información, es por esto que se debió llevar a cabo una etapa de limpieza de datos para suprimir de las bases de datos todos aquellos datos que no generaban ningún tipo de valor agregado para el análisis de este trabajo. 
+
+Esta limpieza inicial de los datos consistió en eliminar todas aquellas columnas que no representaran algún tipo de información valiosa para el conocimiento que se buscó generar con este trabajo que son básicamente análisis de compensación en el mercado laboral de tecnología y análisis de tendencias en uso de lenguajes de programación. Datos como preguntas sobre gustos personales, país de residencia, influencia en las compras de la empresa, tipo de proyecto en el cuál la persona se encontraba trabajando, entre otros datos, no se tuvieron en cuenta para este análisis.
+
+Esta limpieza de datos inicial se hizo con la herramienta de excel y así permitirnos reducir el tamaño de las bases de datos a analizar y poder avanzar con datos más limpios y livianos a la siguiente etapa: la carga de los datos.
+
+Estos son los conjuntos de datos utilizados:
+
+- [Enlace al repositorio](https://github.com/seagomezar/analisis-tendencias-desarrolladores)
+
+### Cargando datos en Google BigQuery
+
+Una vez se realizó la limpieza de los datos eliminando todos aquellos datos que no nos eran útiles procedimos a cargar nuestras ocho bases de datos, correspondientes a las encuestas de StackOverflow, en Google BigQuery, herramienta que usamos para manipular nuestros datos y poder obtener datos que nos acerquen más a ese análisis deseado.
+
+### Manipulación de los datos
+
+Entramos en una etapa fundamental para el análisis que deseamos llevar a cabo, y es que la manipulación de datos es aquel proceso ejecutado sobre los datos que nos va a permitir convertir los datos de entrada en unos datos de salida un poco más agregados para que posteriormente podamos convertir estos datos en información y luego en conocimiento.
+
+Aunque parezca un proceso netamente operativo, en la etapa de manipulación de datos es de vital importancia que el responsable de esta actividad analice detenidamente y se pregunté a si mismo qué tipo de datos tiene a su alcance y que preguntas se planteará y las traducirá al sistema para obtener los datos con mayor valor agregado posible.
+
+Algunas de las muchas preguntas que se plantearon en esta etapa se detallan a continuación algunas con su respectiva consulta SQL de Google BigQuery y la gráfica asociada de Google Datastudio que permitirá dar respuesta a la pregunta:
+
+- ¿Cuáles son los lenguajes de programación más usados por los usuarios de StackOverflow durante todos los años comprendidos entre 2011 y 2019?
+
+```sql
+SELECT `trabajofinalsmbd.StackOverflow.WLanguages2011`.Lenguaje,
+`trabajofinalsmbd.StackOverflow.WLanguages2011`.Tech 
+AS _2011,`trabajofinalsmbd.StackOverflow.WLanguages2012`.Tech 
+AS _2012, `trabajofinalsmbd.StackOverflow.WLanguages2013`.Cantidad 
+AS _2013, `trabajofinalsmbd.StackOverflow.WLanguages2014`.Cantidad AS 
+_2014, `trabajofinalsmbd.StackOverflow.WLanguages2015`.Cantidad 
+AS _2015, `trabajofinalsmbd.StackOverflow.WLanguages2016`.Cantidad AS 
+_2016, `trabajofinalsmbd.StackOverflow.WLanguages2017`.Cantidad 
+AS _2017, `trabajofinalsmbd.StackOverflow.WLanguages2018`.Cantidad AS 
+_2018, `trabajofinalsmbd.StackOverflow.WLanguages2019`.Cantidad AS 
+_2019 FROM `trabajofinalsmbd.StackOverflow.WLanguages2011`, 
+`trabajofinalsmbd.StackOverflow.WLanguages2012`, 
+`trabajofinalsmbd.StackOverflow.WLanguages2013`, 
+`trabajofinalsmbd.StackOverflow.WLanguages2014`, 
+`trabajofinalsmbd.StackOverflow.WLanguages2015`, 
+`trabajofinalsmbd.StackOverflow.WLanguages2016`, 
+`trabajofinalsmbd.StackOverflow.WLanguages2017`, 
+`trabajofinalsmbd.StackOverflow.WLanguages2018`, 
+`trabajofinalsmbd.StackOverflow.WLanguages2019` 
+WHERE 
+`trabajofinalsmbd.StackOverflow.WLanguages2011`.Lenguaje = 
+`trabajofinalsmbd.StackOverflow.WLanguages2012`.Lenguaje 
+AND `trabajofinalsmbd.StackOverflow.WLanguages2011`.Lenguaje = 
+`trabajofinalsmbd.StackOverflow.WLanguages2013`.Lenguaje 
+AND `trabajofinalsmbd.StackOverflow.WLanguages2011`.Lenguaje = 
+`trabajofinalsmbd.StackOverflow.WLanguages2014`.Lenguaje 
+AND `trabajofinalsmbd.StackOverflow.WLanguages2011`.Lenguaje = 
+`trabajofinalsmbd.StackOverflow.WLanguages2015`.Lenguaje 
+AND `trabajofinalsmbd.StackOverflow.WLanguages2011`.Lenguaje = 
+`trabajofinalsmbd.StackOverflow.WLanguages2016`.Lenguaje 
+AND `trabajofinalsmbd.StackOverflow.WLanguages2011`.Lenguaje = 
+`trabajofinalsmbd.StackOverflow.WLanguages2017`.Lenguaje 
+AND `trabajofinalsmbd.StackOverflow.WLanguages2011`.Lenguaje = 
+`trabajofinalsmbd.StackOverflow.WLanguages2018`.Lenguaje 
+AND `trabajofinalsmbd.StackOverflow.WLanguages2011`.Lenguaje = 
+`trabajofinalsmbd.StackOverflow.WLanguages2019`.Lenguaje ORDER BY _2019 DESC
+```
+
+[![](/big-data/analisis-tendencia-en-devs/3.png)](/big-data/analisis-tendencia-en-devs/3.png "Promedio componesación Devs entre 2011 y 2019")
+
+- ¿Cuál es el rango de compensación mínimo y máximo entre los años 2011 y 2019 según los años de experiencia de las personas?: Tener en cuenta que en esta pregunta están implícitas ocho de estas mismas preguntas aplicadas a un solo año entre el 2011 y el 2019, sin embargo, por practicidad en este caso daremos respuesta a todas estas preguntas con una sola consulta SQL.
+
+```sql
+SELECT '2011' AS Year, Experience, 
+SUBSTR(Compensation,3,6) AS CompMin, 
+SUBSTR
+(Compensation,3,6) AS CompMax FROM `trabajofinalsmbd.StackOverflow.SO_2011` WHERE 
+SUBSTR
+(Compensation,1,1) LIKE '%<%'
+UNION ALL
+SELECT '2011', Experience , 
+SUBSTR(Compensation,3,7), 
+SUBSTR(Compensation,3,7) FROM
+ `trabajofinalsmbd.StackOverflow.SO_2011` WHERE 
+SUBSTR(Compensation,1,1) LIKE '%>%'
+UNION ALL
+SELECT '2011', Experience , 
+SUBSTR(Compensation,2,6), 
+SUBSTR(Compensation,12,6) FROM
+ `trabajofinalsmbd.StackOverflow.SO_2011` 
+ WHERE LENGTH(Compensation) = 17
+UNION ALL
+SELECT '2011', Experience , 
+SUBSTR(Compensation,2,6), 
+SUBSTR(Compensation,12,7) FROM
+ `trabajofinalsmbd.StackOverflow.SO_2011` 
+ WHERE LENGTH(Compensation) = 18
+UNION ALL
+SELECT '2011', Experience , 
+SUBSTR(Compensation,2,7), 
+SUBSTR(Compensation,13,7) FROM
+`trabajofinalsmbd.StackOverflow.SO_2011` 
+WHERE LENGTH(Compensation) = 19
+UNION ALL
+SELECT '2012' AS Year, How_many_years_of_IT_Programming_experience_do_you_have_, 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,3,6) AS CompMin, 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,3,6) AS CompMax FROM
+`trabajofinalsmbd.StackOverflow.SO_2012` 
+WHERE 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,1,1) LIKE '%<%'
+UNION ALL
+SELECT '2012' AS Year, How_many_years_of_IT_Programming_experience_do_you_have_, 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,3,7), 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,3,7) FROM
+`trabajofinalsmbd.StackOverflow.SO_2012` 
+WHERE 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,1,1) LIKE '%>%'
+UNION ALL
+SELECT '2012' AS Year, How_many_years_of_IT_Programming_experience_do_you_have_, 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,2,6), 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,12,6) FROM 
+`trabajofinalsmbd.StackOverflow.SO_2012` 
+WHERE LENGTH(Including_bonus__what_is_your_annual_compensation_in_USD_) = 17
+UNION ALL
+SELECT '2012' AS Year, How_many_years_of_IT_Programming_experience_do_you_have_, 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,2,6), 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,12,7) FROM 
+`trabajofinalsmbd.StackOverflow.SO_2012` 
+WHERE LENGTH(Including_bonus__what_is_your_annual_compensation_in_USD_) = 18
+UNION ALL
+SELECT '2012' AS Year, How_many_years_of_IT_Programming_experience_do_you_have_, 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,2,7), 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,13,7) FROM 
+`trabajofinalsmbd.StackOverflow.SO_2012` 
+WHERE  LENGTH(Including_bonus__what_is_your_annual_compensation_in_USD_) = 19
+UNION ALL 
+SELECT '2013' AS Year, How_many_years_of_IT_Programming_experience_do_you_have_, 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,3,6) 
+AS CompMin, 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,3,6) 
+AS CompMax FROM 
+`trabajofinalsmbd.StackOverflow.SO_2013` WHERE 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,1,1) LIKE '%<%'
+UNION ALL
+SELECT '2013' AS Year, How_many_years_of_IT_Programming_experience_do_you_have_, 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,3,7), 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,3,7) FROM 
+`trabajofinalsmbd.StackOverflow.SO_2013` WHERE 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,1,1) LIKE '%>%'
+UNION ALL
+SELECT '2013' AS Year, How_many_years_of_IT_Programming_experience_do_you_have_, 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,2,6), 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,12,6) FROM 
+`trabajofinalsmbd.StackOverflow.SO_2013` WHERE 
+LENGTH(Including_bonus__what_is_your_annual_compensation_in_USD_) = 17
+UNION ALL
+SELECT '2013' AS Year, How_many_years_of_IT_Programming_experience_do_you_have_, 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,2,6), 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,12,7) FROM 
+`trabajofinalsmbd.StackOverflow.SO_2013` WHERE 
+LENGTH(Including_bonus__what_is_your_annual_compensation_in_USD_) = 18
+UNION ALL
+SELECT '2013' AS Year, How_many_years_of_IT_Programming_experience_do_you_have_ , 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,2,7), 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,13,7) FROM 
+`trabajofinalsmbd.StackOverflow.SO_2013` WHERE 
+LENGTH(Including_bonus__what_is_your_annual_compensation_in_USD_) = 19
+UNION ALL
+SELECT '2014' AS Year, How_many_years_of_IT_Programming_experience_do_you_have_, 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,3,6) AS CompMin, 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,3,6) AS CompMax 
+FROM `trabajofinalsmbd.StackOverflow.SO_2014` WHERE 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,1,1) LIKE '%<%'
+UNION ALL
+SELECT '2014' AS Year, How_many_years_of_IT_Programming_experience_do_you_have_, 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,3,7), 
+
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,3,7) 
+FROM 
+`trabajofinalsmbd.StackOverflow.SO_2014` WHERE 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,1,1) 
+LIKE '%>%'
+UNION ALL
+SELECT '2014' AS Year, How_many_years_of_IT_Programming_experience_do_you_have_, 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,2,6), 
+
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,12,6) FROM 
+`trabajofinalsmbd.StackOverflow.SO_2014` WHERE LENGTH(Including_bonus__what_is_your_annual_compensation_in_USD_) = 17
+UNION ALL
+SELECT '2014' AS Year, How_many_years_of_IT_Programming_experience_do_you_have_, 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,2,6), 
+
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,12,7) FROM 
+`trabajofinalsmbd.StackOverflow.SO_2014` WHERE 
+LENGTH(Including_bonus__what_is_your_annual_compensation_in_USD_) = 18
+UNION ALL
+SELECT '2014' AS Year, How_many_years_of_IT_Programming_experience_do_you_have_, 
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,2,7), 
+
+SUBSTR(Including_bonus__what_is_your_annual_compensation_in_USD_,13,7) FROM 
+`trabajofinalsmbd.StackOverflow.SO_2014` WHERE 
+LENGTH(Including_bonus__what_is_your_annual_compensation_in_USD_) = 19
+UNION ALL
+SELECT '2016' AS Year, experience_range, CAST(salary_midpoint AS String) 
+AS CompMin, CAST(salary_midpoint AS String) AS CompMax 
+FROM `trabajofinalsmbd.StackOverflow.SO_2016` 
+WHERE salary_midpoint IS NOT NULL
+UNION ALL
+SELECT '2017' AS Year, YearsProgram, Salary AS CompMin, Salary AS CompMax FROM 
+`trabajofinalsmbd.StackOverflow.SO_2017` WHERE 
+Salary IS NOT NULL AND Salary <> 'NA' AND Salary <> '0' AND 
+SUBSTR(Salary,2,1) NOT LIKE '%.%' AND 
+
+SUBSTR(Salary,3,1) NOT LIKE '%.%' AND LENGTH(Salary) > 3 AND 
+SUBSTR(Salary,4,1) NOT LIKE '%.%'
+UNION ALL
+SELECT '2018' AS Year, YearsCoding, ConvertedSalary__USD_Yearly_ 
+AS CompMin, ConvertedSalary__USD_Yearly_ AS CompMax 
+FROM `trabajofinalsmbd.StackOverflow.SO_2018` 
+WHERE ConvertedSalary__USD_Yearly_ IS NOT NULL 
+AND ConvertedSalary__USD_Yearly_ <> 'NA' AND 
+LENGTH(ConvertedSalary__USD_Yearly_) > 3
+UNION ALL
+SELECT '2019' AS Year, YearsCode, ConvertedComp__usd_Year_ 
+AS CompMin, ConvertedComp__usd_Year_ AS CompMax 
+FROM `trabajofinalsmbd.StackOverflow.SO_2019` 
+WHERE ConvertedComp__usd_Year_ IS NOT NULL AND ConvertedComp__usd_Year_ <> 'NA' 
+AND LENGTH( ConvertedComp__usd_Year_ ) > 3
+```
+
+[![](/big-data/analisis-tendencia-en-devs/1.png)](/big-data/analisis-tendencia-en-devs/1.png "Promedio componesación Devs entre 2011 y 2019")
+
+- ¿Cuál es el promedio de compensación entre los años 2011 y 2019 según la experiencia de las personas?: Tener en cuenta que esta pregunta difiere de la anterior en que esta pregunta es la evolución de la anterior al tener los datos más agregados. Esto teniendo en cuenta que ya no tenemos el listado completo de compensaciones mínimas y máximas de todos los años si no que tenemos el promedio de compensación agrupado por años y por experiencia de la persona.
+
+```sql
+SELECT Year, Experience, 
+CAST(AVG(CompMin+CompMax) AS INT64) AS SalarioPromedio 
+FROM `trabajofinalsmbd.StackOverflow.Salarios_Experiencia` GROUP BY 
+Year, Experience ORDER BY Year DESC, SalarioPromedio DESC
+```
+
+[![](/big-data/analisis-tendencia-en-devs/2.png)](/big-data/analisis-tendencia-en-devs/2.png "Promedio componesación Devs entre 2011 y 2019")
+
+
+### Generar un informe en Google DataStudio
+
+Una vez finalizada la etapa de manipulación y transformación de datos se procedió a generar un informe en Google DataStudio con el fin de usar los datos que obtuvimos en etapas previas para convertirlo en datos y en información de valor que nos permitieran tener un panorama muy general y a la vez muy detallada de las tendencias en tecnología entre los años 2011 y 2019.
+
+A continuación se comparte la ruta al informe en Google DataStudio donde se analizaron los dos factores que anteriormente se mencionaron: compensación y usos de los lenguajes de programación.
+
+[Informe Datastudio](https://datastudio.google.com/embed/reporting/1LD1kAhRCRsIAgtCVLaTFKYDlAjCPpwZ5/page/CLxVB)
+
+### Predicción de los datos
+
+Finalmente, el objetivo principal de llevar a cabo este análisis era ser capaces de, usando los datos que tenemos disponibles, ser capaces de generar predicciones de los datos en el futuro. 
+
+Para esto se utilizó la herramienta Google Colab, en la cuál se importaron los datos y se implementó un modelo ARIMA para llevar a cabo esta predicción, esto teniendo en cuenta que los datos que usamos se asemejan a una serie de tiempo y que los datos en el tiempo se autocorrelacionan entre sí, es decir, un dato depende de un dato del pasado. Cabe resaltar también que muy posiblemente este no sea el mejor modelo para llevar a cabo esta predicción y que quizás modelo como el Holt-Winters sea más apropiado.
+
+[Enlace al Gist](https://gist.github.com/seagomezar/4e8f15cda9e26c6cf36d12365e03d863)
+
+## Conclusiones
+
+En este análisis se pudo evidenciar que en el mercado laboral del sector Tecnología se vienen dando desde hace unos años unas tendencias muy marcadas en lo que respecta a los lenguajes de programación que se vienen usando. Lenguajes como JavaScript van tomando cada vez más fuerza seguramente por su aplicación en un mercado cada vez más creciente como el de la web.
+
+Lenguajes como SQL iniciaron la década y la terminan con bastante participación dentro de los usuarios encuestados, esto se da debido a su gran utilidad en la manipulación de bases de datos relacionales, su simpleza y sus múltiples usos, en resumidas cuentas, se ha convertido en una competencia básica en el mundo de la tecnología. Por otro lado tenemos lenguajes como Python, que si bien no empezaron la década en el top 3 de lenguajes más usados, si terminan la década en el top 3 y es que Python ha tomado cada vez más fuerza debido a su simpleza, su gran escalabilidad, sus infinidades de usos posibles, especialmente en lo que respecta a Ciencias de Datos e Inteligencia Artificial.
+
+En el otro aspecto del análisis que es la compensación de la última década para el sector tecnológico no se ven cambios o comportamiento que se salgan del esperado. Los salarios van aumentando conforme pasa el tiempo, desencadenado quizás por factores como la Revolución Industrial 4.0. También se puede evidenciar que aquellas personas que poseen más años de experiencia en el campo de la tecnología son grupos de personas que cuentan con un promedio de compensación más alto que los que no tienen tanta experiencia, sin embargo, este comportamiento es extensible a otros sectores diferentes al de tecnología.
+
+## Agradecimientos
+
+Este artículo se hizo junto con los estudiantes:
+
+- [Juan Esteban Arroyave Duque](jearroyaved@unal.edu.co)
+
+Estudiante de la maestría y especialización en analítica predictiva de la Universidad Nacional sede Medellín en el curso de Sistemas de Bases de Datos Masivos 2020 - I
+
+---
+
+Eso es todo, espero que este post te sea de utilidad, Si tienes alguna duda no dudes en dejarme un comentario en la parte de abajo, recuerda que si te gustó también puedes compartir usando los links a las redes sociales en la parte de abajo.
+
+<Discuss slug="analisis-de-tendencias-en-desarrolladores" />
