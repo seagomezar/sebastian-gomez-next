@@ -5,7 +5,7 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
 import { mdx } from "@mdx-js/react";
 
-export default ({ children, className, live, render }) => {
+const CodeBlock = ({ children, className, live, render }) => {
   const language = className.replace(/language-/, "");
 
   if (live) {
@@ -50,3 +50,5 @@ export default ({ children, className, live, render }) => {
     </Highlight>
   );
 };
+
+export default CodeBlock;

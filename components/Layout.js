@@ -17,7 +17,7 @@ class Layout extends React.Component {
         <Nav onlyTopBar={true} />
         <article className="post">
           {props.children}
-          <style jsx>{`
+          <style jsx="true">{`
             .post {
               max-width: 1024px;
               margin: 4rem auto 1rem auto;

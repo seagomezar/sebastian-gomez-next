@@ -181,9 +181,9 @@ class Links extends React.Component {
           </Link>
         </li>
         {this.props.onlyTopBar ? (
-          <style jsx>{this.baseStyles}</style>
+          <style jsx="true" dangerouslySetInnerHTML={{__html: `${this.baseStyles}`}}></style>
         ) : (
-          <style jsx>{this.baseStyles + this.mediaqueries}</style>
+          <style jsx="true" dangerouslySetInnerHTML={{__html: `${this.baseStyles + this.mediaqueries}`}}></style>
         )}
       </ul>
     );

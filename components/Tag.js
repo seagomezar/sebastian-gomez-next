@@ -27,7 +27,7 @@ class Tag extends React.Component {
       <a className={"badge badge-" + tagColor}>
         {name}
 
-        <style jsx>{`
+        <style jsx="true">{`
           .badge {
             text-decoration: none;
             margin-right: 1em;

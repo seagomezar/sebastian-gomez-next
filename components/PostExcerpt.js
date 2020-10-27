@@ -29,7 +29,7 @@ class PostExcerpt extends React.Component {
           </Link>
         </div>
 
-        <style jsx>
+        <style jsx="true">
           {`
             article {
               display: flex;

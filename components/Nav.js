@@ -8,7 +8,7 @@ class Nav extends React.Component {
       <nav>
         <TopBar {...this.props} />
         <Links {...this.props} />
-        <style jsx>{`
+        <style jsx="true">{`
           @media screen and (max-width: 1024px) {
             nav {
               margin-top: 4rem;

@@ -21,7 +21,7 @@ class PostHeader extends React.Component {
             <Tag name={tag} key={index} />
           ))}
         </span>
-        <style jsx>{`
+        <style jsx="true">{`
           a {
             color: #9eabb3;
             text-decoration: none;

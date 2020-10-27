@@ -11,10 +11,6 @@ class MyDocument extends Document {
           />
           <meta name="keywords" content="HTML, CSS, JavaScript, Javascript" />
           <meta name="author" content="Sebastian Gomez" />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-          />
           <link rel="icon" href="/FaviconSG.png" />
           <link href="/static/css/styles.css" rel="stylesheet" />
         </Head>

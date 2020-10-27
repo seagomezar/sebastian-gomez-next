@@ -92,9 +92,9 @@ class TopBar extends React.Component {
           alt="Sebastian Gomez"
         />
         {this.props.onlyTopBar ? (
-          <style jsx>{this.baseStyles}</style>
+          <style jsx="true" dangerouslySetInnerHTML={{__html: `${this.baseStyles}`}}></style>
         ) : (
-          <style jsx>{this.baseStyles + this.mediaqueries}</style>
+          <style jsx="true" dangerouslySetInnerHTML={{__html: `${this.baseStyles + this.mediaqueries}`}}></style>
         )}
       </div>
     );

@@ -47,7 +47,7 @@ export default class Index extends React.Component {
           </section>
           <Footer />
         </section>
-        <style jsx>
+        <style jsx="true">
           {`
             .content {
               transition: 0.3s;

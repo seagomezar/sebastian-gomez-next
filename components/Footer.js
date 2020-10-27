@@ -5,7 +5,7 @@ class Footer extends React.Component {
     return (
       <footer>
         © Copyright 2020 Sebastian Gomez
-        <style jsx>{`
+        <style jsx="true">{`
           footer {
             color: #5d686f;
             text-align: center;

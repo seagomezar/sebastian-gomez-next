@@ -39,7 +39,7 @@ const Style = ({ children }) => (
   />
 );
 
-export default ({ Component, pageProps }) => {
+const App = ({ Component, pageProps }) => {
   if (Component.isMDXComponent) {
     return (
       <Layout>
@@ -53,3 +53,5 @@ export default ({ Component, pageProps }) => {
     return <Component {...pageProps} />;
   }
 };
+
+export default App;

@@ -13,7 +13,7 @@ class PostFooter extends React.Component {
           <i className="icon ion-logo-facebook"></i>
           <i className="icon ion-logo-twitter"></i>
         </div>
-        <style jsx>{`
+        <style jsx="true">{`
           footer {
             display: flex;
             flex-direction: row;

@@ -29,9 +29,9 @@ class Profile extends React.Component {
           que contactame si estas buscando speakers.
         </p>
         {this.props.onlyTopBar ? (
-          <style jsx>{this.baseStyles}</style>
+          <style jsx="true" dangerouslySetInnerHTML={{__html: `${this.baseStyles}`}}></style>
         ) : (
-          <style jsx>{this.baseStyles + this.mediaqueries}</style>
+          <style jsx="true" dangerouslySetInnerHTML={{__html: `${this.baseStyles + this.mediaqueries}`}}></style>
         )}
       </article>
     );

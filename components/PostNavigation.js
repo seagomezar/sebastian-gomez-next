@@ -28,7 +28,7 @@ class PostNavigation extends React.Component {
         <div className="">
           página {currentPage} de {totalPages}
         </div>
-        <style jsx>
+        <style jsx="true">
           {`
             .post-navigation {
               display: flex;
