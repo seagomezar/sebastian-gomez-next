@@ -4,7 +4,7 @@ class MyDocument extends Document {
     return (
       <Html lang="es">
         <Head>
-          <meta charset="UTF-8" />
+          <meta charSet="UTF-8" />
           <meta
             name="description"
             content="Blog técnico sobre tecnologías Web, Aprende y profundiza más sobre desarrollo Web"
