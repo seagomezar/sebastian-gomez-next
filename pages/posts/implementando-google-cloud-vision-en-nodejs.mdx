@@ -7,7 +7,7 @@ import Discuss from "../../components/Discuss";
   date="2020-05-05"
   title="Implementando Google Cloud Vision en NodeJS"
   slug="implementando-google-cloud-vision-en-nodejs"
-  thumbnailImage="https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/cloud-vision.jpg"
+  thumbnailImage="/cloudvision.png"
   excerpt="Siguiendo con la temática de la Cloud Visión de Google en este post vamos a implementarla en NodeJS para detectar características sobre imágenes. "
 ></HeadSite>
 
@@ -34,10 +34,6 @@ En primer lugar vamos a revisar las característica que nos ofrece la API de vis
 - Detección de logos.
 - Encuadre de los elementos de la imagen.
 - Reconocimiento óptico de caracteres.
-
-La arquitectura propuesta para realizar la implementación de Cloud Visión de Google es esta:
-
-[![](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/560CD915-5BD9-4DD9-A6BD-2C81C69DF003-1024x508.png)](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/560CD915-5BD9-4DD9-A6BD-2C81C69DF003.png "Arquitectura Google Could Vision")
 
 Revisemos las responsabilidades que tendría cada uno de los componentes de la arquitectura anterior:
 
@@ -103,8 +99,6 @@ Manos a la obra con la implementación: en primer lugar creemos un proyecto en N
 ```
 
 Esto nos creará la estructura base del proyecto y deberás añadir ademas algunos archivos. A continuación te muestro exactamente como debería lucir tu carpeta del proyecto y la explicación de cada item:
-
-[![](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/71465872-9C25-4862-9540-4661925AA96E-1024x485.png)](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/71465872-9C25-4862-9540-4661925AA96E.png "Estructura de carpetas proyecto Vision API")
 
 Como notarás los únicos archivos sobre los cuales escribiremos código son server.js, index.html y app.js. Empecemos entonces con una funcionalidad básica: ¿Como tomar fotos con javascript?
 
@@ -242,11 +236,7 @@ Una vez que tenemos nuestro archivo de servidor server.js completo, debemos modi
 
 Poniendo todo lo anterior junto podrás ver las características(labels) de la imagen en una manera similar a esta en la detección de características:
 
-[![](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/589231F9-3898-4D24-982A-9C14165372AF.png)](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/589231F9-3898-4D24-982A-9C14165372AF.png "Detección de características")
-
 Sin embargo para la detección y extracción de rostros he implementado solo el login por consola donde podrás ver un elemento de un array por rostro detectado y dentro de cada rostro detectado las “landmarks” que delimitan exactamente cada uno de los elementos del rostro:
-
-[![](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/08180391-A2C7-4B81-9598-EC743DF0E449-1024x424.png)](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/08180391-A2C7-4B81-9598-EC743DF0E449.png "Detección de características con landmarks") [![](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/F4C92A6E-35F4-4F07-90A5-3EE820D2160A-1024x291.png)](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/F4C92A6E-35F4-4F07-90A5-3EE820D2160A.png "Detección de características con landmarks")
 
 Puedes jugar con estas funciones para crear combinaciones de características únicas para tu aplicación o producto. En este repositorio podrás jugar con este código  y usarlo para la implementación de tus propias funcionalidades, también encontrarás algunas otras funciones como por ejemplo detectar personas felices, o tristes e una foto:
 

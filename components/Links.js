@@ -1,12 +1,13 @@
 import React from "react";
 import Profile from "../components/Profile";
 import Link from "next/link";
+import Image from 'next/image';
 
 class Links extends React.Component {
   constructor(props) {
     super(props);
     this.baseStyles = `
-          .menu-header > img {
+          .menu-header img {
             border-radius: 50%;
           }
           .links {
@@ -76,7 +77,6 @@ class Links extends React.Component {
             }
             img {
               width: 40px;
-              margin: 1em 1em;
             }
             .links {
               display: flex;
@@ -123,7 +123,7 @@ class Links extends React.Component {
     return (
       <ul className="links">
         <div className="menu-header">
-          <img src="/foto_personal.jpg" alt="Sebastian Gomez" />
+          <Image src="/foto_personal.jpg" alt="Sebastian Gomez" unsized={true}/>
           <h3>Sebastian Gomez</h3>
         </div>
 

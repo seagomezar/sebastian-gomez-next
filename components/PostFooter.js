@@ -1,10 +1,11 @@
 import React from "react";
+import Image from 'next/image';
 
 class PostFooter extends React.Component {
   render() {
     return (
       <footer>
-        <img src="/foto_personal.jpg" alt="Sebastian Gomez" width="32px" />
+        <Image src="/foto_personal.jpg" alt="Sebastian Gomez" width={32} />
         <hgroup>
           <h5>Sebastian Gomez</h5>
           <h6>GDE Tecnologías web</h6>

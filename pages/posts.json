@@ -34,7 +34,7 @@
       {
         "id": 4,
         "tags": ["Javascript", "Desarrollo Web"],
-        "thumbnailImage": "https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/02/javascript-736400_960_720.png?resize=150%2C150&ssl=1?resize=150%2C150&ssl=1",
+        "thumbnailImage": "/javascript.jpg",
         "categories": ["Javascript"],
         "date": "2020-05-05",
         "title": "Entendiendo El Patron Observador en Javascript",
@@ -44,7 +44,7 @@
       {
         "id": 5,
         "tags": ["Angular", "Desarrollo Web"],
-        "thumbnailImage": "https://angular.io/assets/images/logos/angular/angular.svg",
+        "thumbnailImage": "/angular.png",
         "categories": ["Angular"],
         "date": "2020-05-05",
         "title": "Escribiendo Tests para Funciones y Propiedades Privadas en Angular",
@@ -54,7 +54,7 @@
       {
         "id": 6,
         "tags": ["Javascript", "Desarrollo Web"],
-        "thumbnailImage": "https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/02/javascript-736400_960_720.png?resize=150%2C150&ssl=1",
+        "thumbnailImage": "/javascript.jpg",
         "categories": ["Javascript"],
         "date": "2020-05-05",
         "title": "Entendiendo el Patrón Iterador en Javascript",
@@ -74,7 +74,7 @@
       {
         "id": 8,
         "tags": ["Angular", "Desarrollo Web"],
-        "thumbnailImage": "https://angular.io/assets/images/logos/angular/angular.svg",
+        "thumbnailImage": "/angular.png",
         "categories": ["Angular"],
         "date": "2018-01-24 12:13:17",
         "title": "Tres maneras de inyectar servicios en unit tests con Angular",
@@ -84,7 +84,7 @@
       {
         "id": 9,
         "tags": ["Javascript", "Programación Reactiva", "Desarrollo Web"],
-        "thumbnailImage": "https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/03/984368.png",
+        "thumbnailImage": "/rxjs.png",
         "categories": ["Javascript"],
         "date": "2020-05-05",
         "title": "Implementando of como operador en Observables",
@@ -94,7 +94,7 @@
       {
         "id": 10,
         "tags": ["Javascript", "Programación Reactiva", "Desarrollo Web"],
-        "thumbnailImage": "https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/03/984368.png",
+        "thumbnailImage": "/rxjs.png",
         "categories": ["Javascript"],
         "date": "2020-05-05",
         "title": "Implementando map como operador en Observables",
@@ -104,7 +104,7 @@
       {
         "id": 11,
         "tags": ["Javascript", "Programación Reactiva", "Desarrollo Web"],
-        "thumbnailImage": "https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/03/984368.png",
+        "thumbnailImage": "/rxjs.png",
         "categories": ["Javascript"],
         "date": "2020-05-05",
         "title": "Implementando filter como operador en Observables",
@@ -114,7 +114,7 @@
       {
         "id": 12,
         "tags": ["Javascript", "Programación Reactiva", "Desarrollo Web"],
-        "thumbnailImage": "https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/03/984368.png",
+        "thumbnailImage": "/rxjs.png",
         "categories": ["Javascript"],
         "date": "2020-05-05",
         "title": "Implementando concat para concatenar observables",
@@ -124,7 +124,7 @@
       {
         "id": 13,
         "tags": ["Javascript", "Programación Reactiva", "Desarrollo Web"],
-        "thumbnailImage": "https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/03/984368.png",
+        "thumbnailImage": "/rxjs.png",
         "categories": ["Javascript"],
         "date": "2020-05-05",
         "title": "Implementando Observables a partir de Eventos en JS",
@@ -134,7 +134,7 @@
       {
         "id": 14,
         "tags": ["NodeJS", "Desarrollo Web"],
-        "thumbnailImage": "https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/cloud-vision.jpg",
+        "thumbnailImage": "/cloudvision.png",
         "categories": ["Javascript"],
         "date": "2020-05-05",
         "title": "Implementando Google Cloud Vision en NodeJS",
@@ -144,7 +144,7 @@
       {
         "id": 15,
         "tags": ["NodeJS", "Desarrollo Web"],
-        "thumbnailImage": "https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2017/12/cloud-vision.jpg",
+        "thumbnailImage": "/cloudvision.png",
         "categories": ["Javascript"],
         "date": "2020-05-05",
         "title": "Introducción a Google Vision API",
@@ -154,7 +154,7 @@
       {
         "id": 16,
         "tags": ["Javascript", "Typescript", "Angular", "Desarrollo Web"],
-        "thumbnailImage": "https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2015/11/a1.png",
+        "thumbnailImage": "/angular.png",
         "categories": ["Javascript"],
         "date": "2020-05-05",
         "title": "Fundamentos de Typescript",

@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from 'next/image';
 
 class TopBar extends React.Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class TopBar extends React.Component {
         text-decoration: none;
         color: #88909a;
       }
-      .top-bar > img {
+      .top-bar img {
         border-radius: 50%;
         margin-right: 1em;
       }
@@ -85,10 +86,10 @@ class TopBar extends React.Component {
           </a>
         </Link>
 
-        <img
+        <Image
           src="/foto_personal.jpg"
-          width="32px"
-          height="32px"
+          width={32}
+          height={32}
           alt="Sebastian Gomez"
         />
         {this.props.onlyTopBar ? (

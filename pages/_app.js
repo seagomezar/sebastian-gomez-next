@@ -3,6 +3,7 @@ import { MDXProvider } from "@mdx-js/react";
 import CodeBlock from "../components/CodeBlock";
 import { Container, baseStyles } from "unified-ui";
 import Layout from "../components/Layout";
+import Image from 'next/image';
 
 const mdComponents = {
   h1: (props) => (
@@ -22,7 +23,7 @@ const mdComponents = {
   pre: (props) => <div {...props} />,
   code: CodeBlock,
   li: (props) => <li style={{ marginLeft: "2rem" }} {...props} />,
-  img: (props) => <img style={{ width: "100%" }} loading="lazy" {...props} />,
+  img: (props) => <Image style={{ width: "100%" }} {...props} unsized={true} />,
   a: (props) => (
     <a
       style={{ textDecoration: "none", color: "rgb(52, 158, 243)" }}

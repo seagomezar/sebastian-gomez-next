@@ -78,8 +78,6 @@ Una consideración a tener en cuentas es que los nombres de la animación no pue
 
 La animación de sprites es una de las técnicas mas avanzadas que se puede tener con CSS, primero es necesario entender que es un sprite: Un sprite es una imagen gráfica única que se incorpora a una escena más grande para que parezca ser parte de la escena.
 
-[![](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/01/700A020D-5636-4097-898A-FD3B6C6EB0A5.png)](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/01/700A020D-5636-4097-898A-FD3B6C6EB0A5.png "Animaciones de sprites")
-
 Aquí se ve un ejemplo de una hoja de sprites del capitán america. Cada secuencia de movimiento ocupa el mismo espacio que las demás y poniéndolas juntas a determinada velocidad nos permite “percibir” que hay movimiento en el personaje.
 
 Bien para hacer una efectiva animación de un sprite en CSS no nos basta con las animation-timing-function: linear, ease-in, ease-out, ease-in-out o cubic-bezier; ya que en cualquier caso se vería el movimiento de los frames de un lado a otro. Allí es donde podemos usar la función steps(x) donde x es el número de sprites que tendría tu hoja de sprites. steps(x) divide un bloque de keyframes en pasos iguales x luego salta entre ellos. Veamos un ejemplo de como animar el capitán américa del sprite anterior:

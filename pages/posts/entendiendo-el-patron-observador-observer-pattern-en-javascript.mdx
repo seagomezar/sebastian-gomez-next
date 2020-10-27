@@ -7,7 +7,7 @@ import Discuss from "../../components/Discuss";
   date="2020-05-05"
   title="Entendiendo el Patron Observador (Observer Pattern) en Javascript"
   slug="entendiendo-el-patron-observador-observer-pattern-en-javascript"
-  thumbnailImage="https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/02/javascript-736400_960_720.png?resize=150%2C150&ssl=1"
+  thumbnailImage="/rxjs.png"
   excerpt="En este post aprenderemos como implementar el patrón observer en Javascript y en que situaciones lo podemos usar."
 ></HeadSite>
 
@@ -28,10 +28,6 @@ El patrón observador es uno de los patrones de diseño de software más usado e
 En primer lugar el patrón observador se define como un patrón de comportamiento es decir que dentro del mundo de la programación orientada a objetos es un patrón responsable por la comunicación entre objetos.
 
 En segundo lugar el patrón observador también puedes encontrarlo como el patrón publicador-subscriptor o modelo-patrón y nos da una idea básica de lo que hace. En términos simples este patrón permite la notificación a objetos (subscriptores u observador) al cambio de otro objeto (publicador).
-
-Veamos entonces un pequeño diagrama con las responsabilidades de los involucrados en este patrón. En primer lugar el publicador debe notificar a los subscriptores o observadores que algo cambió, y en segundo lugar los subscriptores deben poder subscribirse o de suscribirse del publicador en cualquier momento:
-
-[![](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/02/A004581F-4C80-4ADA-A5A5-A298253AF072.png)](https://storage.googleapis.com/sebastian-gomez-blog.appspot.com/uploads/2018/02/A004581F-4C80-4ADA-A5A5-A298253AF072.png "Diagrama Patrón Observador")
 
 ¿Cómo podemos entonces implementarlo en Javascript?, empecemos implementando una clase llamada Publicador que contenga los métodos subscribe(), unsubscribe(), y notify().
 

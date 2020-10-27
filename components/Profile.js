@@ -1,5 +1,4 @@
 import React from "react";
-import Menu from "./Nav";
 
 class Profile extends React.Component {
   constructor(props) {
