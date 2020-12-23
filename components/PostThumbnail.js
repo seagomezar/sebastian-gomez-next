@@ -7,8 +7,9 @@ class PostThumbnail extends React.Component {
     return (
       <Image
         src={thumbnailImage || "/default-image.png"}
-        width={150}
-        height={150}
+        width={120}
+        height={120}
+        layout="fixed"
         alt={altText}
       />
     );

@@ -123,7 +123,7 @@ class Links extends React.Component {
     return (
       <ul className="links">
         <div className="menu-header">
-          <Image src="/foto_personal.jpg" alt="Sebastian Gomez" unsized={true}/>
+          <Image src="/foto_personal.jpg" alt="Sebastian Gomez" width="180" height="180"/>
           <h3>Sebastian Gomez</h3>
         </div>
 

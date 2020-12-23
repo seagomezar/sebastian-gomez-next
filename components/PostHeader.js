@@ -9,7 +9,7 @@ class PostHeader extends React.Component {
       <small className="">
         <span>
           <strong>Fecha: </strong>
-          {date} -<strong> Autor: </strong> Sebastian Gomez -{" "}
+          {new Date(date).toLocaleDateString('es-CO')} -<strong> Autor: </strong> Sebastian Gomez -{" "}
           <Link href={"/posts/" + slug + "#disqus_thread"}>
             <a>Únete a la discusión</a>
           </Link>

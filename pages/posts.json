@@ -2,6 +2,16 @@
   "data": {
     "posts": [
       {
+        "id": 0,
+        "tags": ["Next.js", "Javascript", "NodeJS", "Desarrollo Web"],
+        "thumbnailImage":"/nextjs.png",
+        "categories": "Desarrollo Web",
+        "date": 1608758303995,
+        "title": "Introducción a Next.js",
+        "slug": "introduccion-a-nextjs",
+        "excerpt": "En este post definiremos que es Next.js y porque tiene tanta relevancia en el 2020, ¿Cuales son los mayores competidores? y entederás porqué es una elección sabia para construir tu aplicación web"
+      },
+      {
         "id": 1,
         "tags": ["Firebase", "Angular", "Google Maps", "Desarrollo Web"],
         "thumbnailImage": "/firebase.png",

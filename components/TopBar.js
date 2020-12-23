@@ -90,6 +90,7 @@ class TopBar extends React.Component {
           src="/foto_personal.jpg"
           width={32}
           height={32}
+          layout="fixed"
           alt="Sebastian Gomez"
         />
         {this.props.onlyTopBar ? (
