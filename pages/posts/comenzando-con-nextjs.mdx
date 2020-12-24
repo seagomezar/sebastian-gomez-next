@@ -1,0 +1,126 @@
+import PostHeader from "../../components/PostHeader";
+import HeadSite from "../../components/HeadSite";
+import Discuss from "../../components/Discuss";
+
+<HeadSite
+  category="Desarrollo Web"
+  date={1608837237881}
+  title="Comenzando con Next.js"
+  slug="comenzando-con-nextjs"
+  thumbnailImage="/nextjs.png"
+  excerpt="En este post mostraré las distintas formas que hay para iniciar un proyecto con Next.js, exploraremos la opción de librerías de npm para iniciar así como la opción totalmente manual."
+></HeadSite>
+
+# Comenzando con Next.js
+
+<PostHeader
+  tags={["Next.js", "Javascript", "NodeJS", "Desarrollo Web"]}
+  date={1608837237881}
+  slug="comenzando-con-nextjs"
+/>
+
+## La manera más fácil
+
+
+Similarmente como existe una librería de NPM para iniciar proyecto con React llamada "create-react-app", 
+existe también una denominada "create-next-app" que puedes instalar como un paquete global:
+
+```bash
+    $ npm install -g create-next-app
+```
+
+y usarla simplemente:
+
+```bash
+    $ npx create-next-app
+```
+
+o con Yarn
+
+```bash
+    $ yarn create-next-app
+```
+
+
+Esto instalará una aplicación de ejemplo (un boilerplate) con todas las dependencias
+requeridas y demás en nuestro archivo *package.json* tendremos ya todos los scripts configurados
+listos para ser usados. 
+
+
+Sin embargo exploremos como sería crear nuestro proyecto completamente dede cero e instalando todo por
+nosotros mismos.
+
+## La otra manera fácil  
+
+Podemos crear nuestra carpeta donde contendremos nuestro proyecto e inicializarlo como un
+proyecto vacio de npm.
+
+
+```bash
+    $ npm init -y
+```
+
+
+Luego necesitamos instalar tres dependencias, 
+
+
+- i. React (por supuesto)
+- ii. React DOM (También por supuesto)
+- iii. Next.js (Si, en realidad next es un paquete de npm)
+
+
+el comando con NPM y con yarn sería algo así:
+
+
+npm
+
+```bash
+    $ npm i next react react-dom --save
+```
+
+
+yarn
+
+```bash
+    $ yarn add next react react-dom
+```
+
+
+Lo siguiente que vamos a tener que hacer es añadir los script que necesitamos a nuestro *package.json*
+
+
+```js
+    "scripts": {
+        "dev": "next",
+        "build": "next build",
+        "start": "next start"
+    }
+```
+
+
+¿Que hacen estos comandos?
+
+
+- El comando *next* inicializa nuestra aplicación en modo de desarrollo y con "hot reloading" o mejor dicho
+con una recarga cada vez que haces un cambio en el código.
+
+- *next build* construye tu proyecto y lo deja optimizado y limpio para producción, (crea un nuevo folder "out" o "dist")
+
+- *next start* Inicializa y ejecuta tu proyecto de producción (el que construiste con *next build*)
+
+
+🧠 *Recuerda*: Next.js es un framework full-stack que necesita estar hosteado en una plataforma (servidor) que corra o soporte node.js
+
+
+Eso es todo, espero que este post te sea de utilidad y lo puedas aplicar a 
+algún proyecto que tengas en mente o que simplemente te haya ayudado a entender 
+como iniciar tu proyecto de Next.js
+
+
+Déjame un comentario si te sirvió  o si quieres añadir 
+alguna opinión o si tienes alguna duda no dudes en dejarme un comentario 
+en la parte de abajo, recuerda que si te gustó también puedes compartir usando los links a 
+las redes sociales en la parte de abajo.
+
+
+<Discuss slug="comenzando-con-nextjs" />

@@ -2,17 +2,27 @@
   "data": {
     "posts": [
       {
-        "id": 0,
+        "id": 1,
+        "tags": ["Next.js", "Javascript", "NodeJS", "Desarrollo Web"],
+        "thumbnailImage":"/nextjs.png",
+        "categories": "Desarrollo Web",
+        "date": 1608837237881,
+        "title": "Comenzando con Next.js",
+        "slug": "comenzando-con-nextjs",
+        "excerpt": "En este post mostraré las distintas formas que hay para iniciar un proyecto con Next.js, exploraremos la opción de librerías de npm para iniciar así como la opción totalmente manual."
+      },
+      {
+        "id": 2,
         "tags": ["Next.js", "Javascript", "NodeJS", "Desarrollo Web"],
         "thumbnailImage":"/nextjs.png",
         "categories": "Desarrollo Web",
         "date": 1608758303995,
         "title": "Introducción a Next.js",
         "slug": "introduccion-a-nextjs",
-        "excerpt": "En este post definiremos que es Next.js y porque tiene tanta relevancia en el 2020, ¿Cuales son los mayores competidores? y entederás porqué es una elección sabia para construir tu aplicación web"
+        "excerpt": "En este post definiremos que es Next.js y porque tiene tanta relevancia en el 2020, ¿Cuales son los mayores competidores? y entederás porqué es una elección sabia para construir tu aplicación web."
       },
       {
-        "id": 1,
+        "id": 3,
         "tags": ["Firebase", "Angular", "Google Maps", "Desarrollo Web"],
         "thumbnailImage": "/firebase.png",
         "categories": ["Desarrollo Web"],
@@ -22,7 +32,7 @@
         "excerpt": "Las aplicaciones de tipo ¨Uber Like¨ (como Uber) o ¨Rappi Like¨ se han venido popularizando. Una gran cantidad de soluciones tecnológicas hoy en día tratan de emular el comportamiento o la funcionalidad de este tipo de aplicaciones. Esto se debe a que algunas compañías empiezan a incursionar en el mundo del delivery o los ecommerce y tratan de atarse a casos de éxito ya establecidos. Por eso, en este artículo les enseñaremos cómo funcionan las aplicaciones que hacen seguimiento en tiempo real de un objeto y aprenderemos a visualizar utilizando Google Maps, Angular y Firebase."
       },
       {
-        "id": 2,
+        "id": 4,
         "tags": ["NodeJS", "Javascript", "Desarrollo Web"],
         "thumbnailImage": "/bulljs.png",
         "categories": ["Desarrollo Web"],
@@ -32,7 +42,7 @@
         "excerpt": "Es común que nos encontremos algún proyecto en nuestra vida de programador con requerimientos muy puntuales en cuanto a funciones y su ejecución. Por ejemplo usar funciones en javascript que deban ejecutarse una cantidad específica de veces, poder volver a ejecutarse en caso de fallar o una o varias veces y priorizar estas funciones para saber cual ejecutar primero, entre muchas otras cosas. Es allí donde muchos sistemas de manejo de colas para NodeJS empiezan a tomar importancia. Sin embargo en este artículo vamos a hablar de una en particular llamada BullJS."
       },
       {
-        "id": 3,
+        "id": 5,
         "tags": ["Animaciones", "CSS", "HTML", "Desarrollo Web"],
         "thumbnailImage": "/css3.jpg",
         "categories": ["CSS"],
@@ -42,7 +52,7 @@
         "excerpt": "Las transiciones hacen parte del conjunto de herramientas que poseemos como desarrolladores FrontEnd para mejorar la experiencia del usuario dentro de nuestra aplicación Web. Son útiles porque nos permiten animar el cambio de valores en las distintas propiedades de un elemento lo que puede hacerlo más llamativo al usuario e invitarlo a interactuar con él. En este post trataré de cubrir el extenso tema de transiciones con diversos ejemplos adaptados desde la especificación."
       },
       {
-        "id": 4,
+        "id": 6,
         "tags": ["Javascript", "Desarrollo Web"],
         "thumbnailImage": "/javascript.jpg",
         "categories": ["Javascript"],
@@ -52,7 +62,7 @@
         "excerpt": "En este post aprenderemos como implementar el patrón observer en Javascript y en que situaciones lo podemos usar."
       },
       {
-        "id": 5,
+        "id": 7,
         "tags": ["Angular", "Desarrollo Web"],
         "thumbnailImage": "/angular.png",
         "categories": ["Angular"],
@@ -62,7 +72,7 @@
         "excerpt": "Escribir pruebas unitarias debe convertirse en una tarea diaria, no es posible crear una aplicación en Angular de calidad sin realizar un proceso consciente de unit testing. En este post veremos como probar funciones que retornan propiedades privadas en Angular 6 con Karma y Jasmine."
       },
       {
-        "id": 6,
+        "id": 8,
         "tags": ["Javascript", "Desarrollo Web"],
         "thumbnailImage": "/javascript.jpg",
         "categories": ["Javascript"],
@@ -72,7 +82,7 @@
         "excerpt": "En este post aprenderemos como implementar el patrón iterador en Javascript y en que situaciones lo podemos usar."
       },
       {
-        "id": 7,
+        "id": 9,
         "tags": ["Animaciones", "CSS", "HTML", "Desarrollo Web"],
         "thumbnailImage": "/css3.jpg",
         "categories": ["CSS"],
@@ -82,7 +92,7 @@
         "excerpt": "Las animaciones en CSS son un conjunto de herramientas que nos permite mostrar contenido de una manera mas dinámica y llamativa para los usuarios de nuestro sitio web. Su principal ventaja versus las transiciones es que nos permite tener un más granular de los estados de la animación mediante los @keyframes. En este post daremos un vistazo general a animaciones en CSS y como implementarlas."
       },
       {
-        "id": 8,
+        "id": 10,
         "tags": ["Angular", "Desarrollo Web"],
         "thumbnailImage": "/angular.png",
         "categories": ["Angular"],
@@ -92,7 +102,7 @@
         "excerpt": "Cuando escribimos tests unitarios para nuestros servicios en Angular tenemos varias opciones para inyectar el servicio en cada uno de nuestros 'it' bloques, en este post exploraremos cuales son algunas las ventajas y desventajas de cada una de las maneras."
       },
       {
-        "id": 9,
+        "id": 11,
         "tags": ["Javascript", "Programación Reactiva", "Desarrollo Web"],
         "thumbnailImage": "/rxjs.png",
         "categories": ["Javascript"],
@@ -102,7 +112,7 @@
         "excerpt": "En este post vamos a aumentar el número de operadores que podemos implementar y usar dentro de un Observable creando el operador 'of' que básicamente será un operador de generación de observables de manera que podamos convertir datos en observables."
       },
       {
-        "id": 10,
+        "id": 12,
         "tags": ["Javascript", "Programación Reactiva", "Desarrollo Web"],
         "thumbnailImage": "/rxjs.png",
         "categories": ["Javascript"],
@@ -112,7 +122,7 @@
         "excerpt": "En este post vamos a valernos de esta definición para aumentar el número de operadores que podemos implementar y usar dentro de un Observable."
       },
       {
-        "id": 11,
+        "id": 13,
         "tags": ["Javascript", "Programación Reactiva", "Desarrollo Web"],
         "thumbnailImage": "/rxjs.png",
         "categories": ["Javascript"],
