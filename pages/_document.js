@@ -17,16 +17,6 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `// paste script in here `,
-            }}
-          />
-          <script
-            data-ad-client="ca-pub-5241677876798110"
-            async
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-          ></script>
         </body>
       </Html>
     );
