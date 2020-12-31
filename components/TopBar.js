@@ -30,6 +30,9 @@ class TopBar extends React.Component {
         border-radius: 50%;
         margin-right: 1em;
       }
+      .top-bar > div {
+        margin-right: 1em;
+      }
       .top-bar > .icon {
         font-size: 1.5em;
         color: #5d686f;

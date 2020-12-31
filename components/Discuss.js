@@ -1,4 +1,31 @@
+//import {DiscussionEmbed} from "disqus-react";
+
+
+const Disqus = (props ) => {
+  const siteUrl = "https://www.sebastian-gomez.com/posts/";
+  const disqusShortname = "sebastian-gomez";
+  const disqusConfig = {
+    url: `${siteUrl}${props.slug}`,
+    identifier: props.slug,
+    title: props.slug
+  }
+  return (
+    <div>
+    </div>
+  )
+}
+export default Disqus;
+
+/*
+
+<DiscussionEmbed
+        shortname={disqusShortname}
+        config={disqusConfig}
+      />
+
 import React from "react";
+
+
 
 class Discuss extends React.Component {
   constructor(props) {
@@ -36,3 +63,4 @@ class Discuss extends React.Component {
 }
 
 export default Discuss;
+*/
