@@ -9,7 +9,7 @@ class Profile extends React.Component {
               font-size: 1.1rem;
               display: none;
             }`;
-    this.mediaqueries = `@media screen and (min-width: 1280px) {
+    this.mediaqueries = `@media screen and (min-width: 1281px) {
       .profile > p{
         display: block;
       }
