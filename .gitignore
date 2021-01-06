@@ -2,3 +2,5 @@ node_modules
 .next
 out
 .vscode
+.ds
+.DS_Store
