@@ -1,0 +1,243 @@
+import PostHeader from "../../components/PostHeader";
+import HeadSite from "../../components/HeadSite";
+import Discuss from "../../components/Discuss";
+
+<HeadSite
+  category="Desarrollo Web"
+  date={1610035708117}
+  title="Enrutando páginas en Next.js"
+  slug="enrutando-paginas-en-nextjs"
+  thumbnailImage="/nextjs.png"
+  excerpt="En este post veremos lo sencillo que es crear páginas con Next.js y como automáticamente el router de Next.js las coloca disponibles para nosotros simplemente creando el archivo. También veremos como son obtenidos los parámetros dinámicos de una URL."
+></HeadSite>
+
+# Enrutando páginas con Next.js
+
+<PostHeader
+  tags={["Next.js", "Javascript", "NodeJS", "Desarrollo Web"]}
+  date={1610035708117}
+  slug="enrutando-paginas-en-nextjs"
+/>
+
+
+## Enrutando páginas
+
+Tu no necesitas interactuar directamente con el router de Next.js para crear y ver páginas en tu sitio. Next.js se ha construido con convenciones
+para hacer el proceso de creación de rutas tan fácil como crear un archivo 🚀.
+
+Para comenzar solo debes crear una carpeta llamada `/pages`. Next.js asociará cualquier archivo dentro de este directorio como una ruta. El nombre del archivo
+determinará también el nombre de la ruta o el patrón de la ruta, y cualquiera que sea el componente exportado dentro de estos archivos será la página que se mostrará.
+
+Por ahora creemos una ruta "index" simplemente creando el archivo dentro de nuestra carpeta pages: `/pages/index.js`
+
+Luego, creemos un componente y exportemoslo:
+
+
+```js
+    import React from 'react'
+
+    export default () => <h1>Index Page</h1>
+```
+
+Inicializa tu servidor de desarrollo:
+
+**npm**
+
+```bash
+    $ npm run dev
+```
+
+
+**yarn**
+
+```bash
+    $ yarn dev
+```
+
+Deberiamos ser capaces de navegar en nuestro browser a la ruta "index" y ver nuestro h1. Como vez es super fácil crear una ruta y tenerla disponible en nuestro proyecto casi que
+de inmediato. Este tipo de convenciones hace que desarrollar sea más rápido y que puedas enfocarte más en el contenido que en la lógica.
+
+Verás que nada más al abrir el navegador aparece el contenido:
+
+[![](/nextjs/routing-index-page.png)](/nextjs/routing-index-page.png "Routing Index Page")
+
+🧠 **Nota:** El archivo index siempre es un caso particular y más en Next.js ya que se mostrará por defecto tal cual un archivo html, sin embargo a diferencia de un
+sitio web tradicional o de una SPA la ruta http://localhost:3000/index no existe y se mostrará el error 404 por defecto de Next.js. 
+
+🎓**Tip:** Recuerda que Next.js toma como base la carpeta `pages` por tanto la ruta *http://localhost:3000/pages/index* tampoco existirá a menos que crees una folder *pages* dentro 
+del folder principal *pages*.
+
+Bien!, hemos creado una página "index", pero ¿Què pasa con routas más complejas como: **`myapp.com/project/settings`** o **`myapp.com/user/1`** donde el **`1`** es un parámetro?.
+No te preocupes, Next.js tiene eso cubierto.
+
+## Carpetas y rutas
+
+Para crear una ruta como **`/project/settings`** podemos usar carpetas dentro de nuestra carpeta principal **`/pages`**. Para nuestra aplicación de tomar notas, necesitamos las siguientes
+routas por ahora:
+
+```bash
+    index => /
+    todas las notas => /notes
+    una nota => /notes/:id
+```
+
+Ya hemos creado la ruta "index", creemos la ruta para todas las notas: Para ello creemos una carpeta llamada notes y dentro creemos un archivo `index.jsx`.
+
+
+```bash
+    pages
+        index.jsx
+        notes
+            index.jsx
+```
+
+Añadiendo un archivo "index" dentro de una carpeta, le estamos diciendo a Next.js que queremos que el componente dentro del index sea lo que se muestre 
+cuando se acceda a esta ruta con el nombre de la carpeta. Entonces, en este caso navegando a **`/notes`** va a renderizar el componente que este en **`pages/notes/index.jsx`**
+
+Coloquemos por ahora dentro del archivo **`pages/notes/index.jsx`** lo siguiente:
+
+
+```js
+    import React from 'react'
+
+    export default () => <h1>All notes Page</h1>
+```
+
+Si navegas a la ruta deberías ver lo siguiente:
+
+[![](/nextjs/routing-notes-page.png)](/nextjs/routing-notes-page.png "Routing Notes Page")
+
+🎓**Tip:** No siempre es necesario crear la carpeta y el archivo index, también puedes crear solo el archivo y Next.js creará la ruta. Por ejemplo:
+**`pages/notes/index.jsx`** puede ser fácilmente sustituible por **`pages/notes.jsx`** y funcionará exactamente igual. Sin embargo debes tener cuidado
+con los confictos entre las rutas. Es completamente incorrecto tener: **`pages/notes/index.jsx`** y **`pages/notes.jsx`** ya que Next.js no sabrá cual de
+los dos componentes renderizar para dicha ruta.
+
+
+## Rutas dinámicas
+
+Next.js hace fácil la creación de rutas dinámicas. Dependiendo si tu quieres que estas páginas sean prerrenderizadas o no la estrategía dentro del componente cambia
+pero por ahora enfoquemonos en páginas que será construidas cuando el servidor este corriendo es decir en tiempo de ejecución de nuestro servidor y no en tiempo de
+compilación o *"build time"*.
+
+Para crear una ruta dinámica, podemos crear una archivo que tenga el nombre del parametro dinamico entre corchetes cuadrados, algo así:
+
+```bash
+    [id].jsx
+```
+
+Donde `id` es el nombre del parametro. Tu puedes nombrarlo como tu quieras. Recuerda que los corchetes cudrados no son un error o un ejemplo. Es la sintaxis estricta de Next.js 
+para crear una ruta dinámica. Por tanto para crear nuestra ruta de **`/notes/1`** vamos crear el archivo `[id].jsx` dentro de nuestra carpeta **`/notes`**.
+
+```bash
+    pages
+        index.jsx
+        notes
+            index.jsx
+            [id].jsx
+```
+
+Podemos acceder al parametro id dentro de nuestra página usando un hook llamado **`useRouter`** de el módulo **`next/route`**. Este ya viene disponible y listo con
+Next.js.
+
+```js
+    import React from 'react'
+    import { useRouter } from 'next/router'
+
+    export default () => {
+        const router = useRouter()
+        const { id }= router.query
+
+        return (
+                <h1>Note: {id} </h1>
+            )
+    }
+```
+
+Donde el nombre del parametro en el objeto `router.query` es el mismo que el parametro que está dentro de corchetes cuadrados en el nombre de la página:
+
+```bash
+    router.query.id
+             |
+             |
+            [id].jsx
+```
+
+Así verías en tu aplicación el parametro:
+
+[![](/nextjs/routing-note-page.png)](/nextjs/routing-note-page.png "Routing Note Page")
+
+## Capturando todas las rutas
+
+Next.js tiene una funcionalidad bastante bonita que nos ayuda a definir y capturar todas las rutas 
+cuando realmente no queremos hacer una página para cada ruta posible.
+
+Como sería una ruta capturable, basicamente es todas las combinaciones posibles de rutas dentro 
+de una por ejemplo:
+
+```bash
+    this/folder/**
+```
+
+Donde el ** significa todo dentro del "folder". Nosotros podemos hacer lo mismo con el concepto de rutas dinámicas
+en Next.js, lo único que necesitamos hacer es crear un archivo en nuestro directorio con una sintaxis así:
+
+```bash
+    docs/[...params].jsx
+```
+
+Entonces los tres puntos `...`es usado por Next.js para entender que toda la estructura de la url será pasado como 
+parametro, la diferencia entonces dentro del **`useRouter`** será que los parametros serán un arreglo exactamente en
+el mismo orden que se construyó la ruta:
+
+```js
+import React from 'react'
+import { useRouter } from 'next/router'
+
+// file => /docs/[...params].jsx
+// route => /docs/a/b/c
+
+export default () => {
+  const router = useRouter()
+  const { params }= router.query
+
+  // params === ['a', 'b', 'c']
+
+  return (
+    <h1>hello {JSON.stringify(params)}</h1>
+  )
+}
+```
+No importa el número de segmentos que tenga tu ruta siempre los pasará como array.
+
+Así se vería nuestro componente:
+
+[![](/nextjs/routing-catch-all-page.png)](/nextjs/routing-catch-all-page.png "Routing Catch All Page")
+
+Ahora bien, para nuestra página padre es decir para la ruta **`/docs`** sola, aún se mostraría error 404 ya
+que no hemos creado el archivo *index.jsx* dentro de la carpeta. Sin embargo si también queremos ahorrarnos 
+la creación de este archivo, podríamos usar otros corchetes cuadrados fuera de nuestro [...params]. 
+
+```bash
+    docs/[[...params]].jsx
+```
+🎓**Tip:** ¿Cuando usar esta funcionalidad de capturar todas las rutas? Es realmente útil cuando tienes
+un conjunto de páginas que tienen similitudes (si es que no son identicas) con sus layouts y estilos pero
+tienen diferente contenido y necesitan su propia URL. Documentación y Wikis son un ejemplo perfecto para usar ésta
+funcionalidad.
+
+## Non-pages
+
+Las páginas son especiales, pero que pasa cuando solamente necesitamos necesitamos componentes de react para 
+usar en nuestras páginas. Next.js no tiene ninguna convención sobre esto. Normalmente estos componentes se crean
+dentro de la carpeta **`/src/components`** donde colocamos los componentes.
+
+Eso es todo, espero que este post te sea de utilidad y lo puedas aplicar a 
+algún proyecto que tengas en mente y que simplemente te haya ayudado a entender 
+como funcionan las rutas en Next.js. 
+
+Déjame un comentario si te sirvió  o si quieres añadir 
+alguna opinión o si tienes alguna duda no dudes en dejarme un comentario 
+en la parte de abajo, recuerda que si te gustó también puedes compartir usando los links a 
+las redes sociales en la parte de abajo.
+
+<Discuss slug="enrutando-paginas-en-nextjs" />

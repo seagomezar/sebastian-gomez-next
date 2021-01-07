@@ -2,6 +2,16 @@
   "data": {
     "posts": [
       {
+        "id": 0,
+        "tags": ["Next.js", "Javascript", "NodeJS", "Desarrollo Web"],
+        "thumbnailImage":"/nextjs.png",
+        "categories": "Desarrollo Web",
+        "date": 1610035708117,
+        "title": "Enrutando páginas en Next.js",
+        "slug": "enrutando-paginas-en-nextjs",
+        "excerpt": "En este post veremos lo sencillo que es crear páginas con Next.js y como automáticamente el router de Next.js las coloca disponibles para nosotros simplemente creando el archivo. También veremos como son obtenidos los parámetros dinámicos de una URL."
+      },
+      {
         "id": 1,
         "tags": ["Next.js", "Javascript", "NodeJS", "Desarrollo Web"],
         "thumbnailImage":"/nextjs.png",
