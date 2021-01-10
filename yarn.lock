@@ -3349,6 +3349,11 @@ parse5@^6.0.0:
   resolved "https://registry.npmjs.org/parse5/-/parse5-6.0.1.tgz"
   integrity sha512-Ofn/CTFzRGTTxwpNEs9PP93gXShHcTq255nzRYSKe8AkVpZY7e1fpmTfOyoIvjP5HG7Z2ZM7VS9PPhQGW2pOpw==
 
+party-js@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/party-js/-/party-js-1.0.3.tgz#4f71d645dda015fcb09a06b2dd38636765dab3e0"
+  integrity sha512-4nBCbBNJbum8DnV+Qp4cc1HBs3y/jWnO6IGCihOejGWkMMlo5JleS5Z+f+lVAj/eCoXgrSFACPlC8TxAyczQ3w==
+
 pascalcase@^0.1.1:
   version "0.1.1"
   resolved "https://registry.npmjs.org/pascalcase/-/pascalcase-0.1.1.tgz"
