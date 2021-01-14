@@ -1,0 +1,160 @@
+import PostHeader from "../../components/PostHeader";
+import HeadSite from "../../components/HeadSite";
+import Discuss from "../../components/Discuss";
+
+<HeadSite
+  category="Desarrollo Web"
+  date={1610657428434}
+  title="Navegación entre rutas en Next.js"
+  slug="navegacion-entre-rutas-en-nextjs"
+  thumbnailImage="/nextjs.png"
+  excerpt="Navegar entre rutas sin un enrutador como react-router podría resultar complicado en algunos casos. Sin embargo Next.js tiene algunos trucos para ayudarnos a navegar y optimizar esta navegación. En este post descubriremos el módulo next/link y aprenderemos como usarlo."
+></HeadSite>
+
+# Navegación entre rutas en Next.js
+
+<PostHeader
+  tags={["Next.js", "Javascript", "NodeJS", "Desarrollo Web"]}
+  date={1610657428434}
+  slug="navegacion-entre-rutas-en-nextjs"
+/>
+
+Next.js tiene algunos trucos para ayudarnos a navegar y optimizar esta navegación
+
+## El componente Link
+
+Similarmente al tag `<a>` pomodes usar el componente `Link` del modulo `next/link`, Su uso es bastante simple:
+
+```jsx
+<Link href="/settings">
+  <a>settings</a>
+</Link>
+```
+
+El componente `Link`  te permite hacer enrutamiento del lado del cliente (**cliente-side**) . Esto es importante de notar porque si tu no quieres hacer enrutamiento del lado del cliente 
+o estas poniendo un link a otro sitio web puede utilizar el tag `<a>`de manera normal y corriente.
+
+Siempre dentro del componente `Link` debes tener obligatoriamente el tag `<a>` pero sin colocar la propiedad `href` ya que esta propiedad deberá vivir dentro del `Link`y no dentro `<a>`.
+
+> 👍🏾&nbsp;&nbsp;**tip**: Actualiza tu linter o tu validador de codigo para que el tag `<a>` no te se saque error porque no tiene la propiedad **href**.
+
+La propiedad `href` toma el nombre exacto de la página tal cual como lo creaste en el directorio de las páginas. **`pages`** . Para las rutas dinámicas se necesita utilizar la propiedad `as` 
+tal como te lo muestro en la siguiente porción del código.
+
+```jsx
+<Link href="/user/[id].js" as={`/user/${user.id}`}>
+  <a>user</a>
+</Link>
+```
+
+Linkeemos nuestras páginas en la aplicación de notas de la siguiente manera:
+
+```jsx
+// pages/index.jsx
+import React from 'react'
+import Link from 'next/link'
+
+export default () => (
+  <div>
+    <h1>Index page</h1>
+
+    <Link href="/notes">
+      <a>Notes</a>
+    </Link>
+  </div> 
+)
+```
+
+```jsx
+// pages/notes/index.jsx
+import React from 'react'
+import Link from 'next/link'
+
+export default () => {
+  const notes = new Array(15).fill(1).map((e, i) => ({id: i, title: `Note: ${i}`}))
+
+  return (
+    <div>
+      <h1>Notes</h1>
+
+      {notes.map(note => (
+        <div>
+          <Link key={note.id} href="/notes/[id]" as={`/notes/${note.id}`}>
+            <a>
+              <strong>{note.title}</strong>
+            </a>
+          </Link>
+        </div>
+      ))}
+    </div>
+  )
+}
+```
+
+```jsx
+// pages/notes/[id].jsx
+import React from 'react'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
+
+export default () => {
+  const router = useRouter()
+  const { id }= router.query
+
+  return (
+    <div>
+      <h1>Note: {id} </h1>
+
+      <Link href="/notes">
+        <a>Notes</a>
+      </Link>
+    </div>
+  )
+}
+```
+
+`🚀`
+
+## Cambiando de rutas desde Javascript
+
+Cuando necesitemos cambiar de rutas desde nuestro código javascript en vez de usar el componente `Link` (este concepto se llama enrutado programatico o *programatic routing*), podemos usar el objeto router para hacerlo.
+Existen muchos metodos que puedes encontrar en la documentación de Next.js haciendo click aquí: [Métodos de enrutamiento](https://nextjs.org/docs/routing/introduction). Me enfocaré
+en el más práctico (al menos así lo siento en mis proyectos) que consite en en usar el método push del objeto router.
+
+Tal como el componente `Link`, el objeto router se utiliza para enrutamiento del lado de cliente. Para navegar a una página simplemente debes usar el método `push`que funciona
+exactamente igual que la propiedad href en el componente `Link`. Y para hacer enrutamiento dinámico es decir sustituir la propiedad `as` basta con que como segundo parámetro
+le pasemos la ruta con la variable. Veamos el ejemplo:
+
+```jsx 
+import React from 'react'
+import { useRouter } from 'next/router'
+
+export default () => {
+  const router = useRouter()
+  const id = 2
+
+  return (
+    <div>
+      <button onClick={e => router.push('/')}>
+        Go Home
+      </button>
+
+      <button onClick={e => router.push('/user/[id]', `/user/${id}`)}>
+        Dashboard
+      </button>
+    </div>
+  )
+}
+```
+
+Eso es todo, espero que este post te sea de utilidad y lo puedas aplicar a 
+algún proyecto que tengas en mente y que simplemente te haya ayudado a entender 
+como funciona la navegación entre rutas en Next.js. 
+
+Déjame un comentario si te sirvió, si quieres añadir 
+alguna opinión o si tienes alguna duda no dudes en dejarme un comentario 
+en la parte de abajo, recuerda que si te gustó también puedes compartir usando los links a 
+las redes sociales en la parte de abajo.
+
+<Discuss slug="navegacion-entre-rutas-en-nextjs" />
+
