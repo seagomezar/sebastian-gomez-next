@@ -1,0 +1,184 @@
+{
+    "data":  [
+            {
+                "ID": 1,
+                "TEXTO": "Las fotos siempre serán ese recuerdo que no olvidaremos, tú que tanto me conoces con cual de las siguientes crees que me represento.",
+                "CODIGO": "ADSA452VA10",
+                "STAND": "FOTOS"
+            },
+            {
+                "ID": 2,
+                "TEXTO": "¿Todas las personas tienen metas una de las mías fue tener mi primer carro cual crees tú que fue ese vehículo?",
+                "CODIGO": "SEBHA45JKA",
+                "STAND": "CARROS"
+            },
+            {
+                "ID": 3,
+                "TEXTO": "Esa meta lograda de obtener mi primer carro tuvo un color característico que para mí represento muchas cosas dime de color era:",
+                "CODIGO": "VERHAISKA",
+                "STAND": "COLORES"
+            },
+            {
+                "ID": 4,
+                "TEXTO": "Mi familia es lo más importante por eso dirígete al lugar donde está mi mamá y hazle una pregunta única.",
+                "CODIGO": "AMORDEMAMA",
+                "STAND": "NADA"
+            },
+            {
+                "ID": 5,
+                "TEXTO": "Una de mis pasiones se basa en la música de esta he aprendido mucho a lo largo de mi vida y tocando instrumentos me destaco en uno ¿cuál es?",
+                "CODIGO": "FLUTE371BEBE",
+                "STAND": "INSTRUMENTOS"
+            },
+            {
+                "ID": 6,
+                "TEXTO": "Un gran momento en mi vida fue tocar en la Orquesta Filarmónica de Medellin dime en que año ocurrió esto.",
+                "CODIGO": "TOQUE2010",
+                "STAND": "AÑOS"
+            },
+            {
+                "ID": 7,
+                "TEXTO": "Tu lugar de trabajo se vuelve como una segunda familia te enseña, te pule y te forma esto hizo conmigo la primera empresa con la cual trabaje, descubre el nombre:",
+                "CODIGO": "SEXO1294",
+                "STAND": "EMPRESAS"
+            },
+            {
+                "ID": 8,
+                "TEXTO": "Vas muy bien continua con el circuito de códigos, esta vez deberás tomarte mi bebida favorita y al fondo de esta encontraras el código correcto (NO LICOR)",
+                "CODIGO": "ELCAFEAYUDAALAMOR",
+                "STAND": "COCINA"
+            },
+            {
+                "ID": 9,
+                "TEXTO": "Leer es instruirse es divertirse es pensar de manera diferente y esto lo hacen muy bien las sagas de libros sabes cuál fue la primera que leí",
+                "CODIGO": "HARRYPOTTERFOREVER",
+                "STAND": "LIBROS"
+            },
+            {
+                "ID": 10,
+                "TEXTO": "He tenido la oportunidad de vivir fuera del país, no en todos he pasado el mismo tiempo; dime tu cual ha sido donde más tiempo he vivido.",
+                "CODIGO": "CHILECULIAOPO",
+                "STAND": "PAISES"
+            },
+            {
+                "ID": 11,
+                "TEXTO": "El deporte no construye el carácter: lo revela. “heywood broun” ¿cuál dices tú que es mi deporte favorito?",
+                "CODIGO": "NBAYBASKET",
+                "STAND": "DEPORTES"
+            },
+            {
+                "ID": 12,
+                "TEXTO": "Mi familia es lo más importante por eso dirígete al lugar donde está mi papá y hazle una pregunta única.",
+                "CODIGO": "TENGANMUCHOSHIJOS",
+                "STAND": "NADA"
+            },
+            {
+                "ID": 13,
+                "TEXTO": "Cuando estaba en el colegio empecé a desarrollar ciertas habilidades una de ellas el deporte, en cual fui campeón consecutivo mientras estudiaba.",
+                "CODIGO": "AJEDRESITASIHAY3",
+                "STAND": "DEPORTES"
+            },
+            {
+                "ID": 14,
+                "TEXTO": "Observa muy bien y piensa cual es la talla de zapatos que utilizo",
+                "CODIGO": "PIEGRANDEPENEGRANDE",
+                "STAND": "TALLAS"
+            },
+            {
+                "ID": 15,
+                "TEXTO": "Por situaciones que te lleva la vida durante una larga temporada viví en chile recuerdas en que año fue",
+                "CODIGO": "2014-2015",
+                "STAND": "AÑOS"
+            },
+            {
+                "ID": 16,
+                "TEXTO": "Mi Serie favorita es:",
+                "CODIGO": "LOST8931JA",
+                "STAND": "SERIES"
+            },
+            {
+                "ID": 17,
+                "TEXTO": "Unas películas te divierten, otras te causan tristeza, otras risas, otras terror, pero todas con el mismo fin entretenernos por cosas como estas mi película favorita es.",
+                "CODIGO": "QUEGAY52",
+                "STAND": "PELICULAS"
+            },
+            {
+                "ID": 18,
+                "TEXTO": "Un buen restaurante es importante pero más importante aún es su comida y que esta sea de mi agrado por eso mi comida predilecta a la hora de salir es",
+                "CODIGO": "SUSHIPRO",
+                "STAND": "COMIDAS"
+            },
+            {
+                "ID": 19,
+                "TEXTO": "Todos tenemos una casa barrio o lugar que en la niñez siempre vamos a recordar, en mi caso fue el barrio donde crecí cuál es ese",
+                "CODIGO": "NIQUIACLUB",
+                "STAND": "BARRIOS"
+            },
+            {
+                "ID": 20,
+                "TEXTO": "Muestra tus habilidades y descubre cual es mi Tag de Twitter",
+                "CODIGO": "SEBASGOJS",
+                "STAND": "TWITTER"
+            },
+            {
+                "ID": 21,
+                "TEXTO": "Tú que tanto me conoces sabrás decirme en que empresa trabajo actualmente",
+                "CODIGO": "GLOBANT823",
+                "STAND": "EMPRESAS"
+            },
+            {
+                "ID": 22,
+                "TEXTO": "Acá encontraras muchas fotos cada una con momentos diferentes de mi vida unos mas especiales que otros, escoge la foto que represente el más importante de todos.",
+                "CODIGO": "AWWBEBE",
+                "STAND": "FOTOS"
+            },
+            {
+                "ID": 23,
+                "TEXTO": "Por trabajo, por diversión he viajo a lo largo de mi vida y uno de los países al que más he viajado ha sido.",
+                "CODIGO": "USA12",
+                "STAND": "PAISES"
+            },
+            {
+                "ID": 24,
+                "TEXTO": "Tú que ya estás en esta pregunta quiere decir que me conoces muy bien así que continuemos e indica con cuál de estas frases me describirías mejor",
+                "CODIGO": "MEAMAS?",
+                "STAND": "FRASES"
+            },
+            {
+                "ID": 25,
+                "TEXTO": "Vas muy bien y por eso es momento de premiarte tomando una copa de mi licor favorito, recuerda debes tomarlo todo y solo hasta el final encontraras el código correcto.",
+                "CODIGO": "J",
+                "STAND": "COCINA"
+            },
+            {
+                "ID": 26,
+                "TEXTO": "Y en este punto una pregunta diferente, cual crees tú es mi pose favorita para hacer el amor, ojo ahora no me estés imaginando.",
+                "CODIGO": "ENCUATRONO",
+                "STAND": "POSES"
+            },
+            {
+                "ID": 27,
+                "TEXTO": "En que año hice la primera comunion? vamos no es tan dificil, haz los calculos tenia 7 años =P  ese es el codigo",
+                "CODIGO": "1998",
+                "STAND": "AÑOS"
+            },
+            {
+                "ID": 28,
+                "TEXTO": "Mi color favorito es:  BUSCA EN EL STAND DE LOS COLORES",
+                "CODIGO": "BLANCOCOMOELPAN",
+                "STAND": "COLORES"
+            },
+            {
+                "ID": 29,
+                "TEXTO": "Hazle una pregunta a mi novia y ella te dará el codigo",
+                "CODIGO": "ELAMOR",
+                "STAND": "NADA"
+            },
+            {
+                "ID": 30,
+                "TEXTO": "¡Excelente! Estas a punto de terminar mi carrera de observación y para concluirla nos hace falta un último código es sencillo tírate a la piscina y al fondo de esta lo encontraras.",
+                "CODIGO": "NADARTECOMPONE",
+                "STAND": "PISCINA"
+            }
+        ]
+    }
