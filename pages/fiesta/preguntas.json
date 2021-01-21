@@ -44,7 +44,7 @@
             },
             {
                 "ID": 8,
-                "TEXTO": "Vas muy bien continua con el circuito de códigos, esta vez deberás tomarte mi bebida favorita y al fondo de esta encontraras el código correcto (NO LICOR)",
+                "TEXTO": "Esta vez deberás tomarte mi bebida favorita y al fondo de esta encontraras el código correcto (NO LICOR)",
                 "CODIGO": "ELCAFEAYUDAALAMOR",
                 "STAND": "COCINA"
             },
@@ -146,7 +146,7 @@
             },
             {
                 "ID": 25,
-                "TEXTO": "Vas muy bien y por eso es momento de premiarte tomando una copa de mi licor favorito, recuerda debes tomarlo todo y solo hasta el final encontraras el código correcto.",
+                "TEXTO": "Es el momento de premiarte tomando una copa de mi licor favorito, recuerda debes tomarlo todo y solo hasta el final encontraras el código correcto.",
                 "CODIGO": "J",
                 "STAND": "COCINA"
             },
@@ -170,8 +170,8 @@
             },
             {
                 "ID": 29,
-                "TEXTO": "Hazle una pregunta a mi novia y ella te dará el codigo",
-                "CODIGO": "ELAMOR",
+                "TEXTO": "Búscame y tómate una foto con migo, súbela a alguna red social (si quieres) y te daré el codigo",
+                "CODIGO": "MARICASINO",
                 "STAND": "NADA"
             },
             {
