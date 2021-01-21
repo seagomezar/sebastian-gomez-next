@@ -54,7 +54,7 @@ class Pregunta extends React.Component {
     return (
       <section style={{background: this.generateBackgroundGradient()}}>
         <form onSubmit={this.handleSubmit}>
-          <h1>{this.props.TEXTO}...</h1>
+          <h1>{this.props.INDEX + 1}. {this.props.TEXTO}...</h1>
           {(this.props.STAND != 'NADA') ? <h2>(Busca en el stand de {this.props.STAND})</h2> : ''}
           <h3>Ingresa el código: </h3>
           <input type="text" value={this.state.value} onChange={this.handleChange} />

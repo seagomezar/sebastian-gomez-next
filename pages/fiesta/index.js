@@ -1,7 +1,6 @@
 import Countdown from 'react-countdown';
 import styles from './fiesta.module.css';
 import preguntas from "./preguntas.json"; // WHERE YOUR POSTS ARE
-import Pregunta from "../../components/Pregunta";
 
 export default class Fiesta extends React.Component {
 

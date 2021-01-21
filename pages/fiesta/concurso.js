@@ -5,9 +5,11 @@ import { withRouter } from 'next/router'
 
 class concurso extends React.Component {
     index = 0;
-    
+    unsortedQuestions = [];
     constructor (props){
         super(props);
+        const {questions} = this.props;
+        this.unsortedQuestions = [...questions].sort(() => Math.random() - 0.5)
         this.getNextQuestion = this.getNextQuestion.bind(this);
         this.finish = this.finish.bind(this);
         this.state = {currentQuestion: 0};
@@ -28,15 +30,17 @@ class concurso extends React.Component {
             <div>
                 {(this.props.questions.length > this.index) ?  
                     <Pregunta 
-                        STAND={this.props.questions[this.state.currentQuestion].STAND} 
-                        TEXTO={this.props.questions[this.state.currentQuestion].TEXTO} 
-                        CODIGO={this.props.questions[this.state.currentQuestion].CODIGO}
+                        STAND={this.unsortedQuestions[this.state.currentQuestion].STAND} 
+                        TEXTO={this.unsortedQuestions[this.state.currentQuestion].TEXTO} 
+                        CODIGO={this.unsortedQuestions[this.state.currentQuestion].CODIGO}
                         LAST={false}
+                        INDEX={this.state.currentQuestion}
                         getNextQuestion={this.getNextQuestion}/> :
                     <Pregunta 
                         STAND={this.props.lastQuestion.STAND} 
                         TEXTO={this.props.lastQuestion.TEXTO} 
                         CODIGO={this.props.lastQuestion.CODIGO}
+                        INDEX={this.state.currentQuestion}
                         LAST={true}
                         getNextQuestion={this.getNextQuestion}
                         finish={this.finish}/>

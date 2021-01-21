@@ -1,0 +1,33 @@
+
+.container {
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    flex-flow: column;
+    width: 100%;
+    height: 100vh;
+    color: white;
+}
+.container::after{
+    content: "";
+    background: url('../../public/fiesta1.jpeg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    opacity: 1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;  
+    height: auto;
+}
+
+.container > h1 {
+    padding-top: 100px;
+    padding-left: 1em;
+}
