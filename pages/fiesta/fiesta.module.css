@@ -190,3 +190,7 @@
     color: white;
     font-size: 32px;
 }
+
+.container a {
+    color: white;
+}

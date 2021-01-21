@@ -38,12 +38,12 @@ class Pregunta extends React.Component {
   handleSubmit(event) {
     console.log('A name was submitted: ' + this.state.value);
     event.preventDefault();
-    if((this.state.value == this.props.CODIGO || this.state.value == 1) && !this.props.LAST) {
+    if((this.state.value == this.props.CODIGO || this.state.value == 'COMODIN1') && !this.props.LAST) {
       console.log("Codigo correcto");
       this.setState({incorrect: false});
       this.setState({value: ''});
       this.props.getNextQuestion();
-    } else if((this.state.value == this.props.CODIGO || this.state.value == 1) && this.props.LAST){
+    } else if((this.state.value == this.props.CODIGO || this.state.value == 'COMODIN1') && this.props.LAST){
       this.setState({incorrect: false});
       this.props.finish()
     } else {

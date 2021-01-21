@@ -26,26 +26,31 @@ class concurso extends React.Component {
     }
 
     render() {
-        return(
-            <div>
-                {(this.props.questions.length > this.index) ?  
-                    <Pregunta 
-                        STAND={this.unsortedQuestions[this.state.currentQuestion].STAND} 
-                        TEXTO={this.unsortedQuestions[this.state.currentQuestion].TEXTO} 
-                        CODIGO={this.unsortedQuestions[this.state.currentQuestion].CODIGO}
-                        LAST={false}
-                        INDEX={this.state.currentQuestion}
-                        getNextQuestion={this.getNextQuestion}/> :
-                    <Pregunta 
-                        STAND={this.props.lastQuestion.STAND} 
-                        TEXTO={this.props.lastQuestion.TEXTO} 
-                        CODIGO={this.props.lastQuestion.CODIGO}
-                        INDEX={this.state.currentQuestion}
-                        LAST={true}
-                        getNextQuestion={this.getNextQuestion}
-                        finish={this.finish}/>
-                }      
-            </div>)
+        if (parseInt(Date.now())>1614056400000) {
+            return(
+                <div>
+                    {(this.props.questions.length > this.index) ?  
+                        <Pregunta 
+                            STAND={this.unsortedQuestions[this.state.currentQuestion].STAND} 
+                            TEXTO={this.unsortedQuestions[this.state.currentQuestion].TEXTO} 
+                            CODIGO={this.unsortedQuestions[this.state.currentQuestion].CODIGO}
+                            LAST={false}
+                            INDEX={this.state.currentQuestion}
+                            getNextQuestion={this.getNextQuestion}/> :
+                        <Pregunta 
+                            STAND={this.props.lastQuestion.STAND} 
+                            TEXTO={this.props.lastQuestion.TEXTO} 
+                            CODIGO={this.props.lastQuestion.CODIGO}
+                            INDEX={this.state.currentQuestion}
+                            LAST={true}
+                            getNextQuestion={this.getNextQuestion}
+                            finish={this.finish}/>
+                    }      
+                </div>)
+        } else {
+            return <div><h1>Aún no puedes iniciar el concurso</h1></div>
+        }
+        
     }
 }
 
