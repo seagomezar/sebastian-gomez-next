@@ -41,6 +41,7 @@ class Pregunta extends React.Component {
     if((this.state.value == this.props.CODIGO || this.state.value == 1) && !this.props.LAST) {
       console.log("Codigo correcto");
       this.setState({incorrect: false});
+      this.setState({value: ''});
       this.props.getNextQuestion();
     } else if((this.state.value == this.props.CODIGO || this.state.value == 1) && this.props.LAST){
       this.setState({incorrect: false});
