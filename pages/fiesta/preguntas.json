@@ -20,7 +20,7 @@
             },
             {
                 "ID": 4,
-                "TEXTO": "Mi familia es lo más importante por eso dirígete al lugar donde está mi mamá y hazle una pregunta única.",
+                "TEXTO": "Mi familia es lo más importante por eso dirígete al lugar donde está mi mamá y hazle una pregunta única. (Recuerda las medidas de Bioseguridad, tapabocas)",
                 "CODIGO": "AMORDEMAMA",
                 "STAND": "NADA"
             },
@@ -68,7 +68,7 @@
             },
             {
                 "ID": 12,
-                "TEXTO": "Mi familia es lo más importante por eso dirígete al lugar donde está mi papá y hazle una pregunta única.",
+                "TEXTO": "Mi familia es lo más importante por eso dirígete al lugar donde está mi papá y hazle una pregunta única. (Recuerda las medidas de Bioseguridad, tapabocas)",
                 "CODIGO": "TENGANMUCHOSHIJOS",
                 "STAND": "NADA"
             },
