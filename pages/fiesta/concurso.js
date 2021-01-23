@@ -26,7 +26,7 @@ class concurso extends React.Component {
     }
 
     render() {
-        if (parseInt(Date.now())>1614056400000) {
+        if (parseInt(Date.now())>1) {
             return(
                 <div>
                     {(this.props.questions.length > this.index) ?  
