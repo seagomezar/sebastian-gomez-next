@@ -1,0 +1,84 @@
+import PostHeader from "../../components/PostHeader";
+import HeadSite from "../../components/HeadSite";
+import Discuss from "../../components/Discuss";
+
+<HeadSite
+  category="Desarrollo Web"
+  date={1611776848509}
+  title="CSS y Estilos en Nextjs"
+  slug="css-y-estilos-en-nextjs"
+  thumbnailImage="/nextjs.png"
+  excerpt="Next.js viene con algunas convenciones y reglas para usar CSS por defecto. Funcionan bastante bien. Recuerda que Next.js usa React, por lo tanto tu puede usar casi cualquier mecanismo que funcione con React en tus aplicaciones de Next.js. En este post cubriremos esto."
+></HeadSite>
+
+# CSS y Estilos en Next.js
+
+<PostHeader
+  tags={["Next.js", "Javascript", "NodeJS", "CSS", "Desarrollo Web"]}
+  date={1611776848509}
+  slug="css-y-estilos-en-nextjs"
+/>
+
+Cuando hablamos de estilos en aplicaciones de React, hablamos de dos tipos de estilos: *Estilos Globales* y *Estilos por Componentes*.
+Para los estilos Globales debemos de importarlos en el punto de entrada de nuestra aplicación. Peroo ¿Cuál es el punto de entrada de mi aplicación
+en Next.js?. Realmente ese punto de entrada ya esta creado cuando usamos Next.js pero si deseamos importar
+estilos globales no nos queda otra opción que crearlo.
+
+
+Solo debemos crear el  archivo en la carpeta **pages** y nombrarlo **_app.jsx**. Ya que estamos sobreescribiendo
+este punto de entrada para la  aplicación lo mínimo que debemos escribir para que no se altere
+el funcionamiento normal es lo siguiente:
+
+```js
+export default function App({ Component, pageProps }) {
+  return <Component {...pageProps} />
+}
+```
+
+Esto es lo que automaticamente es creado cuando inicializamos nuestro  proyecto con Next.js solo que para
+poder añadir nuestros estilos globales tenemos que importarlos allí.
+
+```js
+import 'flexbox.css'
+import '../mystyles.css'
+
+export default function App({ Component, pageProps }) {
+  return <Component {...pageProps} />
+}
+```
+
+Ahora, cuando tu no quieras usar CSS  Global, Next.js soporta módulos de CSS. Esto permitirá
+aislar el CSS de tus componentes con el fín de evitar colisiones.
+
+> 👍🏾&nbsp;&nbsp;**tip**: Cada  vez que se importa un módulo de css, una nuevo nombre de clase se crea
+para cada componente que use dichos estilos.
+
+Tu puedes importar un módulo de CSS en cualquier parte de tu aplicación. Para crear un módulo de CSS debes
+de usar una sintaxis especial en el nombre del archivo:
+
+`styles.module.css`
+
+Esto hace que los módulos de CSS sean una solución perfecta para estilizar los componentes.
+
+
+```js
+components
+  button.jsx
+  button.module.css
+```
+> 👍🏾&nbsp;&nbsp;**tip**: Es posible usar pre-procesadores de CSS como SASS, LESS o Stylus 
+extendiendo la funcionalidad de Next.js. Vamos a cubrir eso en un post posterior.
+
+Personalmente prefiero usar una solución diferente cuando estoy estilizando mis aplicaciones de React.
+Lo veremos en el siguiente post.
+
+Eso es todo, espero que este post te sea de utilidad y lo puedas aplicar a 
+algún proyecto que tengas en mente y que simplemente te haya ayudado a entender 
+cuales son las maneras que tiene Next.js para incorporar CSS.
+
+Déjame un comentario si te sirvió, si quieres añadir 
+alguna opinión o si tienes alguna duda no dudes en dejarme un comentario 
+en la parte de abajo, recuerda que si te gustó también puedes compartir usando los links a 
+las redes sociales en la parte de abajo.
+
+<Discuss slug="css-y-estilos-en-nextjs" />
