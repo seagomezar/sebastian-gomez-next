@@ -18,16 +18,20 @@ export default class Index extends React.Component {
   static getInitialProps(ctx) {
     const currentPage = ctx.query.page || 1;
     const POSTS_BY_PAGE = 5; // CHANGE TO SET THE PAGES PER POST
-    const filteredPosts = posts.data.posts.slice(
+    const dataPosts = posts.data.posts;
+    const sortedPosts = dataPosts.sort(function(a, b) {
+      return b.date - a.date;
+    });
+    const filteredPosts = sortedPosts.slice(
       (currentPage - 1) * POSTS_BY_PAGE,
       currentPage * POSTS_BY_PAGE
     );
     return {
       currentPage: currentPage,
       totalPages:
-        posts.data.posts.length % POSTS_BY_PAGE === 0
-          ? Math.round(posts.data.posts.length / POSTS_BY_PAGE)
-          : Math.round(posts.data.posts.length / POSTS_BY_PAGE) + 1,
+        sortedPosts.length % POSTS_BY_PAGE === 0
+          ? Math.round(sortedPosts.length / POSTS_BY_PAGE)
+          : Math.round(sortedPosts.length / POSTS_BY_PAGE) + 1,
       posts: filteredPosts,
     };
   }

@@ -3,16 +3,6 @@
   "data": {
     "posts": [
       {
-        "id": 0,
-        "tags": ["Next.js", "Javascript", "NodeJS", "CSS", "Desarrollo Web"],
-        "thumbnailImage":"/nextjs.png",
-        "categories": "Desarrollo Web",
-        "date": 1611776848509,
-        "title": "CSS y Estilos en Nextjs",
-        "slug": "css-y-estilos-en-nextjs",
-        "excerpt": "Next.js viene con algunas convenciones y reglas para usar CSS por defecto. Funcionan bastante bien. Recuerda que Next.js usa React, por lo tanto tu puede usar casi cualquier mecanismo que funcione con React en tus aplicaciones de Next.js. En este post cubriremos esto."
-      },
-      {
         "id": 1,
         "tags": ["Next.js", "Javascript", "NodeJS", "Desarrollo Web"],
         "thumbnailImage":"/nextjs.png",
@@ -57,7 +47,7 @@
         "tags": ["Firebase", "Angular", "Google Maps", "Desarrollo Web"],
         "thumbnailImage": "/firebase.png",
         "categories": ["Desarrollo Web"],
-        "date": "2020-05-28",
+        "date": 1590624000000,
         "title": "Profundizando en un stack tecnológico para aplicaciones en Real Time",
         "slug": "profundizando-en-un-stack-tecnologico-para-uber-like-apps",
         "excerpt": "Las aplicaciones de tipo ¨Uber Like¨ (como Uber) o ¨Rappi Like¨ se han venido popularizando. Una gran cantidad de soluciones tecnológicas hoy en día tratan de emular el comportamiento o la funcionalidad de este tipo de aplicaciones. Esto se debe a que algunas compañías empiezan a incursionar en el mundo del delivery o los ecommerce y tratan de atarse a casos de éxito ya establecidos. Por eso, en este artículo les enseñaremos cómo funcionan las aplicaciones que hacen seguimiento en tiempo real de un objeto y aprenderemos a visualizar utilizando Google Maps, Angular y Firebase."
@@ -67,7 +57,7 @@
         "tags": ["NodeJS", "Javascript", "Desarrollo Web"],
         "thumbnailImage": "/bulljs.png",
         "categories": ["Desarrollo Web"],
-        "date": "2020-05-11",
+        "date": 1589155200000,
         "title": "Aprendiendo BullJS",
         "slug": "aprendiendo-bulljs",
         "excerpt": "Es común que nos encontremos algún proyecto en nuestra vida de programador con requerimientos muy puntuales en cuanto a funciones y su ejecución. Por ejemplo usar funciones en javascript que deban ejecutarse una cantidad específica de veces, poder volver a ejecutarse en caso de fallar o una o varias veces y priorizar estas funciones para saber cual ejecutar primero, entre muchas otras cosas. Es allí donde muchos sistemas de manejo de colas para NodeJS empiezan a tomar importancia. Sin embargo en este artículo vamos a hablar de una en particular llamada BullJS."
@@ -77,7 +67,7 @@
         "tags": ["Animaciones", "CSS", "HTML", "Desarrollo Web"],
         "thumbnailImage": "/css3.jpg",
         "categories": ["CSS"],
-        "date": "2020-05-05",
+        "date": 1588636800000,
         "title": "Todo sobre transiciones en css",
         "slug": "todo-sobre-transiciones-en-css",
         "excerpt": "Las transiciones hacen parte del conjunto de herramientas que poseemos como desarrolladores FrontEnd para mejorar la experiencia del usuario dentro de nuestra aplicación Web. Son útiles porque nos permiten animar el cambio de valores en las distintas propiedades de un elemento lo que puede hacerlo más llamativo al usuario e invitarlo a interactuar con él. En este post trataré de cubrir el extenso tema de transiciones con diversos ejemplos adaptados desde la especificación."
@@ -87,7 +77,7 @@
         "tags": ["Javascript", "Desarrollo Web"],
         "thumbnailImage": "/javascript.jpg",
         "categories": ["Javascript"],
-        "date": "2020-05-05",
+        "date": 1588636800000,
         "title": "Entendiendo El Patron Observador en Javascript",
         "slug": "entendiendo-el-patron-observador-observer-pattern-en-javascript",
         "excerpt": "En este post aprenderemos como implementar el patrón observer en Javascript y en que situaciones lo podemos usar."
@@ -97,7 +87,7 @@
         "tags": ["Angular", "Desarrollo Web"],
         "thumbnailImage": "/angular.png",
         "categories": ["Angular"],
-        "date": "2020-05-05",
+        "date": 1588636800000,
         "title": "Escribiendo Tests para Funciones y Propiedades Privadas en Angular",
         "slug": "escribiendo-tests-para-funciones-y-propiedades-privadas-en-angular",
         "excerpt": "Escribir pruebas unitarias debe convertirse en una tarea diaria, no es posible crear una aplicación en Angular de calidad sin realizar un proceso consciente de unit testing. En este post veremos como probar funciones que retornan propiedades privadas en Angular 6 con Karma y Jasmine."
@@ -107,7 +97,7 @@
         "tags": ["Javascript", "Desarrollo Web"],
         "thumbnailImage": "/javascript.jpg",
         "categories": ["Javascript"],
-        "date": "2020-05-05",
+        "date": 1588636800000,
         "title": "Entendiendo el Patrón Iterador en Javascript",
         "slug": "entendiendo-el-patron-iterador-iterator-pattern-en-javascript",
         "excerpt": "En este post aprenderemos como implementar el patrón iterador en Javascript y en que situaciones lo podemos usar."
@@ -117,7 +107,7 @@
         "tags": ["Animaciones", "CSS", "HTML", "Desarrollo Web"],
         "thumbnailImage": "/css3.jpg",
         "categories": ["CSS"],
-        "date": "2020-05-05",
+        "date": 1588636800000,
         "title": "Todo sobre animaciones en css",
         "slug": "todo-sobre-animaciones-en-css",
         "excerpt": "Las animaciones en CSS son un conjunto de herramientas que nos permite mostrar contenido de una manera mas dinámica y llamativa para los usuarios de nuestro sitio web. Su principal ventaja versus las transiciones es que nos permite tener un más granular de los estados de la animación mediante los @keyframes. En este post daremos un vistazo general a animaciones en CSS y como implementarlas."
@@ -127,7 +117,7 @@
         "tags": ["Angular", "Desarrollo Web"],
         "thumbnailImage": "/angular.png",
         "categories": ["Angular"],
-        "date": "2018-01-24 12:13:17",
+        "date": 1516813997000,
         "title": "Tres maneras de inyectar servicios en unit tests con Angular",
         "slug": "tres-maneras-de-inyectar-servicios-en-unit-tests-con-angular",
         "excerpt": "Cuando escribimos tests unitarios para nuestros servicios en Angular tenemos varias opciones para inyectar el servicio en cada uno de nuestros 'it' bloques, en este post exploraremos cuales son algunas las ventajas y desventajas de cada una de las maneras."
@@ -137,7 +127,7 @@
         "tags": ["Javascript", "Programación Reactiva", "Desarrollo Web"],
         "thumbnailImage": "/rxjs.png",
         "categories": ["Javascript"],
-        "date": "2020-05-05",
+        "date": 1588636800000,
         "title": "Implementando of como operador en Observables",
         "slug": "implementando-of-como-operador-en-observables",
         "excerpt": "En este post vamos a aumentar el número de operadores que podemos implementar y usar dentro de un Observable creando el operador 'of' que básicamente será un operador de generación de observables de manera que podamos convertir datos en observables."
@@ -147,7 +137,7 @@
         "tags": ["Javascript", "Programación Reactiva", "Desarrollo Web"],
         "thumbnailImage": "/rxjs.png",
         "categories": ["Javascript"],
-        "date": "2020-05-05",
+        "date": 1588636800000,
         "title": "Implementando map como operador en Observables",
         "slug": "implementando-map-como-operador-en-observables",
         "excerpt": "En este post vamos a valernos de esta definición para aumentar el número de operadores que podemos implementar y usar dentro de un Observable."
@@ -157,7 +147,7 @@
         "tags": ["Javascript", "Programación Reactiva", "Desarrollo Web"],
         "thumbnailImage": "/rxjs.png",
         "categories": ["Javascript"],
-        "date": "2020-05-05",
+        "date": 1588636800000,
         "title": "Implementando filter como operador en Observables",
         "slug": "implementando-filter-como-operador-en-observables",
         "excerpt": "En este post vamos a aumentar el número de operadores que podemos implementar y usar dentro de un Observable añadiendo el operador map.        "
@@ -167,7 +157,7 @@
         "tags": ["Javascript", "Programación Reactiva", "Desarrollo Web"],
         "thumbnailImage": "/rxjs.png",
         "categories": ["Javascript"],
-        "date": "2020-05-05",
+        "date": 1588636800000,
         "title": "Implementando concat para concatenar observables",
         "slug": "implementando-concat-para-concatenar-observables",
         "excerpt": "En este post vamos a implementar una función que nos permita transformar distintos observables en uno solo concatenándolos."
@@ -177,7 +167,7 @@
         "tags": ["Javascript", "Programación Reactiva", "Desarrollo Web"],
         "thumbnailImage": "/rxjs.png",
         "categories": ["Javascript"],
-        "date": "2020-05-05",
+        "date": 1588636800000,
         "title": "Implementando Observables a partir de Eventos en JS",
         "slug": "implementando-observables-a-partir-de-eventos-en-js",
         "excerpt": "En éste post vamos a tratar de implementar la definición más pura de observable y la función generadora de observables más común como ya lo tiene implementado RX.js con el fin de entender a profundidad el concepto."
@@ -187,7 +177,7 @@
         "tags": ["NodeJS", "Desarrollo Web"],
         "thumbnailImage": "/cloudvision.png",
         "categories": ["Javascript"],
-        "date": "2020-05-05",
+        "date": 1588636800000,
         "title": "Implementando Google Cloud Vision en NodeJS",
         "slug": "implementando-google-cloud-vision-en-nodejs",
         "excerpt": "Siguiendo con la temática de la Cloud Visión de Google en este post vamos a implementarla en NodeJS para detectar características sobre imágenes. "
@@ -197,7 +187,7 @@
         "tags": ["NodeJS", "Desarrollo Web"],
         "thumbnailImage": "/cloudvision.png",
         "categories": ["Javascript"],
-        "date": "2020-05-05",
+        "date": 1588636800000,
         "title": "Introducción a Google Vision API",
         "slug": "introduccion-a-google-vision-api",
         "excerpt": "Siempre me ha fascinado la inteligencia artificial. De hecho en el pasado he dictado algunos cursos en algunas universidades en Medellín sobre inteligencia artificial y la temática es tan larga y extensa que a veces los primeros acercamientos de una persona a este tema resultan escabrosas y es probable que se rindan antes de tratar de hacer algo tangible usando inteligencia artificial. Por esto he querido crear esta historia ademas porque servirá de memoria para una presentación que haré en el Google DevFest de Medellín."
@@ -207,7 +197,7 @@
         "tags": ["Javascript", "Typescript", "Angular", "Desarrollo Web"],
         "thumbnailImage": "/angular.png",
         "categories": ["Javascript"],
-        "date": "2020-05-05",
+        "date": 1588636800000,
         "title": "Fundamentos de Typescript",
         "slug": "fundamentos-de-typescript",
         "excerpt": "Si has empezado a trabajar con Angular te darás cuenta que de la mayoría de la documentación esta hecha en Typescript. Esto se debe básicamente el equipo de Angular decidio crear Angular sobre TypesScript, TypeScript es una colaboración oficial entre Google y Microsoft con el fin de orientar completamente Javascript a Objetos. "
@@ -217,10 +207,20 @@
         "tags": ["Javascript", "HTML", "CSS", "Desarrollo Web"],
         "thumbnailImage": "/css3.jpg",
         "categories": ["Desarrollo Web"],
-        "date": "2020-05-05",
+        "date": 1588636800000,
         "title": "Como crear espectaculares presentaciones usando HTML y CSS",
         "slug": "como-crear-espectaculares-presentaciones-usando-html-y-css",
         "excerpt": "Muchas veces en cursos o conferencias que presenciamos nos hemos encontrado con una novedosa manera de ver  el contenido o la información que nos es presentada. Esta forma es mediante el navegador web que ofrece grandes ventajas respecto a los métodos tradicionales de creación de diapositivas como Powerpoint o Prezi."
+      },
+      {
+        "id": 20,
+        "tags": ["Next.js", "Javascript", "NodeJS", "CSS", "Desarrollo Web"],
+        "thumbnailImage":"/nextjs.png",
+        "categories": "Desarrollo Web",
+        "date": 1611776848509,
+        "title": "CSS y Estilos en Nextjs",
+        "slug": "css-y-estilos-en-nextjs",
+        "excerpt": "Next.js viene con algunas convenciones y reglas para usar CSS por defecto. Funcionan bastante bien. Recuerda que Next.js usa React, por lo tanto tu puede usar casi cualquier mecanismo que funcione con React en tus aplicaciones de Next.js. En este post cubriremos esto."
       }
     ]
   }
