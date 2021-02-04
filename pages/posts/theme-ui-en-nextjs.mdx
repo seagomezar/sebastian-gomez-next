@@ -1,0 +1,236 @@
+import PostHeader from "../../components/PostHeader";
+import HeadSite from "../../components/HeadSite";
+import Discuss from "../../components/Discuss";
+
+<HeadSite
+  category="Desarrollo Web"
+  date={1612464127872}
+  title="Theme UI en Next.js"
+  slug="theme-ui-en-nextjs"
+  thumbnailImage="/nextjs.png"
+  excerpt="En este post exploraremos la combinación de Next.js y Theme UI para manejar nuestros estilos de una manera más óptima y organizada en nuestra aplicación. Veremos desde su instalación hasta su uso más avanzado no solo en Next.js sino también en React.js."
+></HeadSite>
+
+# Theme UI en Next.js
+
+<PostHeader
+  tags={["Next.js", "Javascript", "NodeJS", "CSS", "Desarrollo Web"]}
+  date={1611776848509}
+  slug="theme-ui-en-nextjs"
+/>
+
+[Theme UI](https://theme-ui.com/) es una librería que te permite crear objetos con un tema de css (Colores, variables, estilos... etc) y 
+usarlos en tus componentes. También te permite manejar el scope o alcance de los estilos para que afecten uno o varios
+componentes e inyectar el CSS en tu aplicación.
+
+> 👍🏾&nbsp;&nbsp;**tip**: Lo más recomendable es crear un objeto con el tema e inyectar el mismo objecto en todos los 
+componentes.
+
+Primero, instalemos algunos paquetes que necesitamos y por supuesto [Theme-ui](https://theme-ui.com/)
+
+**npm**
+```bash
+    npm i theme-ui @theme-ui/presets --save
+```
+
+**yarn**
+```bash
+    yarn add theme-ui @theme-ui/presets
+```
+
+Lo siguiente que debemos hacer es crear el tema, el tema va a ser creado en un archivo javascript en la
+carpeta raíz de nuestra aplicación de Next.js y lo llamaremos **`theme.js.`**.
+
+Luego escribiremos el tema como un objeto (JSON) con los estilos que necesitemos:
+
+```js
+import { roboto } from '@theme-ui/presets'
+
+const theme = {
+  ...roboto,
+  containers: {
+    card: {
+      boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
+      border: '1px solid',
+      borderColor: 'muted',
+      borderRadius: '4px',
+      p: 2,
+    },
+    page: {
+      width: '100%',
+      maxWidth: '960px',
+      m: 0,
+      mx: 'auto',
+    }
+  },
+  styles: {
+    ...roboto.styles
+  }
+}
+
+export default theme
+```
+
+Este objeto, usa un preset (algo que ya viene predefinido si revisas la documentación de Theme UI) junto con algunos
+extras que hemos añadido. Puedes hacer un console.log(theme) y te darás cuenta todo lo que theme UI trae por defecto.
+
+Lo siguiente que podemos hacer es crear por ejemplo (y ojo, es un ejemplo para nuestra app de notas) un componente para
+manejar la navegación de nuestro sitio web. Colocalo en src/components/nav.jsx.
+
+```js
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
+import Link from 'next/link'
+
+const Nav = () => (
+  <header sx={{height: '60px', width: '100vw', bg: 'primary', borderBottom: '1px solid', borderColor: 'primary'}}>
+    <nav sx={{display: 'flex', alignItems: 'center',  justifyContent: 'space-between', variant: 'containers.page', height: '100%'}}>
+      <Link href="/">
+        <a sx={{fontWeight: 'bold', fontSize: 4, cursor: 'pointer'}}>Note App</a>
+      </Link>
+
+      <Link href="/notes">
+        <a sx={{color: 'text', fontSize: 3, cursor: 'pointer'}}>notes</a>
+      </Link>
+
+    </nav>
+  </header>
+)
+
+export default Nav
+```
+
+Notemos algunas cosas sutiles pero poderosas aquí:
+
+```js
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
+```
+
+¿Cómo es posible que este componente funcione con JSX sin importar React? el comentario que vez arriba:
+```js
+/** @jsx jsx */
+Es algo que se llama JSX pragma
+``` 
+
+Este le ayuda a entender al compilador como compilar este archivo. y este comentario
+combinado con el `import` de JSX de theme-ui le dice al compilador cual herramienta usar para procesar JSX en este archivo
+y en este caso es la funcion JSX de theme-ui. Esa es la misma razón por la cual siempre importamos `import React from "react";`
+en nuestro componentes. !!! Para usar JSX !!!
+
+Otra funcionalidad que nos trae el JSX de theme-ui es que nos permite añadir la propiedad sx en nuestros componentes
+para escribir directamente el css allí (Inline CSS). Y también para usar nuestro objeto de tema que creamos.
+
+Ahora, ¿Como hacemos esto en nuestras páginas?, aquí dos ejemplos:
+
+```js
+// pages/index.jsx
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
+import Link from 'next/link'
+
+export default () => (
+  <div sx={{ height: `calc(100vh - 60px)`}}>
+    <div sx={{variant: 'containers.page', display: 'flex', alignItems: 'center', height: '100%'}}>
+      <h1 sx={{fontSize: 8, my: 0}}>This is a really dope note taking app.</h1>
+    </div>
+  </div> 
+)
+```
+
+```js
+// pages/notes/index.jsx
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
+import Link from 'next/link'
+
+export default () => {
+  const notes = new Array(15).fill(1).map((e, i) => ({id: i, title: `This is my note ${i}`}))
+
+  return (
+    <div sx={{variant: 'containers.page'}}>
+      <h1>My Notes</h1>
+
+      <div sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap'}}>
+        {notes.map(note => (
+          <div sx={{width: '33%', p: 2}}>
+            <Link key={note.id} href="/notes/[id]" as={`/notes/${note.id}`}>
+              <a sx={{textDecoration: 'none', cursor: 'pointer'}}>
+                <div sx={{variant: 'containers.card',}}>
+                  <strong>{note.title}</strong>
+                </div>
+              </a>
+            </Link>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+```
+
+```js
+// pages/[id].jsx
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
+
+export default () => {
+  const router = useRouter()
+  const { id }= router.query
+
+  return (
+    <div sx={{variant: 'containers.page'}}>
+      <h1>Note: {id} </h1>
+    </div>
+  )
+}
+```
+
+Ahora necesitamos encapsular toda nuestras aplicación dentro de nuestro tema esa es la razón de usar Theme-ui.
+para ello tenemos dos opciones:
+
+- Encapsular las páginas individualmente (inyectando en todas el tema una por una).
+- Encapsular el componente principal que de ahí se agrupan y desprenden todas.
+
+Dado que lo ideal es usar el Them UI en toda la aplicación es consistente encapsular el componente principal o raíz y
+si has leído mis posts anteriores sobre Next.js sabrás que éste se encuentra en: `pages/_app.jsx`.
+
+```js
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
+import { ThemeProvider } from 'theme-ui'
+import theme from '../theme'
+import Nav from '../src/components/nav'
+
+export default function App({ Component, pageProps }) {
+  return (
+    <ThemeProvider theme={theme}>
+      <div>
+        <Nav />
+        <Component {...pageProps} />
+      </div>      
+    </ThemeProvider>
+  )
+}
+```
+
+Como imaginarás Theme UI es super útil pero también tiene muchas funcionalidades
+y es demasiado profundo, en este post solo intente cubrir lo fundamental para usarlo en tus aplicaciones de 
+Next.js pero también el concepto es el mismo para tus aplicaciones de React.js.
+
+
+> 👍🏾&nbsp;&nbsp;**tip**: Hay otra alternativa similar a Theme UI llamada [Baseweb](https://baseweb.design/) que es de
+Uber, que funciona similar a Theme UI.
+
+Eso es todo, espero que este post te sea de utilidad y lo puedas aplicar a 
+algún proyecto que tengas en mente o que simplemente te haya ayudado a entender 
+como funciona Theme UI y como aplicarlo exitosamente a tus proyectos de Next.js.
+
+Déjame un comentario si te sirvió, si quieres añadir 
+alguna opinión o si tienes alguna duda no dudes en dejarme un comentario 
+en la parte de abajo, recuerda que si te gustó también puedes compartir usando los links a 
+las redes sociales en la parte de abajo.
+
+<Discuss slug="theme-ui-en-nextjs" />

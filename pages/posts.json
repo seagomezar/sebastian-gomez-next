@@ -221,6 +221,16 @@
         "title": "CSS y Estilos en Nextjs",
         "slug": "css-y-estilos-en-nextjs",
         "excerpt": "Next.js viene con algunas convenciones y reglas para usar CSS por defecto. Funcionan bastante bien. Recuerda que Next.js usa React, por lo tanto tu puede usar casi cualquier mecanismo que funcione con React en tus aplicaciones de Next.js. En este post cubriremos esto."
+      },
+      {
+        "id": 21,
+        "tags": ["Next.js", "Javascript", "NodeJS", "CSS", "Desarrollo Web"],
+        "thumbnailImage":"/nextjs.png",
+        "categories": "Desarrollo Web",
+        "date": 1612464127872,
+        "title": "Theme UI en Next.js",
+        "slug": "theme-ui-en-nextjs",
+        "excerpt": "En este post exploraremos la combinación de Next.js y Theme UI para manejar nuestros estilos de una manera más óptima y organizada en nuestra aplicación. Veremos desde su instalación hasta su uso más avanzado no solo en Next.js sino también en React.js."
       }
     ]
   }
