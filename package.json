@@ -17,6 +17,7 @@
     "@mdx-js/loader": "^1.6.19",
     "@mdx-js/mdx": "^1.6.19",
     "@next/mdx": "^9.5.5",
+    "countapi-js": "^1.0.2",
     "next": "^10.0.0",
     "party-js": "^1.0.3",
     "prism-react-renderer": "^1.1.1",
