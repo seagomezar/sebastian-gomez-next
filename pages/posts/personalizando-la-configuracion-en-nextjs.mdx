@@ -1,0 +1,112 @@
+import PostHeader from "../../components/PostHeader";
+import HeadSite from "../../components/HeadSite";
+import Discuss from "../../components/Discuss";
+
+<HeadSite
+  category="Desarrollo Web"
+  date={1613504637505}
+  title="Personalizando la configuración en Next.js"
+  slug="personalizando-la-configuracion-en-nextjs"
+  thumbnailImage="/nextjs.png"
+  excerpt="Next.js ofrece una facilidad enorme a la hora de modificar comportamientos del flujo de ejecución. Desde crear e inyectar variables de entorno hasta cambiar como Webpack trabaja con Next.js mediante plugins. En este post cubriremos los fundamentos de la configuración de Next.js"
+></HeadSite>
+
+# Personalizando la configuración en Next.js
+
+<PostHeader
+  tags={["Next.js", "Javascript", "NodeJS", "Desarrollo Web"]}
+  date={1613504637505}
+  slug="personalizando-la-configuracion-en-nextjs"
+/>
+
+Next.js ofrece una facilidad enorme a la hora de modificar comportamientos del flujo de ejecución. 
+Lo más normal por ejemplo sería añadir variables de entorno a tu proyecto. 
+Esto se puede hacer fácilmente modificando el archivo next.config.js para que exporte un objeto:
+(En caso de que no lo hayas creado lo puedes crear en la raíz de tu sitio).
+
+```js
+    module.exports = {
+    webpack: {
+      // Algo que tegnas que configurar en Webpack
+    },
+      env: {
+          MY_ENV_VAR: "HOLA",
+          OTHER_ENV_VAR: "NO PONGAS SECRETOS AQUI"
+      }
+    }
+```
+
+También podemos exportar el objeto de configuración mediante una función que nos permita 
+por ejemplo insertar variables dependiendo del entorno:
+
+
+```js
+// EXTRAEMOS LA FASE QUE NECESITEMOS
+const { PHASE_DEVELOPMENT_SERVER } = require('next/constants')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+
+module.exports = (phase, { defaultConfig }) => {
+  if (phase === PHASE_DEVELOPMENT_SERVER) {
+    return {
+      ...defaultConfig,
+      env: {
+          // SOLO SERVIRA SI ESTAMOS EN MODOD DE DESARROLLO
+          IS_THIS_A_FUNCTION: "TRUE" 
+      }
+    }
+  }
+
+  return defaultConfig
+} 
+```
+
+Hay muchas constantes que trae Next.js que nos sirven para intervenir ciertas fases. 
+Las concernientes a si es desarrollo, producción o construcción son:
+
+```js
+export declare const PHASE_PRODUCTION_BUILD = "phase-production-build";
+export declare const PHASE_PRODUCTION_SERVER = "phase-production-server";
+export declare const PHASE_DEVELOPMENT_SERVER = "phase-development-server";
+```
+
+Podríamos por ejemplo intervenir la fase de producción para monitorear con un plugin de webpack 
+el tamaño del bundle y ver información que sea valiosa al respecto:
+
+
+```js
+const { PHASE_PRODUCTION_SERVER } = require('next/constants')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+
+module.exports = (phase, { defaultConfig }) => {
+  if (phase === PHASE_PRODUCTION_SERVER) {
+    return {
+      ...defaultConfig,
+      webpack: {
+        plugins: [new BundleAnalyzerPlugin()]
+      }
+    }
+  }
+
+  return defaultConfig
+} 
+```
+
+[Aquí](https://github.com/vercel/next.js/blob/canary/packages/next/next-server/lib/constants.ts#L1-L4) 
+puedes ver las diferentes fases que tiene Next.js y todas sus constantes.
+
+Como puedes ver la configuración original de Next.js puede ser fácilemente modificada y puedes
+extender la funcionalidad tanto como puedas y quieras, no te sientas asustado de hacerlo
+ya que ésto ter permitirá sacarle mucho más provecho a Next.js.
+
+Eso es todo, espero que este post te sea de utilidad y lo puedas aplicar a 
+algún proyecto que tengas en mente o que simplemente te haya ayudado a entender 
+como funciona modificarle la configuración a tus proyectos de Next.js.
+
+Déjame un comentario si te sirvió, si quieres añadir 
+alguna opinión o si tienes alguna duda no dudes en dejarme un comentario 
+en la parte de abajo, recuerda que si te gustó también puedes compartir usando los links a 
+las redes sociales en la parte de abajo.
+
+<Discuss slug="personalizando-la-configuracion-en-nextjs" />
+
+

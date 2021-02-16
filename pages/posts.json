@@ -231,6 +231,16 @@
         "title": "Theme UI en Next.js",
         "slug": "theme-ui-en-nextjs",
         "excerpt": "En este post exploraremos la combinación de Next.js y Theme UI para manejar nuestros estilos de una manera más óptima y organizada en nuestra aplicación. Veremos desde su instalación hasta su uso más avanzado no solo en Next.js sino también en React.js."
+      },
+      {
+        "id": 22,
+        "tags": ["Next.js", "Javascript", "NodeJS", "CSS", "Desarrollo Web"],
+        "thumbnailImage":"/nextjs.png",
+        "categories": "Desarrollo Web",
+        "date": 1613504637505,
+        "title": "Personalizando la configuración en Next.js",
+        "slug": "personalizando-la-configuracion-en-nextjs",
+        "excerpt": "Next.js ofrece una facilidad enorme a la hora de modificar comportamientos del flujo de ejecución. Desde crear e inyectar variables de entorno hasta cambiar como Webpack trabaja con Next.js mediante plugins. En este post cubriremos los fundamentos de la configuración de Next.js"
       }
     ]
   }
