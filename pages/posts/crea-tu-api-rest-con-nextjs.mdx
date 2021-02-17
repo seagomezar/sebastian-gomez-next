@@ -1,0 +1,223 @@
+import PostHeader from "../../components/PostHeader";
+import HeadSite from "../../components/HeadSite";
+import Discuss from "../../components/Discuss";
+
+<HeadSite
+  category="Desarrollo Web"
+  date={1613600041916}
+  title="Crea tu API Rest con Next.js"
+  slug="crea-tu-api-rest-con-nextjs"
+  thumbnailImage="/nextjs.png"
+  excerpt="Plugins, plugins y más plugins, ya que has aprendido que la configuración de Next.js se puede extender y personalizar fácilmente, en este post cubriremos más a fondo el tema de los plugins que puedes utilizar desde la configuración misma de Next.js"
+></HeadSite>
+
+# Crea tu API Rest con Next.js
+
+<PostHeader
+  tags={["Next.js", "Javascript", "NodeJS", "Desarrollo Web"]}
+  date={1613600041916}
+  slug="crea-tu-api-rest-con-nextjs"
+/>
+
+Es muy simple crear una API Rest con Next.js lo único que debes hacer es crear una
+carpeta llamada *`api`* dentro de carpeta de páginas. Los nombres son importantes
+porque son convenciones que Next.js tiene para nosotros. 
+
+Next.js entiende que cuando tienes una carpeta llamada *`api`* la trata como
+un archivo que tiene datos para ser expuestos como una api.
+
+Creemos entonces una estructura como esta:
+
+```js
+pages
+  api
+    hello.js
+```
+
+⚠️**Tip:** Las rutas de las APIs de que haces con Next.js no son lo mismo que las
+*`Serveless API Function`* que Vercel ofrece en su plataforma aunque comparter algunas
+similitudes.
+
+Creemos entonces algunos endpoints en nuestra API Rest para guardar comentarios. Pero
+primero miremos como expondríamos datos de la panera más sencilla:
+
+```js
+// pages/api/data.js
+// route => /api/data
+
+export default (req, res) => {
+  res.statusCode = 200
+  res.setHeader('Content-Type', 'application/json')
+  res.end(JSON.stringify({ estamosEn: 'Medellín JS' }))
+}
+```
+
+Como ves no se diferencia mucho a un servidor de express. Como notarás esta función
+responderá a todos los llamados GET, PUT, POST y DELETE, y si has hecho una API Rest
+con algún otro framework o lenguaje te darás cuenta que es necesario tener métodos 
+diferentes que respondan por las operaciones correctas. Por lo anterior vamos a necesitar
+un middleware en nuestro caso utilizaremos [*connect*](https://www.npmjs.com/package/connect) que nos hará más fácil la vida.
+
+Primero instalaremos las dependencias:
+
+npm
+```bash
+npm i next-connect cors
+```
+
+yarn
+```bash
+yarn add next-connect cors
+```
+
+luego en nuestro archivo data.js podríamos pegar lo siguiente:
+
+```js
+// pages/api/data
+import nc from 'next-connect';
+import cors from 'cors'
+
+const handler = nc()
+  // use connect based middleware
+  .use(cors())
+  // express like routing for methods
+  .get((req, res) => {
+    res.send('Hola Medellín JS')
+  })
+  .post((req, res) => {
+    res.json({ hola: 'MedellinJS' })
+  })
+  .put(async (req, res) => {
+    res.end('Hola Amigos')
+  })
+  
+export default handler;
+```
+
+Bien, ahora imaginemos que queremos para nuestro Blog poder administrar comentarios
+y para ello deberíamos de crear un simple CRUD con las respectivas rutas:
+
+```js
+    create comment => POST /api/comment
+    update comment => PATCH /api/comment/:id
+    delete comment => DELETE /api/comment/:id
+    get one comment => GET /api/comment/:id
+    get all comment => GET /api/comment/
+```
+
+Dado estas rutas en realidad solo tenemos dos rutas per diferentes operaciones:
+- /api/comment
+- /api/comment/:id
+
+En primer lugar creemos nuestro lugar para almacenar la información no será una base
+de datos (No por ahora) será simplemente en memoria.
+
+```js
+// src/data/data.js
+const comments = []
+
+module.exports = comments
+```
+
+ahora creemos la estructura de carpetas para nuestras dos rutas:
+
+```js
+pages
+  api
+    comments
+      [id].js
+      index.js
+```
+
+¿Qué escribir en cada uno?
+
+Bueno no será difícil de adivinar dado nuestro ejemplo anterior:
+
+```js
+// pages/api/note/index.js
+import nc from 'next-connect'
+import notes from '../../../src/data/data'
+
+const handler = nc()
+  .get((req, res) => {
+    res.json({data: notes})
+  })
+  .post((req, res) => {
+    const id = Date.now()
+    const note = {...req.body, id}
+
+    notes.push(note)
+    res.json({data: note})
+  })
+export default handler
+```
+
+```js
+// pages/api/comment/[id].js
+import nc from 'next-connect'
+import comments from '../../../data/data'
+
+const getcomment = id => comments.find(n => n.id === parseInt(id))
+
+const handler = nc()
+  .get((req, res) => {
+    
+    const comment = getcomment(req.query.id)
+
+    if (!comment) {
+      res.status(404)
+      res.end()
+      return
+    }
+
+    res.json({data: comment})
+  })
+  .patch((req, res) => {
+    const comment = getcomment(req.query.id)
+
+    if (!comment) {
+      res.status(404)
+      res.end()
+      return
+    }
+    
+    const i = comments.findIndex(n => n.id === parseInt(req.query.id))
+    const updated = {...comment, ...req.body}
+
+    comments[i] = updated
+    res.json({data: updated})
+  })
+  .delete((req, res) => {
+    const comment = getcomment(req.query.id)
+
+    if (!comment) {
+      res.status(404)
+      res.end()
+      return
+    }
+    const i = comments.findIndex(n => n.id === parseInt(req.query.id))
+    
+    comments.splice(i, 1)
+
+    res.json({data: req.query.id})
+  })
+  
+
+export default handler
+```
+
+🎓**Tip:** Puedes usar todos los parametros que necesitas tal cual como lo haces
+en un servidor típico de express mediante *`req.params`* o *`req.query`*.
+
+Eso es todo, espero que este post te sea de utilidad y lo puedas aplicar a 
+algún proyecto que tengas en mente o que simplemente te haya ayudado a entender 
+como crear APIs Rest y como usarla en tus proyectos de Next.js.
+
+Déjame un comentario si te sirvió, si quieres añadir 
+alguna opinión o si tienes alguna duda no dudes en dejarme un comentario 
+en la parte de abajo, recuerda que si te gustó también puedes compartir usando los links a 
+las redes sociales en la parte de abajo.
+
+<Discuss slug="crea-tu-api-rest-con-nextjs" />
+
+

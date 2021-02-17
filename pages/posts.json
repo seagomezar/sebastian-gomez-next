@@ -251,6 +251,16 @@
         "title": "Plugins con Next.js",
         "slug": "plugins-con-nextjs",
         "excerpt": "Plugins, plugins y más plugins, ya que has aprendido que la configuración de Next.js se puede extender y personalizar fácilmente, en este post cubriremos más a fondo el tema de los plugins que puedes utilizar desde la configuración misma de Next.js"
+      },
+      {
+        "id": 24,
+        "tags": ["Next.js", "Javascript", "NodeJS", "CSS", "Desarrollo Web"],
+        "thumbnailImage":"/nextjs.png",
+        "categories": "Desarrollo Web",
+        "date": 1613600041916,
+        "title": "Crea tu API Rest con Next.js",
+        "slug": "crea-tu-api-rest-con-nextjs",
+        "excerpt": "Next.js es un framework fullstack. Y eso no es solo fullstack para crear páginas desde el lado del servidor, sino también para crear una API sin hacer absolutamente nada adicional. En este post aprenderemos a crear una API Rest Con Next.js"
       }
     ]
   }
