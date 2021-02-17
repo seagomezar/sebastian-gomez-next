@@ -241,6 +241,16 @@
         "title": "Personalizando la configuración en Next.js",
         "slug": "personalizando-la-configuracion-en-nextjs",
         "excerpt": "Next.js ofrece una facilidad enorme a la hora de modificar comportamientos del flujo de ejecución. Desde crear e inyectar variables de entorno hasta cambiar como Webpack trabaja con Next.js mediante plugins. En este post cubriremos los fundamentos de la configuración de Next.js"
+      },
+      {
+        "id": 23,
+        "tags": ["Next.js", "Javascript", "NodeJS", "CSS", "Desarrollo Web"],
+        "thumbnailImage":"/nextjs.png",
+        "categories": "Desarrollo Web",
+        "date": 1613595046138,
+        "title": "Plugins con Next.js",
+        "slug": "plugins-con-nextjs",
+        "excerpt": "Plugins, plugins y más plugins, ya que has aprendido que la configuración de Next.js se puede extender y personalizar fácilmente, en este post cubriremos más a fondo el tema de los plugins que puedes utilizar desde la configuración misma de Next.js"
       }
     ]
   }

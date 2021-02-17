@@ -1,0 +1,123 @@
+import PostHeader from "../../components/PostHeader";
+import HeadSite from "../../components/HeadSite";
+import Discuss from "../../components/Discuss";
+
+<HeadSite
+  category="Desarrollo Web"
+  date={1613595046138}
+  title="Plugins con Next.js"
+  slug="plugins-con-nextjs"
+  thumbnailImage="/nextjs.png"
+  excerpt="Plugins, plugins y más plugins, ya que has aprendido que la configuración de Next.js se puede extender y personalizar fácilmente, en este post cubriremos más a fondo el tema de los plugins que puedes utilizar desde la configuración misma de Next.js"
+></HeadSite>
+
+# Plugins con Next.js
+
+<PostHeader
+  tags={["Next.js", "Javascript", "NodeJS", "Desarrollo Web"]}
+  date={1613595046138}
+  slug="plugins-con-nextjs"
+/>
+
+El archivo next.config.js nos da la habilidad de hacer cosas muy poderosas. Debido a que el archivo de configuración
+tiene una convención o mejor dicho reglas que todos los proyectos de Next.js deben seguir, se hace facil inyectar código,
+código escrito por otros mediante que será lo que llamaremos *Plugins*.
+
+Por ejemplo si quisieramos que nuestra aplicación estuviera disponible sin conexión (Offline) podriamos usar muy fácilmente en
+nuestro archivo *next.config.js* lo siguiente:
+
+```js
+const withOffline = require('next-offline');
+const config = {
+    // Lo que sea que vaya en tu configuración
+};
+
+module.exports = withOffline(config);
+```
+
+La gran mayoría de los plugins siguen la convención *"withPluginName"*. Y normalmente toman tu configuracíón de Next.js
+y la encapsulan en tu función y la retornan en el formato que se espera, esto te permite aplicar un patrón de composición
+en caso de que quieras utilizar muchos plugins:
+
+```js
+const withPlugins = require('with-compose-plugins');
+const withOffline = require('next-offline');
+const withReactSvg = require('next-react-svg');
+const config = {
+    MY_ENV: process.env.MY_ENV
+};
+
+module.exports = withPlugins([
+    withOffline, 
+    [withReactSvg,{
+        // Configuración para este plugin
+    }]
+], config);
+```
+
+Como ves se convierte en algo super natural la concatenación de Plugins con Next.js.
+
+Vamos a instalar un plugin llamado *`dotenv`* que nos permite manejar las variables
+de entorno de una manera intuitiva segura y sencilla para nuestra aplicación.
+
+Primero instalemoslo:
+
+*npm*
+```js
+    $ npm i next-env dotevn-load --dev
+```
+
+
+*yarn*
+```js
+    $ yarn add next-env dotevn-load --dev
+```
+
+Luego modifiquemos nuestra configuración:
+
+```js
+    const nextEnv = require('next-env');
+    const dotenvLoad = require('dotenv-load');
+
+    dotenvLoad();
+
+    const withNextEnv = nextEnv();
+    module.exports = withNextEnv();
+```
+
+Luego creemos un archivo *.env* en la raíz de nuestro proyecto y añadamosle algunas variables:
+
+```js
+    APP_URL=www.sebastian-gomez.com
+```
+
+⚠️**Tip:** Recuerda que el objetivo de usar .env es tener nuestras variables críticas o de configuración
+en lugares seguros y nunca hacer commits de ellos a Github.
+
+Ahora, si queremos usar nuestras varaiables en cualquiera de nuestras páginas solo necesitamos usar 
+la variable global process.env.
+
+```js
+    <a sx={{
+        color: 'text',
+        fontSize: 3,
+        cursor: 'pointer'
+    }}
+    href={process.env.APP_URL}
+    >
+     Ir a la aplicación
+    </a>
+```
+
+Eso es todo, espero que este post te sea de utilidad y lo puedas aplicar a 
+algún proyecto que tengas en mente o que simplemente te haya ayudado a entender 
+como funcionan los plugins y como mejorarle la configuración a tus proyectos de Next.js.
+
+Déjame un comentario si te sirvió, si quieres añadir 
+alguna opinión o si tienes alguna duda no dudes en dejarme un comentario 
+en la parte de abajo, recuerda que si te gustó también puedes compartir usando los links a 
+las redes sociales en la parte de abajo.
+
+<Discuss slug="plugins-con-nextjs" />
+
+

@@ -94,6 +94,29 @@ module.exports = (phase, { defaultConfig }) => {
 [Aquí](https://github.com/vercel/next.js/blob/canary/packages/next/next-server/lib/constants.ts#L1-L4) 
 puedes ver las diferentes fases que tiene Next.js y todas sus constantes.
 
+Incluso si te estas preguntando como extender la configuaración para que por ejemplo las páginas no necesariamente
+sean Javascript sino que por ejemplo (como es el caso de este Blog) sean páginas hechas en markdown (.MD) o mardown extendido (.MDX) 
+aquí te la dejo:
+
+```js
+const images = require("remark-images");
+const emoji = require("remark-emoji");
+
+const withMDX = require("@next/mdx")({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [images, emoji]
+  }
+});
+
+module.exports = withMDX({
+  pageExtensions: ["js", "jsx", "md", "mdx"]
+});
+```
+
+Aunque en el siguiente post hablaremos más sobre [Plugins que
+puedes usar en Next.js](/posts/plugins-con-nextjs).
+
 Como puedes ver la configuración original de Next.js puede ser fácilemente modificada y puedes
 extender la funcionalidad tanto como puedas y quieras, no te sientas asustado de hacerlo
 ya que ésto ter permitirá sacarle mucho más provecho a Next.js.
