@@ -262,6 +262,17 @@
         "slug": "crea-tu-api-rest-con-nextjs",
         "excerpt": "Next.js es un framework fullstack. Y eso no es solo fullstack para crear páginas desde el lado del servidor, sino también para crear una API sin hacer absolutamente nada adicional. En este post aprenderemos a crear una API Rest Con Next.js"
       }
+      ,
+      {
+        "id": 25,
+        "tags": ["Next.js", "Javascript", "NodeJS", "CSS", "Desarrollo Web"],
+        "thumbnailImage":"/nextjs.png",
+        "categories": "Desarrollo Web",
+        "date": 1614624178656,
+        "title": "Obteniendo datos con Next.js",
+        "slug": "obteniendo-datos-con-nextjs",
+        "excerpt": "La potencia que  tiene Next.js para obtener datos es de lejos una de las mejores en los frameworks modernos, desde mecanismos de cache hasta peticiones dinámicas hacen que Next.js tenga un conjunto de funcionalidades únicas en este aspecto. En este post exploraremos tres de los métodos que tiene Next.js para traer datos a nuestra aplicación ya sea en tiempo de compilación o en tiempo de ejecución o simplemente como mecanismo de prerenedering."
+      }
     ]
   }
 }

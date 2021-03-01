@@ -1,0 +1,160 @@
+import PostHeader from "../../components/PostHeader";
+import HeadSite from "../../components/HeadSite";
+import Discuss from "../../components/Discuss";
+
+<HeadSite
+  category="Desarrollo Web"
+  date={1614624178656}
+  title="Obteniendo datos con Next.js"
+  slug="obteniendo-datos-con-nextjs"
+  thumbnailImage="/nextjs.png"
+  excerpt="La potencia que  tiene Next.js para obtener datos es de lejos una de las mejores en los frameworks modernos, desde mecanismos de cache hasta peticiones dinámicas hacen que Next.js tenga un conjunto de funcionalidades únicas en este aspecto. En este post exploraremos tres de los métodos que tiene Next.js para traer datos a nuestra aplicación ya sea en tiempo de compilación o en tiempo de ejecución o simplemente como mecanismo de prerenedering."
+></HeadSite>
+
+# Obteniendo Datos con Next.js
+
+<PostHeader
+  tags={["Next.js", "Javascript", "NodeJS", "Desarrollo Web"]}
+  date={1614624178656}
+  slug="obteniendo-datos-con-nextjs"
+/>
+
+Hay muchas maneras de traer datos a nuestra aplicación con Next.js. Dependiendo de cuando y como necesites la información 
+habrán varias alternativas que te pueden funcionar.
+
+Empecemos por lo que ya sabes. Si quieres traer datos del lado del cliente lo debes seguir haciendo como lo haces normalmente. Usando
+axios, fetch, [swr](https://swr.vercel.app/) o [react-query](https://react-query.tanstack.com/) dentro del *ComponentDidMount* o dentro del hook que estes usando.
+
+⚠️**Tip:** Next.js automáticamente injecta fetch para que lo puedas usar en tu aplicación.
+
+Ahora si tu objetivo es obtener datos desde el lado del servidor o "antes de tiempo" (Ahead of time) tenemos tres opciones:
+
+- getStaticProps
+- getStaticPaths
+- getServerSideProps
+
+## Datos estáticos (Static Data)
+
+Todos los métodos anteriores son para el prerenderizado de páginas solamente. Tu no puedes usarlos en componentes o para
+traer datos del lado del cliente.
+
+Hablemos entonces sobre *getStaticProps* en una página:
+
+```js
+// /pages/index.js
+
+const IndexPage = () => {// jsx }
+export default IndexPage
+
+export async function getStaticProps(context) {
+  return {
+    props: {}
+  }
+}
+```
+
+Por tener escrita esta función en el archivo de tu página y exportandola por defecto, Next.js va a ejecutar esta función
+en tiempo de construción. Y cualquiera que sea el resultado será pasado como una propiedad en la página exportada.
+
+⚠️**Tip:** Los resultados de esta función serán guardados dentro de un archivo JSON y pasados como propiedad en el componente
+de la página del lado de cliente en tiempo de ejecución.
+
+Esta función al igual que las otras, solo se ejectutarán del lado del servidor. De hecho nisiquiera el código de esta
+función se enviará al código del cliente por tanto se pueden hacer cosas muy interesantes aquí:
+
+- Interactuar con el sistema de archivos.
+- Conectarse a una base de datos.
+- Trabajo costoso del lado del backend.
+
+El objeto de contexto que tiene los parametros cuando un usuario consulta una de nuestras páginas y esta página es dinámica,
+es decir tiene [id].js o [parametro].js o lo que sea dentro de [ ]. Por esto el objeto contexto tiene en *context.params*
+estos parámetros. Pero imagína que tienes una lista de posts y tu no sabes cuantos ni cuales son y aún quieres hacer que
+tu sitio sea estático. Allí entra a jugar el método *`getStaticPaths`*. Veamos un ejemplo:
+
+```js
+// /pages/blog/:slug.js
+
+const IndexPage = () => {// jsx }
+export default IndexPage
+
+export async function getStaticPaths() {
+  // get all the paths for your posts from an API
+  // or file system
+  const results = await fetch('/api/posts')
+  const posts = await results.json()
+  const paths = posts.map(post => ({params: {slug: 
+  post.slug}}))
+  /*
+  [
+    {params: {slug: 'get-started-with-node'}},
+    {params: {slug: 'top-frameworks'}}
+  ]
+  */
+  return {paths}
+}
+
+export async function getStaticProps({ params }) {
+  const res = await fetch(`/api/post/${params.slug}`)
+  const post = await res.json()
+  return {
+    props: {post}
+  }
+}
+```
+
+## Rutas estáticas (Static Paths)
+
+Si una página tiene una ruta dinámica [id].jsx y usa getStaticProps. También deberá usar getStaticPaths para poder
+prerenderizar todas las páginas en tiempo de compilación en el HTML.
+
+⚠️**Tip:** Usa *`fallback: true`* como parámetro de retorno para el método getStaticPaths si tu tienes un sitio web
+muy grande y tu no quieres estáticamente prerenderizar toooodas las páginas de una sola vez y en vez de eso quieres hacer alguna
+fetch de datos directamente usando server side rendering y alguna paginación.
+
+## Datos desde el servidor (Server Data)
+
+Finalmente tenemos el *`getServerSideProps`*, éste método se ejecutará cada vez que se 
+entre a la página donde lo has escrito, entonces a diferencia de *`getStaticProps`*
+tu vas a esperar por todos los datos del API incluyendo parámetros, headers y el
+request  y response. Veámos un ejemplo:
+
+```js
+const IndexPage = () => {// jsx }
+export default IndexPage
+
+export async function getServerSideProps() {
+  const response = await fetch(`https://somedata.com`)
+  const data = await response.json()
+
+  return { props: { data } }
+}
+```
+## Entonces... ¿Cuando usar cual?
+
+**¿Necesitas usar datos en tiempo de ejecución y *NO* necesitas Server Side Rendering?**
+R/: Usa fetch o axios desde el  lado del cliente en el componentDidMount o en el hook adecuado.
+
+**¿Necesitas datos en tiempo de ejecución que varian de request a request y *SI* necesitas Servier Side Rendering?**
+R:/ Usa getServerSideProps
+
+**¿Tienes páginas que traen información que no cambia  mucho y que es *cacheable* y además ésta información está disponible en tiempo de compilación, por ejemplo un CMS?**
+R:/ Usa getStaticProps
+
+**¿Tienes páginas que traen información que no cambia  mucho y que es *cacheable* y además ésta información está disponible en tiempo de compilación pero además la página  recibe parámetros?
+R:/ Use getStaticProps y getStaticPaths
+
+⚠️**Tip:** Next.js sigue mejorando en lo que respecta a la obtención de datos, es de lejos mi parte favorita ya que tiene poca o ninguna sobrecarga y es extremadamente potente.
+
+
+Eso es todo, espero que este post te sea de utilidad y lo puedas aplicar a 
+algún proyecto que tengas en mente o que simplemente te haya ayudado a entender 
+cuales son los mecanismos que tiene Next.js para la obtención de datos.
+
+Déjame un comentario si te sirvió, si quieres añadir 
+alguna opinión o si tienes alguna duda no dudes en dejarme un comentario 
+en la parte de abajo, recuerda que si te gustó también puedes compartir usando los links a 
+las redes sociales en la parte de abajo.
+
+<Discuss slug="obteniendo-datos-con-nextjs" />
+
+
