@@ -1,13 +1,13 @@
 import Link from "next/link";
-import HeadSite from "../components/HeadSite";
-import Nav from "../components/Nav";
-import PostList from "../components/PostList";
-import PostNavigation from "../components/PostNavigation";
-import Footer from "../components/Footer";
-import posts from "./posts.json"; // WHERE YOUR POSTS ARE
-import { initGA, logPageView } from "../utils/analytics";
+import HeadSite from "../../components/HeadSite";
+import Nav from "../../components/Nav";
+import PostList from "../../components/PostList";
+import PostNavigation from "../../components/PostNavigation";
+import Footer from "../../components/Footer";
+import posts from "../posts.json"; // WHERE YOUR POSTS ARE
+import { initGA, logPageView } from "../../utils/analytics";
 
-export default class Index extends React.Component {
+export default class Page extends React.Component {
   
   componentDidMount() {
     if (!window.GA_INITIALIZED) {
@@ -60,8 +60,8 @@ export default class Index extends React.Component {
   }
 }
 
-export async function getStaticProps() {
-  const currentPage = 1;
+export async function getStaticProps({params}) {
+    const currentPage = params.id || 1;
     const POSTS_BY_PAGE = 5; // CHANGE TO SET THE PAGES PER POST
     const dataPosts = posts.data.posts;
     const sortedPosts = dataPosts.sort(function(a, b) {
@@ -81,4 +81,17 @@ export async function getStaticProps() {
         posts: filteredPosts,
       } 
     };
+}
+export async function getStaticPaths() {
+    const POSTS_BY_PAGE = 5; // CHANGE TO SET THE PAGES PER POST
+    const dataPostsLength = posts.data.posts.length;
+    const pages = Math.ceil(dataPostsLength/POSTS_BY_PAGE);
+    const paths = [];
+    for (let i = 1; i <= pages; i++) {
+        paths.push({params: {id: String(i)}})
+    }
+  return {
+    paths,
+    fallback: false
+  }
 }

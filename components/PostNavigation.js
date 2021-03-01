@@ -8,7 +8,7 @@ class PostNavigation extends React.Component {
       <div className="post-navigation">
         {currentPage > 1 ? (
           <div>
-            <Link href={"/?page=" + Number(parseInt(currentPage) - 1)}>
+            <Link href={"/page/"+ (parseInt(currentPage) - 1)}>
               <a className="newer-posts">Artículos Recientes</a>
             </Link>
           </div>
@@ -17,7 +17,7 @@ class PostNavigation extends React.Component {
         )}
         {currentPage < totalPages ? (
           <div>
-            <Link href={"/?page=" + Number(parseInt(currentPage) + 1)}>
+            <Link href={"/page/"+ (parseInt(currentPage) + 1)}>
               <a className="older-posts">Artículos Anteriores</a>
             </Link>
           </div>
