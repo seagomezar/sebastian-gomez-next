@@ -2,6 +2,7 @@ const images = require("remark-images");
 const emoji = require("remark-emoji");
 
 const withMDX = require("@next/mdx")({
+  target: 'serverless',
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [images, emoji]
@@ -9,6 +10,5 @@ const withMDX = require("@next/mdx")({
 });
 
 module.exports = withMDX({
-  target: 'serverless',
   pageExtensions: ["js", "jsx", "md", "mdx"]
 });
