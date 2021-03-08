@@ -136,13 +136,6 @@ class Links extends React.Component {
           </Link>
         </li>
         <li>
-          <Link href={"/docencia"}>
-            <a>
-              <i className="icon"></i> 👨‍🏫<span> Docencia</span>
-            </a>
-          </Link>
-        </li>
-        <li>
           <Link href={"/sobre-mi"}>
             <a>
               <i className="icon"></i> 📝<span> Sobre Mí</span>
