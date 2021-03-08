@@ -234,7 +234,7 @@
       },
       {
         "id": 22,
-        "tags": ["Next.js", "Javascript", "NodeJS", "CSS", "Desarrollo Web"],
+        "tags": ["Next.js", "Javascript", "NodeJS", "Desarrollo Web"],
         "thumbnailImage":"/nextjs.png",
         "categories": "Desarrollo Web",
         "date": 1613504637505,
@@ -244,7 +244,7 @@
       },
       {
         "id": 23,
-        "tags": ["Next.js", "Javascript", "NodeJS", "CSS", "Desarrollo Web"],
+        "tags": ["Next.js", "Javascript", "NodeJS", "Desarrollo Web"],
         "thumbnailImage":"/nextjs.png",
         "categories": "Desarrollo Web",
         "date": 1613595046138,
@@ -254,9 +254,9 @@
       },
       {
         "id": 24,
-        "tags": ["Next.js", "Javascript", "NodeJS", "CSS", "Desarrollo Web"],
+        "tags": ["Next.js", "Javascript", "NodeJS", "Desarrollo Web"],
         "thumbnailImage":"/nextjs.png",
-        "categories": "Desarrollo Web",
+        "categories": "Next.js",
         "date": 1613600041916,
         "title": "Crea tu API Rest con Next.js",
         "slug": "crea-tu-api-rest-con-nextjs",
@@ -264,23 +264,43 @@
       },
       {
         "id": 25,
-        "tags": ["Next.js", "Javascript", "NodeJS", "CSS", "Desarrollo Web"],
+        "tags": ["Next.js", "Javascript", "NodeJS", "Desarrollo Web"],
         "thumbnailImage":"/nextjs.png",
-        "categories": "Desarrollo Web",
+        "categories": "Next.js",
         "date": 1614624178656,
         "title": "Obteniendo datos con Next.js",
         "slug": "obteniendo-datos-con-nextjs",
-        "excerpt": "La potencia que  tiene Next.js para obtener datos es de lejos una de las mejores en los frameworks modernos, desde mecanismos de cache hasta peticiones dinámicas hacen que Next.js tenga un conjunto de funcionalidades únicas en este aspecto. En este post exploraremos tres de los métodos que tiene Next.js para traer datos a nuestra aplicación ya sea en tiempo de compilación o en tiempo de ejecución o simplemente como mecanismo de prerenedering."
+        "excerpt": "La potencia que  tiene Next.js para obtener datos es de lejos una de las mejores en los frameworks modernos, desde mecanismos de cache hasta peticiones dinámicas hacen que Next.js tenga un conjunto de funcionalidades únicas en este aspecto. En este post exploraremos tres de los métodos que tiene Next.js para traer datos a nuestra aplicación ya sea en tiempo de compilación o en tiempo de ejecución o simplemente como mecanismo de pre-rendering."
       },
       {
         "id": 26,
-        "tags": ["Next.js", "Javascript", "NodeJS", "CSS", "Desarrollo Web"],
+        "tags": ["Next.js", "Javascript", "NodeJS", "Desarrollo Web"],
         "thumbnailImage":"/nextjs.png",
-        "categories": "Desarrollo Web",
+        "categories": "Next.js",
         "date": 1615214724644,
         "title": "Modos de renderizado en Next.js",
         "slug": "modos-de-renderizado-en-nextjs",
         "excerpt": "Next.js determina por tí cual es la mejor estrategia para renderizar tus páginas de manera óptima dependiendo de la funcionalidad que cada página tenga. No tienes que preocuparte por el ¿qué? o por el ¿Cómo? ya que Next.js lo hace por tí. En este post revisaremos los modos de renderizado que Next.js tiene."
+      },
+      {
+        "id": 27,
+        "tags": ["Next.js", "Javascript", "NodeJS", "Desarrollo Web"],
+        "thumbnailImage":"/nextjs.png",
+        "categories": "Next.js",
+        "date": 1615218289470,
+        "title": "Carga de Componentes Dinámicos en Next.js",
+        "slug": "carga-de-componentes-dinamicos-en-nextjs",
+        "excerpt": "Es posible  que tengas que cargar un componente que no funcione bien desde el lado del servidor debido a restricciones. Puede ser que dependa del navegador o de algo  particular que no permita que Next.js haga uso de  el desde el lado del servidor. En este post descubriremos como evitar que Next.js cargue componentes desde el lado del servidor y solamente lo haga desde el lado del cliente."
+      },
+      {
+        "id": 28,
+        "tags": ["Next.js", "Javascript", "NodeJS", "Desarrollo Web"],
+        "thumbnailImage":"/nextjs.png",
+        "categories": "Next.js",
+        "date": 1615221059801,
+        "title": "Despliegue de aplicaciones Next.js",
+        "slug": "despliegue-de-aplicaciones-nextjs",
+        "excerpt": "Una de las cosas más sorprendentes que tiene Next.js es su facilidad de despliegue ya que si tu compilación fue estática solo necesitas un  servidor de archivos estáticos como firebase hosting o cualquiera similar, sin embargo vercel la empresa creadora de Next.js ofrece el sistema de despligue de aplicaciones Next.js más sencillo y óptimo que haya visto hasta la fecha. En este post descubriremos como desplegar aplicaciones de Next.js usando el servicio gratuito de vercel."
       }
     ]
   }

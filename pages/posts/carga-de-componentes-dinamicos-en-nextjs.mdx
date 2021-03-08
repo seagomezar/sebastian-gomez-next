@@ -1,0 +1,79 @@
+import PostHeader from "../../components/PostHeader";
+import HeadSite from "../../components/HeadSite";
+import Discuss from "../../components/Discuss";
+
+<HeadSite
+  category="Desarrollo Web"
+  date={1615218289470}
+  title="Carga de Componentes Dinámicos en Next.js"
+  slug="carga-de-componentes-dinamicos-en-nextjs"
+  thumbnailImage="/nextjs.png"
+  excerpt="Es posible  que tengas que cargar un componente que no funcione bien desde el lado del servidor debido a restricciones. Puede ser que dependa del navegador o de algo  particular que no permita que Next.js haga uso de  el desde el lado del servidor. En este post descubriremos como evitar que Next.js cargue componentes desde el lado del servidor y solamente lo haga desde el lado del cliente."
+></HeadSite>
+
+# Carga de Componentes Dinámicos en Next.js
+
+<PostHeader
+  tags={["Next.js", "Javascript", "NodeJS", "Desarrollo Web"]}
+  date={1615218289470}
+  slug="carga-de-componentes-dinamicos-en-nextjs"
+/>
+
+Puede ocurrir que estes haciendo tu aplicación y por alguna razón empiece a fallar
+diciendote que "document is not defined", que "localstorage is not defined" o que
+"window is  not defined". Esto usualmente pasa porque tienes un componente que no
+debe ser renderizado desde el lado del servidor y que por el contrario solo debe ser
+renderizado desde el lado del cliente. Esto normalmente ocurre  por alguna de estas razones:
+
+- Depende de la API de DOM.
+- Depende de datos del lado del cliente.
+- Cualquier otra restricción propia del componente.
+
+Para estos casos Next.js tiene algo llamado "Dynamic  Imports" o Imports dinámicos
+que te permite especificar que componentes no se van a renderizar desde el lado del
+servidor y que por favor solo lo haga del lado del cliente.
+
+Para ello debemos importar en primer lugar el módulo de Next.js llamado "next/dynamic":
+
+```js
+import dynamic from 'next/dynamic'
+```
+
+Simplemente debemos de metener nuestro componente al interior de esta librería
+y usarlo con Normalidad.
+
+```js
+import dynamic from 'next/dynamic'
+
+const MiComponenteDificil = dynamic(
+  () => import('../components/MiComponenteDificil'),
+  { ssr: false }
+)
+
+const Page = () => (
+  <div>
+    <h1>Esto será pre-renderizado </h1>
+
+    {/* Esto no será pre-renderizado*/}
+    <MiComponenteDificil />
+  </div>
+)
+
+export default Page
+```
+
+Nota que puedes tener dentro de una misma página componentes que si pueden ser
+pre-renderizados desde el servidor y otros que simplemente no.
+
+--
+
+Eso es todo, espero que este post te sea de utilidad y lo puedas aplicar a 
+algún proyecto que tengas en mente o que simplemente te haya ayudado a entender 
+como funciona la carga de componentes dinámicos en Next.js para la renderizar las páginas.
+
+Déjame un comentario si te sirvió, si quieres añadir 
+alguna opinión o si tienes alguna duda no dudes en dejarme un comentario 
+en la parte de abajo, recuerda que si te gustó también puedes compartir usando los links a 
+las redes sociales en la parte de abajo.
+
+<Discuss slug="carga-de-componentes-dinamicos-en-nextjs" />

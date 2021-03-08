@@ -1,0 +1,81 @@
+import PostHeader from "../../components/PostHeader";
+import HeadSite from "../../components/HeadSite";
+import Discuss from "../../components/Discuss";
+
+<HeadSite
+  category="Desarrollo Web"
+  date={1615221059801}
+  title="Carga de Componentes Dinámicos en Next.js"
+  slug="carga-de-componentes-dinamicos-en-nextjs"
+  thumbnailImage="/nextjs.png"
+  excerpt="Es posible  que tengas que cargar un componente que no funcione bien desde el lado del servidor debido a restricciones. Puede ser que dependa del navegador o de algo  particular que no permita que Next.js haga uso de  el desde el lado del servidor. En este post descubriremos como evitar que Next.js cargue componentes desde el lado del servidor y solamente lo haga desde el lado del cliente."
+></HeadSite>
+
+# Despliegue de aplicaciones Next.js con vercel
+
+<PostHeader
+  tags={["Next.js", "Javascript", "NodeJS", "Desarrollo Web"]}
+  date={1615218289470}
+  slug="despliegue-de-aplicaciones-nextjs-con-vercel"
+/>
+
+Dependiendo de  como has contruido tu aplicación podras desplegarla 
+a una u otra parte. Por ejemplo si tu aplicación esta completamente
+generada como estática SSG, de esto hablamos en este post: [Modos de renderizado en Next.js](/posts/modos-de-renderizado-en-nextjs)
+puede usar un servidor básico que te permita mostrar archivos estáticos. Por ejemplo Firebase Hosting o Github Pages.
+
+Para ellos basta con ejecutar el comando:
+
+```bash
+next export
+```
+
+Y subir la carpeta donde corresponda o construir tu propio sistema de integración continua y pipelina
+de despliegue.
+
+⚠️**Tip:** Ten presente que si ese es tu camino deberás reescribir las rutas a peticiones 
+que usen variables de entorno de testing, development o producción.
+
+Sin embargo hay una manera mucho más sencilla. Vercel es la compañía detras de Next.js
+ellos literalmente crearon Next.js y además tienen un servicio gratuito para aplicaciones
+construidas con Next.js donde es solo usar un comando y desplegar tu aplicación.
+
+Familiarizate con el sitio web de [Vercel](https://vercel.com), es importante ya que
+allí podrás descubrir funcionalidades interesantes. Además entenderás como funciona la carpeta
+gratuita (Que para ser gratis es muy muy grande).
+
+Primero instalemos Vercel como paquete global de Node:
+
+```bash
+npm i -g vercel
+```
+
+Luego simplemente debes ejecutar el comando:
+
+```bash
+$ vercel
+````
+
+En tu consola y deberá seguir los pasos.
+
+También el sitio web puedes configurarlo desde tu repositorio de Github
+y hacer todo el enlace entre ambos sitios:
+
+[![](/nextjs/deploy-1.png)](/nextjs/deploy-1.png "Despliegue con Next.js y Vercel 1")
+[![](/nextjs/deploy-2.png)](/nextjs/deploy-2.png "Despliegue con Next.js y Vercel 2")
+[![](/nextjs/deploy-3.png)](/nextjs/deploy-3.png "Despliegue con Next.js y Vercel 3")
+[![](/nextjs/deploy-4.png)](/nextjs/deploy-4.png "Despliegue con Next.js y Vercel 4")
+
+
+--
+
+Eso es todo, espero que este post te sea de utilidad y lo puedas aplicar a 
+algún proyecto que tengas en mente o que simplemente te haya ayudado a entender 
+como desplegar aplicaciones de Next.js en vercel.
+
+Déjame un comentario si te sirvió, si quieres añadir 
+alguna opinión o si tienes alguna duda no dudes en dejarme un comentario 
+en la parte de abajo, recuerda que si te gustó también puedes compartir usando los links a 
+las redes sociales en la parte de abajo.
+
+<Discuss slug="despliegue-de-aplicaciones-nextjs-con-vercel" />
