@@ -22,7 +22,8 @@ const mdComponents = {
   ),
   pre: (props) => <div {...props} />,
   code: CodeBlock,
-  li: (props) => <li style={{ marginLeft: "2rem" }} {...props} />,
+  ul: (props) => <ul  style={{ marginTop: "1rem", marginBottom: "1rem" }} {...props} />,
+  li: (props) => <li style={{ marginLeft: "2rem", marginBottom: "1rem" }} {...props} />,
   img: (props) => <Image style={{ width: "100%" }} {...props} width="300" height="300" layout="responsive" />,
   a: (props) => (
     <a

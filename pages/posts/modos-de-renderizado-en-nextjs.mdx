@@ -1,0 +1,75 @@
+import PostHeader from "../../components/PostHeader";
+import HeadSite from "../../components/HeadSite";
+import Discuss from "../../components/Discuss";
+
+<HeadSite
+  category="Desarrollo Web"
+  date={1615214724644}
+  title="Modos de renderizado en Next.js"
+  slug="modos-de-renderizado-en-nextjs"
+  thumbnailImage="/nextjs.png"
+  excerpt="Next.js determina por tí cual es la mejor estrategia para renderizar tus páginas de manera óptima dependiendo de la funcionalidad que cada página tenga. No tienes que preocuparte por el ¿qué? o por el ¿Cómo? ya que Next.js lo hace por tí. En este post revisaremos los modos de renderizado que Next.js tiene."
+></HeadSite>
+
+# Modos de renderizado en Next.js
+
+<PostHeader
+  tags={["Next.js", "Javascript", "NodeJS", "Desarrollo Web"]}
+  date={1615214724644}
+  slug="modos-de-renderizado-en-nextjs"
+/>
+
+Cada vez que se vaya a compilar tu aplicación. Next.js va a buscar en cada página que tu
+hayas creado cual es el mecanismo que estas utilizando para obtener datos para determinar
+la mejor manera de pre-renderizar, renderizar y visualizar estas páginas. Como vimos
+en el post anterior: [Obteniendo datos con Next.js](/posts/obteniendo-datos-con-nextjs) 
+existen varios mecanismos para obtener datos y dependiendo de éstos tu sitio generará
+las páginas con una de las siguiente estrategias:
+
+- Generación Estática (Statig Generation: SSG)
+- Renderizado del lado del sevidor (Server Side Rendering: SSR)
+- Renderizado del lado del Cliente (Single Page Application: SPA)
+
+
+## Generación Estática (Statig Generation: SSG)
+Páginas que en tiempo de compilación son  completamente generadas en HTML 
+y que son supremamente fáciles de cachear se pueden generar si en tus páginas
+SOLO usaste getStaticProps o getStaticPaths.
+
+## Renderizado del lado del sevidor (Server Side Rendering: SSR)
+Páginas que en tiempo de compilación no son completamente  generadas y que
+requieren algún tipo de información del servidor que solo cuando el usuario
+este solicitando la página se hace dicha petición y solicitud de datos al servidor
+se generan si usaste por ejemplo getServerSideProps o getInitialProps. Estás páginas
+son cacheables luego de su primera carga.
+ 
+## Renderizado del lado del Cliente (Single Page Application: SPA)
+Páginas que también son cacheables y que pueden sin ningún problema ser completamente
+cacheadas pero que una vez que el HTML ha cargado, necesitan solicitar información 
+desde el lado del cliente (navegador). Normalmente es lo que haces con los hooks o con
+el componentDidMount.
+
+## Renderizado Mixto
+En una página puedes tener getServerSideProps o getInitialProps o getStaticPaths junto con fetch dentro
+del componentDidMount o dentro del Hook, esto es perfectamente normal y posible
+y Next.js trata ésto como una página mixta que puede seguir alguna de las dos primeras
+estrategias SSR, SSG y también obtención de los datos desde el cliente sin ningún problema.
+
+Por defecto toodas las páginas son pre-renderizadas, es decir el HTML y el contenido
+está casi listo para ser mostrado incluso si no tienen ninguno de los métodos de
+obtención de datos: (getServerSideProps, getStaticPaths, getStaticProps), tú implícitamente
+estas eligiendo que mecanismo de pre-renderizado estas eligiendo para tus páginas
+al usar uno de los métodos de obtención de datos.
+
+--
+
+Eso es todo, espero que este post te sea de utilidad y lo puedas aplicar a 
+algún proyecto que tengas en mente o que simplemente te haya ayudado a entender 
+cuales son los mecanismos que tiene Next.js para la renderizar las páginas.
+
+Déjame un comentario si te sirvió, si quieres añadir 
+alguna opinión o si tienes alguna duda no dudes en dejarme un comentario 
+en la parte de abajo, recuerda que si te gustó también puedes compartir usando los links a 
+las redes sociales en la parte de abajo.
+
+<Discuss slug="modos-de-renderizado-en-nextjs" />
