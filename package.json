@@ -31,7 +31,7 @@
     "react-live": "^2.2.3",
     "remark-emoji": "^2.1.0",
     "remark-images": "^1.0.0",
-    "sharp": "^0.26.2",
+    "sharp": "^0.30.5",
     "unified-ui": "^0.0.3"
   }
 }
